@@ -67,6 +67,12 @@ The `examples/` directory contains complete, ready-to-use example pages that dem
 - **login-register.html**: A login and registration page with form validation and tabbed interface
 - **people-management.html**: A user management dashboard example
 - **transportation-dashboard.html**: A data visualization dashboard example
+- **car-dashboard.html**: An automotive metrics dashboard
+- **bitcoin-dashboard.html**: A cryptocurrency tracking dashboard
+- **about.html**: An about page with company information
+- **overview-card-demo.html**: Examples of different overview card implementations
+- **button-sizes.html**: A showcase of button size variants and styles
+- **index.html**: Main examples index page
 
 These examples showcase proper implementation of components, layout patterns, and responsive design. They're a great starting point for building your own pages.
 
@@ -78,7 +84,7 @@ Every page should follow this basic structure:
 <body class="bg-grey-50">
   <div class="container page-container" style="padding: var(--space-16)">
     <div class="content-wrapper" style="display: flex; flex-direction: column; gap: var(--space-6)">
-      <header class="header" style="margin-bottom: var(--space-6)">
+      <header class="header">
         <h1 class="header__title heading-1">Page Title</h1>
       </header>
       
@@ -491,23 +497,39 @@ While we use gap for spacing between components, internal component spacing stil
 ```html
 <div class="content-wrapper" style="display: flex; flex-direction: column; gap: var(--space-6)">
   <header class="header">
-    <h1 class="header__title">Dashboard</h1>
+    <h1 class="header__title heading-1">Car Fleet Management Dashboard</h1>
     <div class="header__actions">
-      <button class="btn btn-primary">
-        <span class="btn-text">NEW ITEM</span>
+      <button class="btn btn-secondary btn-medium">
+        <div class="btn-icon">
+          <i class="fas fa-download icon-muted"></i>
+        </div>
+        <span class="btn-text">EXPORT REPORT</span>
+      </button>
+      <button class="btn btn-primary btn-medium">
+        <div class="btn-icon">
+          <i class="fas fa-plus text-white"></i>
+        </div>
+        <span class="btn-text">ADD VEHICLE</span>
       </button>
     </div>
   </header>
 
+  <div class="tabs tabs-large">
+    <div class="tab-item active">
+      <div class="tab-content">
+        <div class="icon-container icon-small">
+          <i class="fas fa-car"></i>
+        </div>
+        <div class="tab-text">Fleet Overview</div>
+      </div>
+      <div class="tab-active-line"></div>
+    </div>
+    <!-- Additional tabs -->
+  </div>
+
   <section class="section">
     <div class="grid grid-cols-4" style="gap: var(--space-4)">
       <!-- Overview cards -->
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="grid grid-cols-2" style="gap: var(--space-6)">
-      <!-- Content cards -->
     </div>
   </section>
 </div>
@@ -515,29 +537,57 @@ While we use gap for spacing between components, internal component spacing stil
 
 #### Form Layout Example
 ```html
-<div class="content-wrapper" style="display: flex; flex-direction: column; gap: var(--space-6)">
-  <header class="header">
-    <h1 class="header__title">Create New Item</h1>
-  </header>
-
-  <section class="section">
-    <div class="card bg-white">
-      <h2 class="card__title">Form Title</h2>
-      <div class="card__content" style="display: flex; flex-direction: column; gap: var(--space-4)">
-        <div class="form-group">
-          <!-- Form inputs -->
+<div class="auth-container">
+  <div class="auth-card bg-white">
+    <div class="auth-header">
+      <img src="../assets/logo.svg" alt="Keboola Logo" width="120" height="32">
+      <h1 class="heading-2" style="margin-top: var(--space-6)">Sign In</h1>
+    </div>
+    
+    <div class="tabs tabs-large" style="margin: var(--space-6) 0;">
+      <div class="tab-item active">
+        <div class="tab-content">
+          <div class="tab-text">Sign In</div>
         </div>
-        <div class="form-group">
-          <!-- More form inputs -->
-        </div>
+        <div class="tab-active-line"></div>
       </div>
-      <div class="card__footer" style="margin-top: var(--space-6)">
-        <button class="btn btn-primary">
-          <span class="btn-text">SUBMIT</span>
-        </button>
+      <div class="tab-item">
+        <div class="tab-content">
+          <div class="tab-text">Register</div>
+        </div>
       </div>
     </div>
-  </section>
+    
+    <form style="display: flex; flex-direction: column; gap: var(--space-4)">
+      <div class="form-group">
+        <div class="text-input">
+          <div class="label">
+            <label class="label-text" for="email">Email</label>
+          </div>
+          <div class="content">
+            <input type="email" id="email" placeholder="Enter your email">
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="text-input">
+          <div class="label">
+            <label class="label-text" for="password">Password</label>
+          </div>
+          <div class="content">
+            <input type="password" id="password" placeholder="Enter your password">
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: var(--space-4)">
+        <button type="submit" class="btn btn-primary btn-medium" style="width: 100%">
+          <span class="btn-text">SIGN IN</span>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 ```
 
