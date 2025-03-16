@@ -14,9 +14,11 @@ A comprehensive design system for building consistent web interfaces with Kebool
    - [Spacing System](#spacing-system)
 4. [Layout & Structure](#layout-and-structure)
    - [Page Container](#page-container)
+   - [Shadows](#shadows)
    - [Grid System](#grid-system)
    - [Header & Footer Spacing](#header-and-footer-spacing)
    - [Section Spacing](#section-spacing)
+   - [Layout Examples](#layout-examples)
 5. [Core Components](#core-components)
    - [Header](#header)
    - [Buttons](#buttons)
@@ -32,22 +34,36 @@ A comprehensive design system for building consistent web interfaces with Kebool
    - [Form Elements](#form-elements)
    - [Activity Row](#activity-row)
    - [Badges](#badges)
+   - [Banners](#banners)
 6. [Icon System](#icon-system)
-   - [Basic Setup](#basic-icon-setup)
-   - [Sizes & Colors](#icon-sizes-and-colors)
-   - [Best Practices](#icon-best-practices)
+   - [Basic Icon Setup](#basic-icon-setup)
+   - [Icon Sizes & Colors](#icon-sizes-and-colors)
+   - [Icon Best Practices](#icon-best-practices)
+   - [Icon + Text Spacing](#icon--text-spacing)
 7. [Common Patterns](#common-patterns)
-   - [Form Card](#form-card-pattern)
-   - [Activity List](#activity-list-pattern)
+   - [Form Card Pattern](#form-card-pattern)
+   - [Activity List Pattern](#activity-list-pattern)
 8. [Best Practices and Common Mistakes](#best-practices-and-common-mistakes)
+   - [Typography](#typography)
+   - [Layout](#layout)
+   - [Components](#components)
+   - [Header & Buttons](#header--buttons)
+   - [Spacing](#spacing)
+   - [Card Layouts](#card-layouts)
 9. [Project Structure](#project-structure)
 10. [Support & Contributing](#support-and-contributing)
+    - [Support & Documentation](#support--documentation)
+    - [Contributing](#contributing)
 
 ## Introduction
 
 The Keboola Design System provides a consistent set of components, patterns, and guidelines for building Keboola applications. It ensures visual consistency, improves development efficiency, and creates a cohesive user experience across all Keboola products.
 
 ## Getting Started
+
+For a comprehensive guide on getting started with the Keboola Design System, please refer to the [GETTING-STARTED.md](GETTING-STARTED.md) file.
+
+Below is a quick overview of the essential steps:
 
 ### Required Dependencies
 
@@ -64,17 +80,25 @@ Include these dependencies in your HTML file:
 
 The `examples/` directory contains complete, ready-to-use example pages that demonstrate how to implement the design system:
 
+- **index.html**: Main examples index page
 - **login-register.html**: A login and registration page with form validation and tabbed interface
 - **people-management.html**: A user management dashboard example
 - **transportation-dashboard.html**: A data visualization dashboard example
 - **car-dashboard.html**: An automotive metrics dashboard
 - **bitcoin-dashboard.html**: A cryptocurrency tracking dashboard
-- **about.html**: An about page with company information
 - **overview-card-demo.html**: Examples of different overview card implementations
 - **button-sizes.html**: A showcase of button size variants and styles
-- **index.html**: Main examples index page
 
 These examples showcase proper implementation of components, layout patterns, and responsive design. They're a great starting point for building your own pages.
+
+> **⚠️ Important Note**: The `examples/` directory is for reference and learning purposes only. When implementing the design system in your own project:
+> 
+> 1. **DO NOT** add new pages to the `examples/` directory
+> 2. **DO NOT** modify existing example pages unless you're fixing bugs
+> 3. **DO** create your own HTML files in your project directory
+> 4. **DO** use the examples as reference for proper implementation patterns
+>
+> The examples directory should only be modified when developing new components or debugging existing ones.
 
 ### Basic Page Structure
 
@@ -929,22 +953,93 @@ Tab requirements:
 ### Form Elements
 
 #### Form Spacing
+
+Form elements should have consistent spacing between them. The design system provides a built-in rule for form-group spacing:
+
 ```html
-<div class="card">
-    <h2 class="card__title">Form Title</h2>
-    <div class="card__content" style="display: flex; flex-direction: column; gap: var(--space-4)">
-        <div class="form-group">
-            <!-- Form element -->
-        </div>
-        <div class="form-group">
-            <!-- Next form element -->
-        </div>
+<!-- Form with proper spacing -->
+<form>
+  <div class="form-group">
+    <div class="text-input">
+      <!-- Input content -->
     </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="select">
+      <!-- Select content -->
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="checkbox">
+      <!-- Checkbox content -->
+    </label>
+  </div>
+</form>
+```
+
+This approach automatically adds a 16px (var(--space-4)) gap between form elements. When form-groups are used inside grid or flex containers, the container's gap property takes precedence to avoid double spacing.
+
+✅ Do:
+- Wrap each form element in a `.form-group` div
+- Let the built-in spacing handle the gaps between elements
+- Use grid or flex with gap for complex form layouts
+
+❌ Don't:
+- Add custom margins to form elements
+- Use inconsistent spacing between form elements
+
+#### Form Structure
+
+For proper form organization and spacing, follow these guidelines:
+
+```html
+<!-- Form in a card -->
+<div class="card bg-white">
+  <h2 class="card__title">Form Title</h2>
+  <div class="card__content" style="display: flex; flex-direction: column; gap: var(--space-4);">
+    <!-- Group related form elements -->
+    <div>
+      <h3 class="heading-3" style="margin-bottom: var(--space-4);">Section Title</h3>
+      <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+        <div class="form-group">
+          <!-- Form element 1 -->
+        </div>
+        <div class="form-group">
+          <!-- Form element 2 -->
+        </div>
+      </div>
+    </div>
+    
+    <!-- Another group of related form elements -->
+    <div>
+      <h3 class="heading-3" style="margin-bottom: var(--space-4);">Another Section</h3>
+      <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+        <div class="form-group">
+          <!-- Form element 3 -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card__footer">
+    <button class="btn btn-primary btn-medium">
+      <span class="btn-text">SUBMIT</span>
+    </button>
+  </div>
 </div>
 ```
 
+This structure ensures:
+- 16px spacing between major form sections
+- 16px spacing between individual form elements within each section
+- Proper visual grouping of related form elements
+- Clear section headings for form organization
+
 #### Text Input
+
 ```html
+<!-- Standard Text Input -->
 <div class="form-group">
   <div class="text-input">
     <div class="label">
@@ -955,41 +1050,187 @@ Tab requirements:
     </div>
   </div>
 </div>
+
+<!-- Required Text Input -->
+<div class="form-group">
+  <div class="text-input required">
+    <div class="label">
+      <label class="label-text" for="required-input">Required Input</label>
+    </div>
+    <div class="content">
+      <input type="text" id="required-input" placeholder="Required field">
+    </div>
+  </div>
+</div>
+
+<!-- Disabled Text Input -->
+<div class="form-group">
+  <div class="text-input disabled">
+    <div class="label">
+      <label class="label-text" for="disabled-input">Disabled Input</label>
+    </div>
+    <div class="content">
+      <input type="text" id="disabled-input" placeholder="Disabled field" disabled>
+    </div>
+  </div>
+</div>
 ```
 
 #### Textarea
+
 ```html
 <div class="form-group">
   <div class="text-input">
     <div class="label">
-      <label class="label-text" for="textarea-id">Label</label>
+      <label class="label-text" for="textarea-id">Description</label>
     </div>
     <div class="content">
-      <textarea id="textarea-id" rows="3" placeholder="Placeholder"></textarea>
+      <textarea id="textarea-id" rows="3" placeholder="Enter description"></textarea>
     </div>
   </div>
 </div>
 ```
 
 #### Select
+
 ```html
 <div class="form-group">
   <div class="select">
     <div class="label">
-      <label class="label-text" for="select-id">Label</label>
+      <label class="label-text" for="select-id">Select Option</label>
     </div>
-    <button type="button" class="select-trigger" id="select-id">
-      <span>Select option</span>
-      <i class="fas fa-chevron-down"></i>
-    </button>
+    <div class="select-wrapper">
+      <select id="select-id" class="select-trigger">
+        <option value="">Select an option</option>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    </div>
   </div>
 </div>
 ```
 
-Form requirements:
-- Use `gap: var(--space-4)` on `card__content` for spacing between form groups
-- Keep form elements organized in `form-group` and `text-input` structure
-- Always include labels with proper `for` attributes
+#### Checkbox
+
+```html
+<div class="form-group">
+  <label class="checkbox">
+    <input type="checkbox" id="checkbox-id">
+    <div class="checkbox-box"></div>
+    <div class="checkbox-label">
+      <span class="checkbox-label-text">Checkbox label</span>
+    </div>
+  </label>
+</div>
+
+<!-- Checked Checkbox -->
+<div class="form-group">
+  <label class="checkbox">
+    <input type="checkbox" id="checked-checkbox" checked>
+    <div class="checkbox-box"></div>
+    <div class="checkbox-label">
+      <span class="checkbox-label-text">Checked checkbox</span>
+    </div>
+  </label>
+</div>
+```
+
+#### Radio Buttons
+
+```html
+<div class="form-group">
+  <label class="radio-button">
+    <input type="radio" name="radio-group" value="option1" checked>
+    <div class="radio-box"></div>
+    <div class="radio-label">
+      <span class="radio-label-text">Option 1</span>
+    </div>
+  </label>
+</div>
+
+<div class="form-group">
+  <label class="radio-button">
+    <input type="radio" name="radio-group" value="option2">
+    <div class="radio-box"></div>
+    <div class="radio-label">
+      <span class="radio-label-text">Option 2</span>
+    </div>
+  </label>
+</div>
+```
+
+#### Form Grid Layout
+
+For forms with multiple columns, use the grid system:
+
+```html
+<div class="form-group">
+  <div class="grid grid-cols-2" style="gap: var(--space-4)">
+    <div class="text-input">
+      <div class="label">
+        <label class="label-text" for="first-name">First Name</label>
+      </div>
+      <div class="content">
+        <input type="text" id="first-name" placeholder="Enter first name">
+      </div>
+    </div>
+    <div class="text-input">
+      <div class="label">
+        <label class="label-text" for="last-name">Last Name</label>
+      </div>
+      <div class="content">
+        <input type="text" id="last-name" placeholder="Enter last name">
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+#### Form Validation
+
+The design system includes styles for form validation states:
+
+```html
+<!-- Error State -->
+<div class="form-group">
+  <div class="text-input error">
+    <div class="label">
+      <label class="label-text" for="error-input">Input with Error</label>
+    </div>
+    <div class="content">
+      <input type="text" id="error-input" placeholder="Error field">
+    </div>
+    <div class="error-message">
+      This field is required
+    </div>
+  </div>
+</div>
+
+<!-- Success State -->
+<div class="form-group">
+  <div class="text-input success">
+    <div class="label">
+      <label class="label-text" for="success-input">Valid Input</label>
+    </div>
+    <div class="content">
+      <input type="text" id="success-input" value="Correct value">
+    </div>
+  </div>
+</div>
+```
+
+#### Form Best Practices
+
+1. **Consistent Structure**: Always use the proper nesting structure for form elements
+2. **Proper Spacing**: Use form-group for consistent spacing between elements
+3. **Logical Grouping**: Group related form elements together with section headings
+4. **Clear Labels**: Always include clear, descriptive labels for all form elements
+5. **Validation States**: Use the built-in validation states for error and success feedback
+6. **Responsive Layout**: Use the grid system for multi-column forms on larger screens
+7. **Accessible Forms**: Include proper for/id attributes to connect labels with inputs
+8. **Required Fields**: Use the required class to indicate mandatory fields
+9. **Consistent Button Placement**: Place form buttons in the card__footer with proper spacing
 
 ### Activity Row
 
@@ -1022,6 +1263,116 @@ Form requirements:
   <span class="badge-text">Error</span>
 </span>
 ```
+
+### Banners
+
+Banners are used to display important messages, alerts, or notifications to users. They come in different variants to indicate the type of message.
+
+```html
+<!-- Default/Info Banner (with close button) -->
+<div class="banner">
+    <div class="icon-container icon-small">
+        <i class="fas fa-info-circle"></i>
+    </div>
+    <div class="content">
+        <div class="title">Information Message</div>
+        <div class="text">This is a standard information banner that provides helpful context to users.</div>
+    </div>
+    <button class="button-close">
+        <i class="fas fa-times icon-small"></i>
+    </button>
+</div>
+
+<!-- Warning Banner -->
+<div class="banner style-variant-warning">
+    <div class="icon-container icon-small">
+        <i class="fas fa-exclamation-triangle icon-warning"></i>
+    </div>
+    <div class="content">
+        <div class="title">Warning Alert</div>
+        <div class="text">This is a warning banner that alerts users to potential issues.</div>
+    </div>
+    <button class="button-close">
+        <i class="fas fa-times icon-small"></i>
+    </button>
+</div>
+
+<!-- Error Banner -->
+<div class="banner style-variant-error">
+    <div class="icon-container icon-small">
+        <i class="fas fa-exclamation-circle icon-error"></i>
+    </div>
+    <div class="content">
+        <div class="title">Error Message</div>
+        <div class="text">This is an error banner that indicates a critical issue.</div>
+    </div>
+    <button class="button-close">
+        <i class="fas fa-times icon-small"></i>
+    </button>
+</div>
+
+<!-- Success Banner -->
+<div class="banner style-variant-success">
+    <div class="icon-container icon-small">
+        <i class="fas fa-check-circle icon-success"></i>
+    </div>
+    <div class="content">
+        <div class="title">Success Message</div>
+        <div class="text">This is a success banner that confirms a completed action.</div>
+    </div>
+    <button class="button-close">
+        <i class="fas fa-times icon-small"></i>
+    </button>
+</div>
+```
+
+#### Banner Styling
+
+Each banner variant uses specific colors for background and border:
+
+- **Info (blue)**: Background `var(--secondary-blue-100)`, Border `var(--secondary-blue-200)`
+- **Warning (orange)**: Background `var(--warning-orange-100)`, Border `var(--warning-orange-200)`
+- **Error (red)**: Background `var(--error-red-100)`, Border `var(--error-red-200)`
+- **Success (green)**: Background `var(--success-green-100)`, Border `var(--success-green-200)`
+
+All banners use a 1px border with the 200 shade of their respective color and have a 12px gap between the title and text.
+
+#### Persistent Banners (Without Close Button)
+
+For messages that should remain visible and cannot be dismissed, use the `style-variant-persistent` class:
+
+```html
+<!-- Persistent Warning Banner (without close button) -->
+<div class="banner style-variant-warning style-variant-persistent">
+    <div class="icon-container icon-small">
+        <i class="fas fa-exclamation-triangle icon-warning"></i>
+    </div>
+    <div class="content">
+        <div class="title">Persistent Warning</div>
+        <div class="text">This is a warning banner without a close button for messages that should remain visible.</div>
+    </div>
+</div>
+```
+
+#### Banner Structure
+
+Each banner consists of:
+1. An icon that indicates the type of message
+2. Content with a title and descriptive text
+3. An optional close button (omitted in persistent banners)
+
+#### Best Practices
+
+- Use banners sparingly to avoid overwhelming users
+- Choose the appropriate variant based on the message importance:
+  - **Info (blue)**: General information, tips, or context
+  - **Warning (orange)**: Potential issues that require attention
+  - **Error (red)**: Critical issues that need immediate attention
+  - **Success (green)**: Confirmation of completed actions
+- Keep messages clear and concise
+- Use persistent banners only for information that must remain visible
+
+For a complete showcase of all banner variants, see the [banner-examples.html](examples/banner-examples.html) example page.
 
 ## Icon System
 

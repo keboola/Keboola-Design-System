@@ -152,3 +152,22 @@ body {
 .icon-container {
     border-radius: var(--radius-small);
 }
+
+/* Form Group Spacing */
+.form-group {
+    margin-bottom: var(--space-4);
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* When form-groups are in a grid or flex container, rely on the container's gap */
+.grid .form-group,
+.flex .form-group,
+[style*="display: flex"] .form-group,
+[style*="display:flex"] .form-group,
+[style*="display: grid"] .form-group,
+[style*="display:grid"] .form-group {
+    margin-bottom: 0;
+}

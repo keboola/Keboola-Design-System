@@ -9,10 +9,17 @@
   align-items: flex-start;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-4);
-  background-color: var(--secondary-blue-50);
+  background-color: var(--secondary-blue-100);
   border-radius: var(--radius-small);
+  border: 1px solid var(--secondary-blue-200);
 }
 
+/* Banner icon container */
+.banner .icon-container {
+  flex-shrink: 0;
+}
+
+/* Banner content */
 .banner .content {
   flex: 1;
 }
@@ -20,6 +27,7 @@
 .banner .title {
   font-family: var(--body-body-medium-family);
   color: var(--neutral-grey-800);
+  margin-bottom: var(--space-3);
 }
 
 .banner .title2 {
@@ -83,12 +91,12 @@
 }
 
 .banner .text {
-  color: var(--neutral-grey-800, #222529);
+  color: var(--neutral-grey-800);
   text-align: left;
-  font-family: var(--body-body-font-family, "Inter-Regular", sans-serif);
-  font-size: var(--body-body-font-size, 14px);
-  line-height: var(--body-body-line-height, 20px);
-  font-weight: var(--body-body-font-weight, 400);
+  font-family: var(--font-family-base);
+  font-size: var(--body-body-size);
+  line-height: var(--body-body-line-height);
+  font-weight: var(--body-body-weight);
   position: relative;
   flex: 1;
 }
@@ -133,8 +141,8 @@
 
 /* Variants */
 .banner.style-variant-warning {
-  background: var(--warning-orange-100, #fff3e0);
-  border-color: var(--warning-orange-300, #ffd699);
+  background: var(--warning-orange-100);
+  border: 1px solid var(--warning-orange-200);
 }
 
 .banner.style-variant-warning .warning-v-2,
@@ -148,15 +156,21 @@
 }
 
 .banner.style-variant-error {
-  background: var(--error-red-100, #ffe0e6);
-  border-color: var(--error-red-200, #ffc2cc);
+  background: var(--error-red-100);
+  border: 1px solid var(--error-red-200);
 }
 
 .banner.style-variant-success {
-  background: var(--success-green-100, #e0ffe0);
-  border-color: var(--success-green-200, #baf5ba);
+  background: var(--success-green-100);
+  border: 1px solid var(--success-green-200);
 }
 
 .banner .close-button {
   border-radius: var(--radius-full);
+}
+
+/* Color Variants */
+.banner.style-variant-warning {
+  background: var(--warning-orange-100);
+  border: 1px solid var(--warning-orange-200);
 } 

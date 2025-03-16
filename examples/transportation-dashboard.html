@@ -360,10 +360,14 @@
                                 <div class="label">
                                     <label class="label-text" for="data-source">Data Source</label>
                                 </div>
-                                <button type="button" class="select-trigger" id="data-source">
-                                    <span>Select data source</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
+                                <div class="select-wrapper">
+                                    <select id="data-source" class="select-trigger">
+                                        <option value="">Select data source</option>
+                                        <option value="source1">Shipment Database</option>
+                                        <option value="source2">GPS Tracking</option>
+                                        <option value="source3">Customer Orders</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -371,10 +375,14 @@
                                 <div class="label">
                                     <label class="label-text" for="analysis-type">Analysis Type</label>
                                 </div>
-                                <button type="button" class="select-trigger" id="analysis-type">
-                                    <span>Select analysis type</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
+                                <div class="select-wrapper">
+                                    <select id="analysis-type" class="select-trigger">
+                                        <option value="">Select analysis type</option>
+                                        <option value="type1">Route Efficiency</option>
+                                        <option value="type2">Delivery Time Analysis</option>
+                                        <option value="type3">Fuel Consumption</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -398,6 +406,44 @@
                     </div>
                 </div>
             </section>
+
+            <div class="card">
+                <h2 class="card__title">Filter Data</h2>
+                <div class="card__content">
+                    <div class="form-group">
+                        <div class="select">
+                            <div class="label">
+                                <label class="label-text" for="data-source-filter">Data Source</label>
+                            </div>
+                            <div class="select-wrapper">
+                                <select id="data-source-filter" class="select-trigger">
+                                    <option value="all">All Data Sources</option>
+                                    <option value="source1">Source 1</option>
+                                    <option value="source2">Source 2</option>
+                                    <option value="source3">Source 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="text-input">
+                            <div class="label">
+                                <label class="label-text" for="search-filter">Search</label>
+                            </div>
+                            <div class="content">
+                                <input type="text" id="search-filter" placeholder="Search...">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-medium">
+                            <span class="btn-text">APPLY FILTERS</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

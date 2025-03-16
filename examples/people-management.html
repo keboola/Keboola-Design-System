@@ -140,7 +140,7 @@
             <section class="section">
                 <div class="card bg-white">
                     <h2 class="card__title">Search & Filter</h2>
-                    <div class="card__content" style="display: flex; flex-direction: column; gap: var(--space-4)">
+                    <div class="card__content">
                         <div class="grid grid-cols-3" style="gap: var(--space-4)">
                             <div class="form-group">
                                 <div class="text-input">
@@ -158,10 +158,15 @@
                                     <div class="label">
                                         <label class="label-text" for="department-filter">Department</label>
                                     </div>
-                                    <button type="button" class="select-trigger" id="department-filter">
-                                        <span>All Departments</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </button>
+                                    <div class="select-wrapper">
+                                        <select id="department-filter" class="select-trigger">
+                                            <option value="all">All Departments</option>
+                                            <option value="engineering">Engineering</option>
+                                            <option value="marketing">Marketing</option>
+                                            <option value="sales">Sales</option>
+                                            <option value="hr">Human Resources</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -170,10 +175,14 @@
                                     <div class="label">
                                         <label class="label-text" for="status-filter">Status</label>
                                     </div>
-                                    <button type="button" class="select-trigger" id="status-filter">
-                                        <span>All Statuses</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </button>
+                                    <div class="select-wrapper">
+                                        <select id="status-filter" class="select-trigger">
+                                            <option value="all">All Statuses</option>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                            <option value="pending">Pending</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -363,10 +372,15 @@
                                     <div class="label">
                                         <label class="label-text" for="department">Department</label>
                                     </div>
-                                    <button type="button" class="select-trigger" id="department">
-                                        <span>Select department</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </button>
+                                    <div class="select-wrapper">
+                                        <select id="department" class="select-trigger">
+                                            <option value="">Select department</option>
+                                            <option value="engineering">Engineering</option>
+                                            <option value="marketing">Marketing</option>
+                                            <option value="sales">Sales</option>
+                                            <option value="hr">Human Resources</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -388,10 +402,14 @@
                                     <div class="label">
                                         <label class="label-text" for="type">Type</label>
                                     </div>
-                                    <button type="button" class="select-trigger" id="type">
-                                        <span>Select type</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </button>
+                                    <div class="select-wrapper">
+                                        <select id="type" class="select-trigger">
+                                            <option value="">Select type</option>
+                                            <option value="employee">Employee</option>
+                                            <option value="contractor">Contractor</option>
+                                            <option value="intern">Intern</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -400,10 +418,14 @@
                                     <div class="label">
                                         <label class="label-text" for="status">Status</label>
                                     </div>
-                                    <button type="button" class="select-trigger" id="status">
-                                        <span>Select status</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </button>
+                                    <div class="select-wrapper">
+                                        <select id="status" class="select-trigger">
+                                            <option value="">Select status</option>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                            <option value="pending">Pending</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>

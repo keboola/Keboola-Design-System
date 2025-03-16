@@ -64,30 +64,17 @@
             gap: var(--space-4);
         }
         
-        .auth-footer {
-            margin-top: var(--space-6);
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-4);
-            align-items: center;
-        }
-        
         .auth-links {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: var(--space-2);
-            margin-top: var(--space-4);
-        }
-        
-        .remember-me {
-            align-self: flex-start;
             margin-top: var(--space-2);
         }
         
         .error-message {
             color: var(--error-red-500-base);
-            font-size: var(--small-body-size);
+            font-size: var(--body-body-size);
             margin-top: var(--space-1);
             display: none;
         }
@@ -157,7 +144,7 @@
             
             <!-- Login Form -->
             <div id="loginForm" class="form-container active">
-                <form class="auth-form">
+                <form class="auth-form" style="display: flex; flex-direction: column; gap: var(--space-4);">
                     <div class="form-group">
                         <div class="text-input" id="loginEmailInput">
                             <div class="label">
@@ -182,7 +169,7 @@
                         </div>
                     </div>
                     
-                    <div class="remember-me">
+                    <div class="form-group">
                         <label class="checkbox">
                             <input type="checkbox" id="remember-me">
                             <div class="checkbox-box"></div>
@@ -192,22 +179,22 @@
                         </label>
                     </div>
                     
-                    <div class="auth-footer">
+                    <div style="margin-top: var(--space-2);">
                         <button type="submit" class="btn btn-primary btn-medium" style="width: 100%;">
                             <span class="btn-text">LOG IN</span>
                         </button>
-                        
-                        <div class="auth-links">
-                            <a href="#" class="link-small-body-medium">Forgot password?</a>
-                            <span class="small-body-text">Don't have an account? <a href="#" class="link-small-body-medium" id="switchToRegister">Register</a></span>
-                        </div>
+                    </div>
+                    
+                    <div class="auth-links">
+                        <a href="#" class="link-small-body-medium">Forgot password?</a>
+                        <span class="small-body-text">Don't have an account? <a href="#" class="link-small-body-medium" id="switchToRegister">Register</a></span>
                     </div>
                 </form>
             </div>
             
             <!-- Register Form -->
             <div id="registerForm" class="form-container">
-                <form class="auth-form">
+                <form class="auth-form" style="display: flex; flex-direction: column; gap: var(--space-4);">
                     <div class="form-group">
                         <div class="text-input" id="registerNameInput">
                             <div class="label">
@@ -267,7 +254,7 @@
                         </div>
                     </div>
                     
-                    <div class="auth-footer">
+                    <div style="margin-top: var(--space-2);">
                         <button type="submit" class="btn btn-primary btn-medium" style="width: 100%;">
                             <span class="btn-text">CREATE ACCOUNT</span>
                         </button>
