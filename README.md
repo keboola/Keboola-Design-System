@@ -1206,7 +1206,6 @@ project/
 ├── tokens/
 │   ├── variables.css
 │   ├── colors.css
-│   ├── spacing.css
 │   └── typography.css
 ├── styles/
 │   └── layout.css

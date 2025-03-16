@@ -1,5 +1,11 @@
 /* Typography - Core Design System Styles */
 
+/* Reset browser defaults for headings */
+h1, h2, h3, h4, h5, h6 {
+    margin: var(--space-0);
+    padding: var(--space-0);
+}
+
 /* Headings */
 .heading-1 {
     font-family: var(--headings-h1-family);
@@ -15,6 +21,7 @@
     font-weight: var(--headings-h2-weight);
     font-style: var(--headings-h2-style);
     line-height: var(--headings-h2-line-height);
+    padding-bottom: var(--space-4);
 }
 
 .heading-3 {
