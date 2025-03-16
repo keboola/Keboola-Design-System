@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keboola Design System - Examples</title>
+    
+    <!-- Required Dependencies -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="../dist/design-system.css" rel="stylesheet">
+    
+    <style>
+        /* Override link color for card icons */
+        .card__title--with-icon .icon-container {
+            color: var(--neutral-grey-400);
+        }
+        
+        /* Ensure links don't affect card styling */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body class="bg-grey-50">
+    <div class="container page-container" style="padding: var(--space-16)">
+        <div class="content-wrapper" style="display: flex; flex-direction: column; gap: var(--space-6)">
+            <!-- Header -->
+            <header class="header">
+                <div style="display: flex; align-items: center; gap: var(--space-4);">
+                    <div style="background-color: var(--secondary-blue-500-base); border-radius: var(--radius-small); width: var(--space-10); height: var(--space-10); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-sizing: border-box;">
+                        <svg width="24" height="24" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M130.979 162.525C95.5288 162.525 68.424 118.762 68.424 63.3339C68.424 7.91454 91.0084 0 130.979 0C170.949 0 191.578 7.91454 191.578 63.3339C191.578 118.762 163.213 162.525 130.979 162.525ZM202.062 213.111C204.974 218.015 203.322 224.345 198.385 227.233C196.724 228.201 194.907 228.659 193.117 228.659C189.561 228.659 186.093 226.845 184.154 223.579C180.807 217.962 177.382 213.965 173.523 210.312C169.663 206.676 165.282 203.419 160.266 199.624C157.814 197.784 155.372 196.191 152.938 194.835C153.224 195.363 153.511 195.9 153.807 196.455C160.848 209.872 168.116 228.492 168.15 249.7C168.15 255.387 163.5 260 157.762 260C152.016 260 147.365 255.387 147.365 249.7C147.4 233.571 141.697 218.059 135.682 206.561C133.735 202.811 131.77 199.501 129.997 196.737C128.319 199.369 126.459 202.494 124.598 206.016C118.487 217.566 112.593 233.325 112.628 249.7C112.628 255.387 107.977 260 102.24 260C96.5024 260 91.8517 255.387 91.8517 249.7C91.8864 228.492 99.1451 209.872 106.195 196.455C106.482 195.9 106.769 195.363 107.064 194.835C104.622 196.191 102.188 197.784 99.7362 199.624C94.7117 203.419 90.3304 206.676 86.4794 210.312C82.6197 213.965 79.1859 217.962 75.8391 223.588C72.927 228.492 66.555 230.12 61.6173 227.233C56.671 224.345 55.028 218.015 57.9402 213.111C62.2867 205.778 67.1722 200.056 72.1793 195.354C77.1952 190.644 82.2459 186.929 87.1487 183.214C89.4698 181.453 91.8517 179.833 94.2857 178.363C91.8517 176.893 89.4698 175.264 87.1487 173.504C75.9347 165.026 66.1899 153.59 57.9402 139.706C55.028 134.794 56.671 128.473 61.6173 125.585C66.555 122.697 72.927 124.326 75.8391 129.23C82.9848 141.264 91.0954 150.579 99.7275 157.093C108.986 164.04 118.078 167.482 127.432 168.028C128.284 168.001 129.145 167.975 129.997 167.975C130.857 167.975 131.709 168.001 132.561 168.028C141.915 167.482 151.016 164.04 160.266 157.093C168.898 150.579 177.017 141.264 184.154 129.23C187.075 124.326 193.438 122.697 198.385 125.585C203.322 128.473 204.974 134.794 202.062 139.697C193.812 153.59 184.059 165.026 172.845 173.504C170.523 175.264 168.142 176.893 165.716 178.363C168.142 179.833 170.523 181.453 172.845 183.214C177.756 186.929 182.798 190.644 187.823 195.354C192.83 200.056 197.707 205.778 202.062 213.111ZM116.331 126.58C110.594 126.58 105.943 131.202 105.943 136.889C105.943 142.594 110.594 147.207 116.331 147.207C122.069 147.207 126.719 142.594 126.719 136.889C126.719 131.202 122.069 126.58 116.331 126.58ZM143.662 126.58C137.925 126.58 133.274 131.202 133.274 136.889C133.274 142.594 137.925 147.207 143.662 147.207C149.399 147.207 154.05 142.594 154.05 136.889C154.05 131.202 149.399 126.58 143.662 126.58Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <h1 class="header__title heading-1">Keboola Design System Examples</h1>
+                </div>
+            </header>
+
+            <!-- Examples List -->
+            <section class="section">
+                <div style="display: flex; flex-direction: column; gap: var(--space-4)">
+                    <!-- Transportation Dashboard -->
+                    <a href="transportation-dashboard.html" target="_blank">
+                        <div class="card card--with-description">
+                            <div class="card__title--with-icon">
+                                <div class="icon-container icon-small">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <span class="card__title-text">Transportation Dashboard</span>
+                            </div>
+                            <div class="card__content">
+                                <p class="body-text">Data visualization dashboard with metrics, tables, and charts for transportation management.</p>
+                            </div>
+                            <div class="card__footer">
+                                <button class="btn btn-primary btn-small">
+                                    <span class="btn-text">Open Example</span>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- People Management -->
+                    <a href="people-management.html" target="_blank">
+                        <div class="card card--with-description">
+                            <div class="card__title--with-icon">
+                                <div class="icon-container icon-small">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <span class="card__title-text">People Management</span>
+                            </div>
+                            <div class="card__content">
+                                <p class="body-text">User management interface with filtering, sorting, and user details.</p>
+                            </div>
+                            <div class="card__footer">
+                                <button class="btn btn-primary btn-small">
+                                    <span class="btn-text">Open Example</span>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Car Dashboard -->
+                    <a href="car-dashboard.html" target="_blank">
+                        <div class="card card--with-description">
+                            <div class="card__title--with-icon">
+                                <div class="icon-container icon-small">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <span class="card__title-text">Car Dashboard</span>
+                            </div>
+                            <div class="card__content">
+                                <p class="body-text">Vehicle fleet management dashboard with performance metrics and maintenance tracking.</p>
+                            </div>
+                            <div class="card__footer">
+                                <button class="btn btn-primary btn-small">
+                                    <span class="btn-text">Open Example</span>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Overview Cards -->
+                    <a href="overview-card-demo.html" target="_blank">
+                        <div class="card card--with-description">
+                            <div class="card__title--with-icon">
+                                <div class="icon-container icon-small">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <span class="card__title-text">Overview Cards</span>
+                            </div>
+                            <div class="card__content">
+                                <p class="body-text">Various overview card components for displaying metrics and KPIs.</p>
+                            </div>
+                            <div class="card__footer">
+                                <button class="btn btn-primary btn-small">
+                                    <span class="btn-text">Open Example</span>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- About Page -->
+                    <a href="about.html" target="_blank">
+                        <div class="card card--with-description">
+                            <div class="card__title--with-icon">
+                                <div class="icon-container icon-small">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <span class="card__title-text">About Page</span>
+                            </div>
+                            <div class="card__content">
+                                <p class="body-text">Information page about the design system with typography and component examples.</p>
+                            </div>
+                            <div class="card__footer">
+                                <button class="btn btn-primary btn-small">
+                                    <span class="btn-text">Open Example</span>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,123 @@
+/**
+ * Keboola Design System - Card Component
+ */
+
+.card {
+    background: var(--neutral-white);
+    box-shadow: var(--card-shadow);
+    border-radius: var(--radius-medium);
+    padding: var(--space-3) var(--space-6) var(--space-6) var(--space-6);
+    /* Removed margin-top in favor of gap-based spacing in parent container */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card Title */
+.card__title {
+    font-family: var(--headings-h3-family);
+    color: var(--neutral-grey-900);
+    margin: 0 0 var(--space-3) 0;
+    font-size: var(--body-body-size);
+    line-height: var(--space-10);
+    font-weight: var(--headings-h1-weight);
+}
+
+/* Card Title with Icon */
+.card__title--with-icon {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0 0 var(--space-3) 0;
+}
+
+.card__title--with-icon .icon-container {
+    flex-shrink: 0;
+}
+
+.card__title--with-icon .icon-container i {
+    color: var(--neutral-grey-400);
+}
+
+.card__title--with-icon .card__title-text {
+    font-family: var(--headings-h3-family);
+    color: var(--neutral-grey-900);
+    margin: 0;
+    font-size: var(--body-body-size);
+    line-height: var(--space-10);
+    font-weight: var(--headings-h1-weight);
+}
+
+/* Card Content */
+.card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4); /* Consistent 16px spacing for all card content */
+    flex: 1; /* Make content area take up available space */
+}
+
+/* Card Footer */
+.card__footer {
+    display: flex;
+    gap: var(--space-4); /* Updated to consistent 16px spacing */
+    margin-top: var(--space-4); /* Updated to consistent 16px spacing */
+}
+
+/* Card Variants */
+.card--no-padding {
+    padding: 0;
+}
+
+.card--compact {
+    padding: var(--space-4); /* Consistent 16px padding */
+}
+
+.card--bordered {
+    border: 1px solid var(--neutral-grey-200);
+    box-shadow: none;
+}
+
+/* Card with Description Variant */
+.card--with-description {
+    padding: var(--space-3) var(--space-6) var(--space-6) var(--space-6);
+    cursor: pointer;
+    transition: box-shadow 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    position: relative;
+}
+
+.card--with-description:hover {
+    box-shadow: var(--dialog-shadow);
+    opacity: 0.9;
+}
+
+.card--with-description .card__title {
+    margin-bottom: var(--space-2);
+}
+
+.card--with-description .card__content {
+    gap: var(--space-2);
+}
+
+.card--with-description .card__content p {
+    margin: 0;
+    color: var(--neutral-grey-400);
+}
+
+/* Helper class for equal height cards in a row */
+.equal-height-cards .card {
+    height: 100%;
+}
+
+/* Helper class for cards with aligned footers */
+.aligned-footers .card {
+    display: flex;
+    flex-direction: column;
+}
+
+.aligned-footers .card__content {
+    flex: 1;
+}
+
+.aligned-footers .card__footer {
+    margin-top: auto;
+    padding-top: var(--space-6);
+} 

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transportation Data Analysis Dashboard</title>
+    
+    <!-- Required dependencies -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Design System CSS -->
+    <link href="../dist/design-system.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-body-family);
+            background-color: var(--neutral-grey-50);
+            color: var(--neutral-grey-800);
+            line-height: var(--body-body-line-height);
+        }
+    </style>
+</head>
+<body class="bg-grey-50">
+    <div class="container page-container" style="padding: var(--space-16)">
+        <div class="content-wrapper" style="display: flex; flex-direction: column; gap: var(--space-6)">
+            <header class="header">
+                <h1 class="header__title heading-1">Transportation Analytics Dashboard</h1>
+                <div class="header__actions">
+                    <button class="btn btn-secondary btn-medium">
+                        <div class="btn-icon">
+                            <i class="fas fa-download icon-muted"></i>
+                        </div>
+                        <span class="btn-text">EXPORT DATA</span>
+                    </button>
+                    <button class="btn btn-primary btn-medium">
+                        <div class="btn-icon">
+                            <i class="fas fa-plus text-white"></i>
+                        </div>
+                        <span class="btn-text">NEW ANALYSIS</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="tabs tabs-large">
+                <div class="tab-item active">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="tab-text">Overview</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="tab-text">Shipments</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div class="tab-text">Routes</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="tab-text">Delivery Times</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+            </div>
+
+            <!-- Key Performance Indicators -->
+            <section class="section">
+                <div class="grid grid-cols-4" style="gap: var(--space-4);">
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Active Shipments</span>
+                            <div class="badge badge-success">
+                                <span class="badge-text">+8.2%</span>
+                            </div>
+                        </div>
+                        <div class="overview-card__value">1,248</div>
+                        <div class="overview-card__subtitle">+103 this week</div>
+                    </div>
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">On-Time Delivery</span>
+                            <div class="badge badge-success">
+                                <span class="badge-text">+2.1%</span>
+                            </div>
+                        </div>
+                        <div class="overview-card__value">94.7%</div>
+                        <div class="overview-card__subtitle">+2.1% from last month</div>
+                    </div>
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Avg. Transit Time</span>
+                            <div class="badge badge-danger">
+                                <span class="badge-text">+0.5d</span>
+                            </div>
+                        </div>
+                        <div class="overview-card__value">3.2 days</div>
+                        <div class="overview-card__subtitle">Increased by 0.5 days</div>
+                    </div>
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Fuel Efficiency</span>
+                            <div class="badge badge-danger">
+                                <span class="badge-text">-2.9%</span>
+                            </div>
+                        </div>
+                        <div class="overview-card__value">6.8 mpg</div>
+                        <div class="overview-card__subtitle">Down from 7.0 mpg</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shipment Volume Trends -->
+            <section class="section">
+                <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                    <div class="card bg-white">
+                        <h2 class="card__title">Shipment Volume by Region</h2>
+                        <div class="card__content">
+                            <!-- Chart placeholder - in a real implementation, this would be a chart -->
+                            <div style="height: 250px; background-color: var(--neutral-grey-100); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-large">
+                                        <i class="fas fa-chart-pie icon-muted"></i>
+                                    </div>
+                                    <span class="body-text-medium">Regional Distribution Chart</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-white">
+                        <h2 class="card__title">Monthly Shipment Trends</h2>
+                        <div class="card__content">
+                            <!-- Chart placeholder - in a real implementation, this would be a chart -->
+                            <div style="height: 250px; background-color: var(--neutral-grey-100); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-large">
+                                        <i class="fas fa-chart-line icon-muted"></i>
+                                    </div>
+                                    <span class="body-text-medium">Trend Line Chart</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Shipments and Alerts -->
+            <section class="section">
+                <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                    <!-- Recent Shipments -->
+                    <div class="card bg-white">
+                        <h2 class="card__title">Recent Shipments</h2>
+                        <div class="card__content">
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-truck icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Shipment #45892 - Los Angeles to Seattle</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-success">
+                                        <span class="badge-text">On Time</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-truck icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Shipment #45891 - Chicago to New York</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-warning">
+                                        <span class="badge-text">Delayed</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-truck icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Shipment #45890 - Miami to Atlanta</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-success">
+                                        <span class="badge-text">On Time</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-truck icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Shipment #45889 - Dallas to Houston</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-success">
+                                        <span class="badge-text">On Time</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn-secondary btn-medium">
+                                <span class="btn-text">VIEW ALL SHIPMENTS</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Alerts and Issues -->
+                    <div class="card bg-white">
+                        <h2 class="card__title">Alerts & Issues</h2>
+                        <div class="card__content">
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-exclamation-triangle icon-error"></i>
+                                    </div>
+                                    <span class="activity-row__text">Weather delay affecting Northeast routes</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-exclamation-circle icon-warning"></i>
+                                    </div>
+                                    <span class="activity-row__text">Fuel price increase affecting cost metrics</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>5 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-exclamation-triangle icon-error"></i>
+                                    </div>
+                                    <span class="activity-row__text">Driver shortage in Western region</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>1 day ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-info-circle icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">New route optimization algorithm deployed</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>2 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn-secondary btn-medium">
+                                <span class="btn-text">VIEW ALL ALERTS</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Route Analysis -->
+            <section class="section">
+                <div class="card bg-white">
+                    <h2 class="card__title">Route Performance Analysis</h2>
+                    <div class="card__content">
+                        <div style="height: 300px; background-color: var(--neutral-grey-100); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
+                            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                <div class="icon-container icon-large">
+                                    <i class="fas fa-map-marked-alt icon-muted"></i>
+                                </div>
+                                <span class="body-text-medium">Route Map Visualization</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-3" style="gap: var(--space-4)">
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Most Efficient Route</span>
+                                </div>
+                                <div class="overview-card__value">LA → Phoenix</div>
+                                <div class="overview-card__subtitle">98.2% on-time rate</div>
+                            </div>
+                            
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Most Delayed Route</span>
+                                </div>
+                                <div class="overview-card__value">Chicago → NYC</div>
+                                <div class="overview-card__subtitle">76.5% on-time rate</div>
+                            </div>
+                            
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Highest Volume Route</span>
+                                </div>
+                                <div class="overview-card__value">Dallas → Houston</div>
+                                <div class="overview-card__subtitle">245 shipments/week</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__footer">
+                        <button class="btn btn-primary btn-medium">
+                            <span class="btn-text">ANALYZE ROUTES</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Analysis Tools -->
+            <section class="section">
+                <div class="card bg-white">
+                    <h2 class="card__title">Create Custom Analysis</h2>
+                    <div class="card__content" style="display: flex; flex-direction: column; gap: var(--space-4)">
+                        <div class="form-group">
+                            <div class="text-input">
+                                <div class="label">
+                                    <label class="label-text" for="analysis-name">Analysis Name</label>
+                                </div>
+                                <div class="content">
+                                    <input type="text" id="analysis-name" placeholder="Enter analysis name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="select">
+                                <div class="label">
+                                    <label class="label-text" for="data-source">Data Source</label>
+                                </div>
+                                <button type="button" class="select-trigger" id="data-source">
+                                    <span>Select data source</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="select">
+                                <div class="label">
+                                    <label class="label-text" for="analysis-type">Analysis Type</label>
+                                </div>
+                                <button type="button" class="select-trigger" id="analysis-type">
+                                    <span>Select analysis type</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-input">
+                                <div class="label">
+                                    <label class="label-text" for="analysis-description">Description</label>
+                                </div>
+                                <div class="content">
+                                    <textarea id="analysis-description" rows="3" placeholder="Enter analysis description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__footer">
+                        <button class="btn btn-primary btn-medium">
+                            <span class="btn-text">CREATE ANALYSIS</span>
+                        </button>
+                        <button class="btn btn-secondary btn-medium">
+                            <span class="btn-text">CANCEL</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html> 

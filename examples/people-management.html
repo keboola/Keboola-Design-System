@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Management CMS</title>
+    
+    <!-- Required dependencies -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Design System CSS -->
+    <link href="../dist/design-system.css" rel="stylesheet">
+    
+    <!-- REQUIRED: Base font styles -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-body-family);
+            background-color: var(--neutral-grey-50);
+            color: var(--neutral-grey-800);
+            line-height: var(--body-body-line-height);
+        }
+    </style>
+</head>
+<body class="bg-grey-50">
+    <div class="container page-container" style="padding: var(--space-16)">
+        <div class="content-wrapper" style="display: flex; flex-direction: column; gap: var(--space-6)">
+            <!-- Header Section -->
+            <header class="header">
+                <h1 class="header__title heading-1">People Management</h1>
+                <div class="header__actions">
+                    <button class="btn btn-secondary btn-medium" id="import-btn">
+                        <div class="btn-icon">
+                            <i class="fas fa-file-import icon-muted"></i>
+                        </div>
+                        <span class="btn-text">IMPORT</span>
+                    </button>
+                    <button class="btn btn-primary btn-medium" id="add-person-btn">
+                        <div class="btn-icon">
+                            <i class="fas fa-plus text-white"></i>
+                        </div>
+                        <span class="btn-text">ADD PERSON</span>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Tabs Section -->
+            <div class="tabs tabs-large">
+                <div class="tab-item active">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="tab-text">All People</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="tab-text">Employees</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="tab-text">Contractors</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="tab-text">Settings</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+            </div>
+            
+            <!-- Overview Cards Section -->
+            <section class="section">
+                <div class="grid grid-cols-4" style="gap: var(--space-4)">
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Total People</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">+5.2%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">124</div>
+                        <div class="overview-card__subtitle">+6 this month</div>
+                    </div>
+                    
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Employees</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">+3.8%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">98</div>
+                        <div class="overview-card__subtitle">+3 this month</div>
+                    </div>
+                    
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Contractors</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">+10.7%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">26</div>
+                        <div class="overview-card__subtitle">+3 this month</div>
+                    </div>
+                    
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Departments</span>
+                        </div>
+                        <div class="overview-card__value">8</div>
+                        <div class="overview-card__subtitle">Engineering, Marketing, Sales...</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Search & Filter Section -->
+            <section class="section">
+                <div class="card bg-white">
+                    <h2 class="card__title">Search & Filter</h2>
+                    <div class="card__content" style="display: flex; flex-direction: column; gap: var(--space-4)">
+                        <div class="grid grid-cols-3" style="gap: var(--space-4)">
+                            <div class="form-group">
+                                <div class="text-input">
+                                    <div class="label">
+                                        <label class="label-text" for="search-input">Search</label>
+                                    </div>
+                                    <div class="content">
+                                        <input type="text" id="search-input" placeholder="Search by name, email, or ID">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="select">
+                                    <div class="label">
+                                        <label class="label-text" for="department-filter">Department</label>
+                                    </div>
+                                    <button type="button" class="select-trigger" id="department-filter">
+                                        <span>All Departments</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="select">
+                                    <div class="label">
+                                        <label class="label-text" for="status-filter">Status</label>
+                                    </div>
+                                    <button type="button" class="select-trigger" id="status-filter">
+                                        <span>All Statuses</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- People List Section -->
+            <section class="section">
+                <div class="card bg-white">
+                    <h2 class="card__title">People List</h2>
+                    <div class="card__content" style="display: flex; flex-direction: column; gap: var(--space-4)">
+                        <!-- Person Row 1 -->
+                        <div class="activity-row">
+                            <div class="activity-row__content">
+                                <div class="icon-container icon-small">
+                                    <i class="fas fa-user-circle icon-muted"></i>
+                                </div>
+                                <span class="activity-row__text">John Smith</span>
+                                <span class="badge badge-success" style="margin-left: var(--space-2)">
+                                    <span class="badge-text">Active</span>
+                                </span>
+                            </div>
+                            <div class="activity-row__meta">
+                                <span>Engineering • Senior Developer</span>
+                                <button class="btn btn-secondary btn-medium" style="margin-left: var(--space-4)">
+                                    <div class="btn-icon">
+                                        <i class="fas fa-edit icon-muted"></i>
+                                    </div>
+                                    <span class="btn-text">EDIT</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Person Row 2 -->
+                        <div class="activity-row">
+                            <div class="activity-row__content">
+                                <div class="icon-container icon-small">
+                                    <i class="fas fa-user-circle icon-muted"></i>
+                                </div>
+                                <span class="activity-row__text">Sarah Johnson</span>
+                                <span class="badge badge-success" style="margin-left: var(--space-2)">
+                                    <span class="badge-text">Active</span>
+                                </span>
+                            </div>
+                            <div class="activity-row__meta">
+                                <span>Marketing • Director</span>
+                                <button class="btn btn-secondary btn-medium" style="margin-left: var(--space-4)">
+                                    <div class="btn-icon">
+                                        <i class="fas fa-edit icon-muted"></i>
+                                    </div>
+                                    <span class="btn-text">EDIT</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Person Row 3 -->
+                        <div class="activity-row">
+                            <div class="activity-row__content">
+                                <div class="icon-container icon-small">
+                                    <i class="fas fa-user-circle icon-muted"></i>
+                                </div>
+                                <span class="activity-row__text">Michael Brown</span>
+                                <span class="badge badge-warning" style="margin-left: var(--space-2)">
+                                    <span class="badge-text">On Leave</span>
+                                </span>
+                            </div>
+                            <div class="activity-row__meta">
+                                <span>Sales • Account Manager</span>
+                                <button class="btn btn-secondary btn-medium" style="margin-left: var(--space-4)">
+                                    <div class="btn-icon">
+                                        <i class="fas fa-edit icon-muted"></i>
+                                    </div>
+                                    <span class="btn-text">EDIT</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Person Row 4 -->
+                        <div class="activity-row">
+                            <div class="activity-row__content">
+                                <div class="icon-container icon-small">
+                                    <i class="fas fa-user-circle icon-muted"></i>
+                                </div>
+                                <span class="activity-row__text">Emily Davis</span>
+                                <span class="badge badge-error" style="margin-left: var(--space-2)">
+                                    <span class="badge-text">Inactive</span>
+                                </span>
+                            </div>
+                            <div class="activity-row__meta">
+                                <span>HR • Specialist</span>
+                                <button class="btn btn-secondary btn-medium" style="margin-left: var(--space-4)">
+                                    <div class="btn-icon">
+                                        <i class="fas fa-edit icon-muted"></i>
+                                    </div>
+                                    <span class="btn-text">EDIT</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Person Row 5 -->
+                        <div class="activity-row">
+                            <div class="activity-row__content">
+                                <div class="icon-container icon-small">
+                                    <i class="fas fa-user-circle icon-muted"></i>
+                                </div>
+                                <span class="activity-row__text">David Wilson</span>
+                                <span class="badge badge-success" style="margin-left: var(--space-2)">
+                                    <span class="badge-text">Active</span>
+                                </span>
+                            </div>
+                            <div class="activity-row__meta">
+                                <span>Engineering • QA Engineer</span>
+                                <button class="btn btn-secondary btn-medium" style="margin-left: var(--space-4)">
+                                    <div class="btn-icon">
+                                        <i class="fas fa-edit icon-muted"></i>
+                                    </div>
+                                    <span class="btn-text">EDIT</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__footer" style="margin-top: var(--space-6)">
+                        <button class="btn btn-secondary btn-medium">
+                            <span class="btn-text">LOAD MORE</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Add Person Form (Hidden by default) -->
+            <section class="section" id="add-person-form" style="display: none;">
+                <div class="card bg-white">
+                    <h2 class="card__title">Add New Person</h2>
+                    <div class="card__content" style="display: flex; flex-direction: column; gap: var(--space-4)">
+                        <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                            <div class="form-group">
+                                <div class="text-input">
+                                    <div class="label">
+                                        <label class="label-text" for="first-name">First Name</label>
+                                    </div>
+                                    <div class="content">
+                                        <input type="text" id="first-name" placeholder="Enter first name">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="text-input">
+                                    <div class="label">
+                                        <label class="label-text" for="last-name">Last Name</label>
+                                    </div>
+                                    <div class="content">
+                                        <input type="text" id="last-name" placeholder="Enter last name">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                            <div class="form-group">
+                                <div class="text-input">
+                                    <div class="label">
+                                        <label class="label-text" for="email">Email</label>
+                                    </div>
+                                    <div class="content">
+                                        <input type="email" id="email" placeholder="Enter email address">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="text-input">
+                                    <div class="label">
+                                        <label class="label-text" for="phone">Phone</label>
+                                    </div>
+                                    <div class="content">
+                                        <input type="tel" id="phone" placeholder="Enter phone number">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                            <div class="form-group">
+                                <div class="select">
+                                    <div class="label">
+                                        <label class="label-text" for="department">Department</label>
+                                    </div>
+                                    <button type="button" class="select-trigger" id="department">
+                                        <span>Select department</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="text-input">
+                                    <div class="label">
+                                        <label class="label-text" for="job-title">Job Title</label>
+                                    </div>
+                                    <div class="content">
+                                        <input type="text" id="job-title" placeholder="Enter job title">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                            <div class="form-group">
+                                <div class="select">
+                                    <div class="label">
+                                        <label class="label-text" for="type">Type</label>
+                                    </div>
+                                    <button type="button" class="select-trigger" id="type">
+                                        <span>Select type</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="select">
+                                    <div class="label">
+                                        <label class="label-text" for="status">Status</label>
+                                    </div>
+                                    <button type="button" class="select-trigger" id="status">
+                                        <span>Select status</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="text-input">
+                                <div class="label">
+                                    <label class="label-text" for="notes">Notes</label>
+                                </div>
+                                <div class="content">
+                                    <textarea id="notes" rows="3" placeholder="Enter additional notes"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__footer" style="margin-top: var(--space-6)">
+                        <button class="btn btn-primary btn-medium" id="save-person-btn">
+                            <span class="btn-text">SAVE</span>
+                        </button>
+                        <button class="btn btn-secondary btn-medium" id="cancel-add-btn">
+                            <span class="btn-text">CANCEL</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- Simple JavaScript to toggle the add person form -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addPersonBtn = document.getElementById('add-person-btn');
+            const cancelAddBtn = document.getElementById('cancel-add-btn');
+            const addPersonForm = document.getElementById('add-person-form');
+            
+            addPersonBtn.addEventListener('click', function() {
+                addPersonForm.style.display = 'block';
+                // Scroll to the form
+                addPersonForm.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            cancelAddBtn.addEventListener('click', function() {
+                addPersonForm.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,162 @@
+/**
+ * Keboola Design System - Button Components
+ */
+
+/* Base Button */
+.btn {
+  padding: 0 var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: var(--space-1);
+  outline: none;
+  gap: var(--space-2);
+}
+
+/* Button sizes */
+.btn-medium {
+  height: var(--space-10);
+  min-width: var(--space-10);
+}
+
+.btn-small {
+  height: var(--space-8);
+  min-width: var(--space-8);
+  padding: 0 var(--space-3);
+}
+
+/* Button text */
+.btn-text {
+  text-align: center;
+  font-family: var(--additional-button-family);
+  font-size: var(--additional-button-size);
+  line-height: var(--additional-button-line-height);
+  letter-spacing: var(--additional-button-letter-spacing);
+  font-weight: var(--additional-button-weight);
+  text-transform: uppercase;
+}
+
+/* Button Icon Container */
+.btn-icon {
+  width: var(--space-5);
+  height: var(--space-5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  line-height: 0;
+}
+
+/* Button Icon Sizing */
+.btn-icon i,
+.btn-icon svg {
+  width: var(--space-4);
+  height: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--space-4);
+  line-height: 1;
+}
+
+/* Icon Only Button */
+.btn-icon-only {
+  width: var(--space-10);
+  height: var(--space-10);
+  padding: 0;
+}
+
+.btn-icon-only.btn-small {
+  width: var(--space-8);
+  height: var(--space-8);
+}
+
+.btn-icon-only .btn-icon {
+  margin: auto;
+}
+
+/* Primary Button - Green */
+.btn-primary {
+  background: var(--success-green-500-base);
+  border: none;
+}
+
+/* Button text and icon color */
+.btn-primary .btn-text,
+.btn-primary .btn-icon {
+  color: var(--neutral-white);
+}
+
+/* Button states */
+.btn-primary:hover {
+  background: var(--success-green-600);
+}
+
+.btn-primary:active {
+  background: var(--success-green-700);
+}
+
+.btn-primary:disabled {
+  background: var(--success-green-200);
+  cursor: not-allowed;
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--neutral-white);
+  color: var(--neutral-grey-800);
+  border: var(--border-width-1) solid var(--neutral-grey-200);
+}
+
+.btn-secondary .btn-icon {
+  color: var(--neutral-grey-400);
+}
+
+.btn-secondary:hover {
+  background: var(--neutral-grey-50);
+}
+
+.btn-secondary:active {
+  background: var(--neutral-grey-100);
+}
+
+.btn-secondary:disabled {
+  background: var(--neutral-white);
+  border-color: var(--neutral-grey-100);
+  color: var(--neutral-grey-400);
+  cursor: not-allowed;
+}
+
+/* Focus states */
+.btn:focus {
+  outline: none;
+}
+
+.btn:focus-visible {
+  box-shadow: var(--active-element);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
+  border: none;
+  border-radius: var(--space-1);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: var(--active-element);
+} 

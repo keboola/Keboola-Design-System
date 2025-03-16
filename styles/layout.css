@@ -1,0 +1,154 @@
+/**
+ * Keboola Design System - Layout Components
+ */
+
+/* Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--neutral-grey-800);
+}
+
+/* Container */
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    padding: 0 var(--space-4);
+    box-sizing: border-box;
+}
+
+.page-container {
+    padding: var(--space-16);
+    margin-bottom: var(--space-16);
+}
+
+/* Grid Container */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: var(--radius-medium);
+}
+
+/* Grid System */
+.grid {
+    display: grid;
+    gap: var(--space-4);
+}
+
+/* Grid Column Variants */
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    gap: var(--space-4);
+}
+
+/* Auto-fit Grid Variants */
+.grid-cols-cards { 
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+}
+
+.grid-cols-data-sources { 
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-4);
+}
+
+/* Application Tile */
+.application-tile {
+    min-height: calc(var(--space-12) * 4.5);
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--space-2);
+    background: var(--neutral-white);
+    box-shadow: var(--card-shadow);
+}
+
+.tile-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-4);
+}
+
+/* Section - No specific styling needed with gap-based approach
+   Sections are spaced using the parent container's gap property instead of margins */
+
+/* Content Wrapper */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+/* Section Row Spacing Helper */
+.section-row + .section-row {
+    margin-top: var(--space-6);
+}
+
+/* Flex Utilities */
+.d-flex, .flex { display: flex; }
+.flex-column, .flex-col { flex-direction: column; }
+.align-center, .items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+
+/* Gap Utilities */
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+/* Background Colors */
+.bg-white { background-color: var(--neutral-white); }
+.bg-grey-50 { background-color: var(--neutral-grey-50); }
+.bg-error-50 { background-color: var(--error-50); }
+
+/* Border Radius */
+.rounded-1 { border-radius: var(--radius-small); }
+.rounded-2 { border-radius: var(--radius-medium); }
+
+/* Border */
+.border { border: 1px solid var(--neutral-grey-200); }
+
+/* Activity Item */
+.activity-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3) 0;
+}
+
+.activity-item--error {
+    background: var(--error-50);
+    border-radius: var(--space-1);
+    padding: var(--space-3);
+}
+
+.activity-item__content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.activity-item__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.icon-container {
+    border-radius: var(--radius-small);
+}

@@ -1,0 +1,175 @@
+/* ==========================================================================
+   Colors - Keboola Design System
+   ========================================================================== */
+
+:root {
+    /* Neutral Colors */
+    --neutral-white: #ffffff;
+    --neutral-grey-50: #f2f4f7;
+    --neutral-grey-100: #edf0f5;
+    --neutral-grey-150: #d9dde5;
+    --neutral-grey-200: #c5cbd6;
+    --neutral-grey-300: #a2aab8;
+    --neutral-grey-400: #7c8594;
+    --neutral-grey-500-base: #565c66;
+    --neutral-grey-600: #454952;
+    --neutral-grey-800: #222529;
+    --neutral-grey-900: #101114;
+
+    /* Secondary Colors - Blue */
+    --secondary-blue-800: #064a8f;
+    --secondary-blue-700: #075fb8;
+    --secondary-blue-600: #0975e0;
+    --secondary-blue-500-base: #1f8fff;
+    --secondary-blue-450: #3e9eff;
+    --secondary-blue-200: #c2e0ff;
+    --secondary-blue-100: #e0f0ff;
+
+    /* Success Colors - Green */
+    --success-green-800: #158b15;
+    --success-green-700: #189f18;
+    --success-green-600: #1bb31b;
+    --success-green-500-base: #1ec71e;
+    --success-green-200: #baf5ba;
+    --success-green-100: #e0ffe0;
+
+    /* Warning Colors - Orange */
+    --warning-orange-600: #d17d00;
+    --warning-orange-550: #e38800;
+    --warning-orange-500-base: #f59300;
+    --warning-orange-300: #ffd699;
+    --warning-orange-200: #ffe7c2;
+    --warning-orange-100: #fff3e0;
+
+    /* Error Colors - Red */
+    --error-red-700: #a3001b;
+    --error-red-600: #b8001f;
+    --error-red-550: #c40021;
+    --error-red-500-base: #e00025;
+    --error-red-200: #ffc2cc;
+    --error-red-100: #ffe0e6;
+
+    /* Accent Colors */
+    --accent-purple-600: #6f36e0;
+    --accent-purple-500-base: #925cff;
+    --accent-purple-200: #d6c2ff;
+    --accent-purple-100: #ebe0ff;
+    --accent-cyan-600: #00a0b2;
+    --accent-cyan-500-base: #00bbd1;
+    --accent-cyan-200: #bef3ff;
+    --accent-cyan-100: #e0f9ff;
+    --accent-teal-600: #00a673;
+    --accent-teal-500-base: #00c287;
+    --accent-teal-200: #96ffce;
+    --accent-teal-100: #cfffe6;
+}
+
+/* Color Application Classes */
+.bg-white {
+    background-color: var(--neutral-white);
+}
+
+.bg-grey-50 {
+    background-color: var(--neutral-grey-50);
+}
+
+.text-grey-900 {
+    color: var(--neutral-grey-900);
+}
+
+.text-grey-800 {
+    color: var(--neutral-grey-800);
+}
+
+.text-grey-600 {
+    color: var(--neutral-grey-600);
+}
+
+.text-grey-500 {
+    color: var(--neutral-grey-500-base);
+}
+
+.text-grey-400 {
+    color: var(--neutral-grey-400);
+}
+
+/* Border Colors */
+.border-grey-100 {
+    border-color: var(--neutral-grey-100);
+}
+
+.border-grey-200 {
+    border-color: var(--neutral-grey-200);
+}
+
+/* State Colors */
+.success {
+    color: var(--success-green-500-base);
+}
+
+.warning {
+    color: var(--warning-orange-500-base);
+}
+
+.error {
+    color: var(--error-red-500-base);
+}
+
+/* Background Colors */
+.bg-success-100 {
+    background-color: var(--success-green-100);
+}
+
+.bg-warning-100 {
+    background-color: var(--warning-orange-100);
+}
+
+.bg-error-100 {
+    background-color: var(--error-red-100);
+}
+
+.bg-info-100 {
+    background-color: var(--secondary-blue-100);
+}
+
+/* Button Colors */
+.btn-primary {
+    background-color: var(--success-green-500-base);
+    color: var(--neutral-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--success-green-600);
+}
+
+.btn-primary:active {
+    background-color: var(--success-green-700);
+}
+
+.btn-primary:disabled {
+    background-color: var(--success-green-200);
+}
+
+.btn-secondary {
+    background-color: var(--neutral-white);
+    color: var(--neutral-grey-800);
+    border: var(--border-width-1) solid var(--neutral-grey-200);
+}
+
+.btn-secondary:hover {
+    background-color: var(--neutral-grey-50);
+    border-color: var(--neutral-grey-300);
+}
+
+.btn-secondary:active {
+    background-color: var(--neutral-grey-100);
+    border-color: var(--neutral-grey-400);
+}
+
+.btn-secondary:disabled {
+    border: var(--border-width-1) solid var(--neutral-grey-100);
+    color: var(--neutral-grey-400);
+    background-color: var(--neutral-white);
+}
+
+/* Icons */ 

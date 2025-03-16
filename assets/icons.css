@@ -1,0 +1,69 @@
+/**
+ * Keboola Design System - Icon Components
+ */
+
+/* Icon Container Base */
+.icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+/* Icon Sizes */
+.icon-small {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-large {
+  width: 32px;
+  height: 32px;
+}
+
+/* Icon Safe Area */
+.icon-small i,
+.icon-small svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.icon-large i,
+.icon-large svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* Icon Colors */
+.icon-default {
+  color: var(--neutral-grey-800);
+}
+
+.icon-muted {
+  color: var(--neutral-grey-400);
+}
+
+.icon-white {
+  color: var(--neutral-white);
+}
+
+.icon-success {
+  color: var(--success-green-500-base);
+}
+
+.icon-warning {
+  color: var(--warning-orange-500-base);
+}
+
+.icon-error {
+  color: var(--error-red-500-base);
+} 

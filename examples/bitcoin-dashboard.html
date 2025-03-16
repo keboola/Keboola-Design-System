@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Analytics Dashboard</title>
+    
+    <!-- Required dependencies -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Design System CSS -->
+    <link href="../dist/design-system.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-body-family);
+            background-color: var(--neutral-grey-50);
+            color: var(--neutral-grey-800);
+            line-height: var(--body-body-line-height);
+        }
+    </style>
+</head>
+<body class="bg-grey-50">
+    <div class="container page-container" style="padding: var(--space-16)">
+        <div class="content-wrapper" style="display: flex; flex-direction: column; gap: var(--space-6)">
+            <header class="header">
+                <h1 class="header__title heading-1">Bitcoin Analytics Dashboard</h1>
+                <div class="header__actions">
+                    <button class="btn btn-secondary btn-medium">
+                        <div class="btn-icon">
+                            <i class="fas fa-download icon-muted"></i>
+                        </div>
+                        <span class="btn-text">EXPORT DATA</span>
+                    </button>
+                    <button class="btn btn-primary btn-medium">
+                        <div class="btn-icon">
+                            <i class="fas fa-sync-alt text-white"></i>
+                        </div>
+                        <span class="btn-text">REFRESH DATA</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="tabs tabs-large">
+                <div class="tab-item active">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="tab-text">Overview</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="tab-text">Transactions</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <div class="tab-text">Blockchain</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="tab-text">Network</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+            </div>
+
+            <!-- Key Performance Indicators -->
+            <section class="section">
+                <div class="grid grid-cols-4" style="gap: var(--space-4)">
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Current Price</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">+2.4%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">$61,248</div>
+                        <div class="overview-card__subtitle">+$1,432 in 24h</div>
+                    </div>
+
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Market Cap</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">+1.8%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">$1.2T</div>
+                        <div class="overview-card__subtitle">+$21.5B in 24h</div>
+                    </div>
+
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">24h Volume</span>
+                            <span class="badge badge-warning">
+                                <span class="badge-text">-5.3%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">$42.7B</div>
+                        <div class="overview-card__subtitle">-$2.4B from yesterday</div>
+                    </div>
+
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Hash Rate</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">+3.2%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">412 EH/s</div>
+                        <div class="overview-card__subtitle">All-time high</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Price and Volume Charts -->
+            <section class="section">
+                <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                    <div class="card bg-white">
+                        <h2 class="card__title">Bitcoin Price History</h2>
+                        <div class="card__content">
+                            <!-- Chart placeholder - in a real implementation, this would be a chart -->
+                            <div style="height: 250px; background-color: var(--neutral-grey-100); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-large">
+                                        <i class="fas fa-chart-line icon-muted"></i>
+                                    </div>
+                                    <span class="body-text-medium">Price Chart (30 Days)</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: var(--space-4); display: flex; gap: var(--space-4);">
+                                <div>
+                                    <span class="small-body-text-medium text-grey-600">Open</span>
+                                    <p class="body-text-medium">$59,842</p>
+                                </div>
+                                <div>
+                                    <span class="small-body-text-medium text-grey-600">High</span>
+                                    <p class="body-text-medium">$62,105</p>
+                                </div>
+                                <div>
+                                    <span class="small-body-text-medium text-grey-600">Low</span>
+                                    <p class="body-text-medium">$58,921</p>
+                                </div>
+                                <div>
+                                    <span class="small-body-text-medium text-grey-600">Close</span>
+                                    <p class="body-text-medium">$61,248</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-white">
+                        <h2 class="card__title">Trading Volume</h2>
+                        <div class="card__content">
+                            <!-- Chart placeholder - in a real implementation, this would be a chart -->
+                            <div style="height: 250px; background-color: var(--neutral-grey-100); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-large">
+                                        <i class="fas fa-chart-pie icon-muted"></i>
+                                    </div>
+                                    <span class="body-text-medium">Volume Distribution Chart</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: var(--space-4);">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="small-body-text-medium">Binance</span>
+                                    <span class="small-body-text-medium">42.3%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="small-body-text-medium">Coinbase</span>
+                                    <span class="small-body-text-medium">18.7%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="small-body-text-medium">Kraken</span>
+                                    <span class="small-body-text-medium">9.2%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span class="small-body-text-medium">Others</span>
+                                    <span class="small-body-text-medium">29.8%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Network Stats and Recent Transactions -->
+            <section class="section">
+                <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                    <!-- Network Statistics -->
+                    <div class="card bg-white">
+                        <h2 class="card__title">Network Statistics</h2>
+                        <div class="card__content" style="display: flex; flex-direction: column; gap: var(--space-4);">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-cubes icon-muted"></i>
+                                    </div>
+                                    <span class="body-text">Block Height</span>
+                                </div>
+                                <span class="body-text-medium">832,451</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-bolt icon-muted"></i>
+                                    </div>
+                                    <span class="body-text">Network Difficulty</span>
+                                </div>
+                                <span class="body-text-medium">72.35 T</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-clock icon-muted"></i>
+                                    </div>
+                                    <span class="body-text">Average Block Time</span>
+                                </div>
+                                <span class="body-text-medium">9.8 minutes</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-coins icon-muted"></i>
+                                    </div>
+                                    <span class="body-text">Circulating Supply</span>
+                                </div>
+                                <span class="body-text-medium">19.48M BTC</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-wallet icon-muted"></i>
+                                    </div>
+                                    <span class="body-text">Active Addresses (24h)</span>
+                                </div>
+                                <span class="body-text-medium">1.2M</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Transactions -->
+                    <div class="card bg-white">
+                        <h2 class="card__title">Recent Transactions</h2>
+                        <div class="card__content">
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-exchange-alt icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">bc1q...3f7j → 3FZb...8Lkm</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-success">
+                                        <span class="badge-text">2.45 BTC</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-exchange-alt icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">1A2b...9Zpq → bc1q...7t2w</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-success">
+                                        <span class="badge-text">0.78 BTC</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-exchange-alt icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">3J7L...5Kmn → 1Hx2...8Pqr</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-success">
+                                        <span class="badge-text">5.12 BTC</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-exchange-alt icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">bc1q...8Fgh → 3Rtz...2Abc</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-success">
+                                        <span class="badge-text">1.03 BTC</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn-secondary btn-medium">
+                                <span class="btn-text">VIEW ALL TRANSACTIONS</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mining and Mempool -->
+            <section class="section">
+                <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                    <!-- Mining Distribution -->
+                    <div class="card bg-white">
+                        <h2 class="card__title">Mining Pool Distribution</h2>
+                        <div class="card__content">
+                            <!-- Chart placeholder - in a real implementation, this would be a chart -->
+                            <div style="height: 200px; background-color: var(--neutral-grey-100); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-large">
+                                        <i class="fas fa-chart-pie icon-muted"></i>
+                                    </div>
+                                    <span class="body-text-medium">Mining Distribution Chart</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: var(--space-4);">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="small-body-text-medium">Foundry USA</span>
+                                    <span class="small-body-text-medium">28.4%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="small-body-text-medium">AntPool</span>
+                                    <span class="small-body-text-medium">16.2%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="small-body-text-medium">F2Pool</span>
+                                    <span class="small-body-text-medium">14.7%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span class="small-body-text-medium">Others</span>
+                                    <span class="small-body-text-medium">40.7%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mempool Status -->
+                    <div class="card bg-white">
+                        <h2 class="card__title">Mempool Status</h2>
+                        <div class="card__content">
+                            <div style="margin-bottom: var(--space-4);">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="body-text">Pending Transactions</span>
+                                    <span class="body-text-medium">24,873</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                    <span class="body-text">Mempool Size</span>
+                                    <span class="body-text-medium">42.6 MB</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span class="body-text">Recommended Fee</span>
+                                    <span class="body-text-medium">12 sat/vB</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Fee distribution chart placeholder -->
+                            <div style="height: 150px; background-color: var(--neutral-grey-100); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-large">
+                                        <i class="fas fa-chart-bar icon-muted"></i>
+                                    </div>
+                                    <span class="body-text-medium">Fee Distribution Chart</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn-secondary btn-medium">
+                                <span class="btn-text">VIEW MEMPOOL DETAILS</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,78 @@
+/**
+ * Keboola Design System - Logo Component
+ */
+
+/* Logo Container Base */
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Logo Sizes */
+.logo-xsmall {
+  width: 24px;
+  height: 24px;
+}
+
+.logo-small {
+  width: 32px;
+  height: 32px;
+}
+
+.logo-medium {
+  width: 48px;
+  height: 48px;
+}
+
+.logo-large {
+  width: 56px;
+  height: 56px;
+}
+
+/* Logo SVG Styles */
+.logo-container svg,
+.logo-container img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Logo Color Variants */
+.logo-default svg,
+.logo-default img {
+  color: var(--neutral-grey-800);
+}
+
+.logo-white svg,
+.logo-white img {
+  color: var(--neutral-white);
+}
+
+/* Logo with Text Spacing */
+.logo-with-text {
+  gap: var(--space-4);
+}
+
+/* Logo Link Styles */
+a.logo-container {
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+a.logo-container:hover {
+  opacity: 0.9;
+}
+
+/* Logo Clear Space */
+.logo-container::before {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--space-2));
+  right: calc(-1 * var(--space-2));
+  bottom: calc(-1 * var(--space-2));
+  left: calc(-1 * var(--space-2));
+  pointer-events: none;
+} 

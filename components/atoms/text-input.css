@@ -1,0 +1,199 @@
+/* Text Input Component Styles */
+
+.text-input,
+.text-input * {
+  box-sizing: border-box;
+}
+
+.text-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  min-width: 200px;
+}
+
+/* Size variants */
+.text-input.size-small {
+  max-width: 200px;
+}
+
+.text-input.size-medium {
+  max-width: 320px;
+}
+
+.text-input.size-large {
+  max-width: 480px;
+}
+
+.text-input.size-full {
+  max-width: none;
+}
+
+.text-input .label {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-1);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  width: 100%;
+}
+
+.text-input .label-text {
+  color: var(--neutral-grey-800);
+  text-align: left;
+  font-family: var(--body-body-family);
+  font-size: var(--body-body-size);
+  font-weight: var(--body-body-weight);
+  line-height: var(--body-body-line-height);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.text-input .content {
+  background: var(--neutral-grey-100);
+  border-radius: var(--radius-small);
+  padding: var(--space-2) var(--space-4);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  min-height: var(--space-10);
+  transition: all 0.2s ease;
+  width: 100%;
+  border: 1px solid transparent;
+}
+
+.text-input .content input,
+.text-input .content textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: var(--neutral-grey-800);
+  font-family: var(--body-body-family);
+  font-size: var(--body-body-size);
+  font-weight: var(--body-body-weight);
+  line-height: var(--body-body-line-height);
+  padding: 0;
+}
+
+.text-input .content textarea {
+  resize: vertical;
+  min-height: 80px;
+  padding: var(--space-1) 0;
+}
+
+.text-input .content input::placeholder,
+.text-input .content textarea::placeholder {
+  color: var(--neutral-grey-400);
+}
+
+/* Remove the placeholder class since we're using input::placeholder */
+.text-input .placeholder {
+  display: none;
+}
+
+/* Focus state */
+.text-input .content:has(input:focus),
+.text-input .content:has(textarea:focus) {
+  background: var(--neutral-grey-100);
+  border-color: var(--secondary-blue-500-base);
+  box-shadow: var(--active-element);
+}
+
+/* Disabled state */
+.text-input.disabled .content {
+  background: var(--neutral-grey-50);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.text-input.disabled .content input,
+.text-input.disabled .content textarea {
+  cursor: not-allowed;
+  color: var(--neutral-grey-400);
+}
+
+.text-input.disabled .label-text,
+.text-input.disabled input::placeholder,
+.text-input.disabled textarea::placeholder {
+  color: var(--neutral-grey-400);
+}
+
+/* Error State */
+.text-input.error .content {
+  background: var(--error-red-100);
+  border: 1px solid var(--error-red-500-base);
+}
+
+.text-input.error .label-text {
+  color: var(--error-red-500-base);
+}
+
+/* Required State */
+.text-input.required .label-text::after {
+  content: "*";
+  color: var(--error-red-500-base);
+  margin-left: var(--space-1);
+}
+
+/* Search Input Variant */
+.text-input-search {
+    position: relative;
+    min-width: 240px;
+}
+
+.text-input-search .content {
+    background: var(--neutral-grey-100);
+    border-radius: var(--radius-small);
+    padding: var(--space-2) var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--space-10);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.text-input-search .search-icon {
+    color: var(--neutral-grey-400);
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.text-input-search .clear-button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--neutral-grey-400);
+    cursor: pointer;
+    font-size: 14px;
+    display: none;
+    flex-shrink: 0;
+}
+
+.text-input-search .clear-button:hover {
+    color: var(--neutral-grey-600);
+}
+
+.text-input-search .content:has(input:not(:placeholder-shown)) .clear-button {
+    display: block;
+}
+
+.text-input-search .content:has(input:focus) {
+    background: var(--neutral-grey-100);
+    border-color: var(--secondary-blue-500-base);
+    box-shadow: var(--active-element);
+} 

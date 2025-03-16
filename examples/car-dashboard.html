@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Fleet Management Dashboard</title>
+    
+    <!-- Required dependencies -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Design System CSS -->
+    <link href="../dist/design-system.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-body-family);
+            background-color: var(--neutral-grey-50);
+            color: var(--neutral-grey-800);
+            line-height: var(--body-body-line-height);
+        }
+    </style>
+</head>
+<body class="bg-grey-50">
+    <div class="container page-container" style="padding: var(--space-16)">
+        <div class="content-wrapper" style="display: flex; flex-direction: column; gap: var(--space-6)">
+            <header class="header">
+                <h1 class="header__title heading-1">Car Fleet Management Dashboard</h1>
+                <div class="header__actions">
+                    <button class="btn btn-secondary btn-medium">
+                        <div class="btn-icon">
+                            <i class="fas fa-download icon-muted"></i>
+                        </div>
+                        <span class="btn-text">EXPORT REPORT</span>
+                    </button>
+                    <button class="btn btn-primary btn-medium">
+                        <div class="btn-icon">
+                            <i class="fas fa-plus text-white"></i>
+                        </div>
+                        <span class="btn-text">ADD VEHICLE</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="tabs tabs-large">
+                <div class="tab-item active">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="tab-text">Dashboard</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="tab-text">Vehicles</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <div class="tab-text">Maintenance</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="tab-text">Analytics</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+            </div>
+
+            <!-- Key Performance Indicators -->
+            <section class="section">
+                <div class="grid grid-cols-4" style="gap: var(--space-4)">
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Total Vehicles</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">+5.2%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">248</div>
+                        <div class="overview-card__subtitle">+12 this quarter</div>
+                    </div>
+
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Operational Rate</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">97.3%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">97.3%</div>
+                        <div class="overview-card__subtitle">+1.5% from last month</div>
+                    </div>
+
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Avg. Fuel Economy</span>
+                            <span class="badge badge-warning">
+                                <span class="badge-text">-0.8 mpg</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">26.4 mpg</div>
+                        <div class="overview-card__subtitle">Decreased from 27.2 mpg</div>
+                    </div>
+
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Maintenance Cost</span>
+                            <span class="badge badge-error">
+                                <span class="badge-text">+8.3%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">$42,850</div>
+                        <div class="overview-card__subtitle">Up from $39,560</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fleet Composition and Utilization -->
+            <section class="section">
+                <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                    <div class="card bg-white">
+                        <h2 class="card__title">Fleet Composition by Type</h2>
+                        <div class="card__content">
+                            <!-- Chart placeholder - in a real implementation, this would be a chart -->
+                            <div style="height: 250px; background-color: var(--neutral-grey-100); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-large">
+                                        <i class="fas fa-chart-pie icon-muted"></i>
+                                    </div>
+                                    <span class="body-text-medium">Vehicle Type Distribution</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: var(--space-4);">
+                                <div class="grid grid-cols-3" style="gap: var(--space-2);">
+                                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                        <div style="width: 12px; height: 12px; background-color: var(--secondary-blue-500-base); border-radius: 2px;"></div>
+                                        <span class="small-body-text">Sedans (42%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                        <div style="width: 12px; height: 12px; background-color: var(--success-green-500-base); border-radius: 2px;"></div>
+                                        <span class="small-body-text">SUVs (28%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                        <div style="width: 12px; height: 12px; background-color: var(--warning-orange-500-base); border-radius: 2px;"></div>
+                                        <span class="small-body-text">Trucks (18%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                        <div style="width: 12px; height: 12px; background-color: var(--error-red-500-base); border-radius: 2px;"></div>
+                                        <span class="small-body-text">Vans (8%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                        <div style="width: 12px; height: 12px; background-color: var(--neutral-grey-600); border-radius: 2px;"></div>
+                                        <span class="small-body-text">Electric (4%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-white">
+                        <h2 class="card__title">Monthly Mileage Trends</h2>
+                        <div class="card__content">
+                            <!-- Chart placeholder - in a real implementation, this would be a chart -->
+                            <div style="height: 250px; background-color: var(--neutral-grey-100); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                    <div class="icon-container icon-large">
+                                        <i class="fas fa-chart-line icon-muted"></i>
+                                    </div>
+                                    <span class="body-text-medium">Mileage Trend Chart</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: var(--space-4);">
+                                <div class="grid grid-cols-3" style="gap: var(--space-4);">
+                                    <div>
+                                        <span class="small-body-text-medium">Total Miles</span>
+                                        <div class="body-text-medium">124,568</div>
+                                    </div>
+                                    <div>
+                                        <span class="small-body-text-medium">Avg. Per Vehicle</span>
+                                        <div class="body-text-medium">502 mi</div>
+                                    </div>
+                                    <div>
+                                        <span class="small-body-text-medium">YoY Change</span>
+                                        <div class="body-text-medium">+12.4%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vehicles Requiring Attention and Recent Activity -->
+            <section class="section">
+                <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                    <!-- Vehicles Requiring Attention -->
+                    <div class="card bg-white">
+                        <h2 class="card__title">Vehicles Requiring Attention</h2>
+                        <div class="card__content">
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-exclamation-triangle icon-error"></i>
+                                    </div>
+                                    <span class="activity-row__text">Toyota Camry (VIN: 4T1BF1FK5CU123456) - Brake service overdue</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-error">
+                                        <span class="badge-text">Critical</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-exclamation-circle icon-warning"></i>
+                                    </div>
+                                    <span class="activity-row__text">Ford F-150 (VIN: 1FTEW1E53MFA12345) - Oil change due in 200 miles</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-warning">
+                                        <span class="badge-text">Warning</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-exclamation-circle icon-warning"></i>
+                                    </div>
+                                    <span class="activity-row__text">Honda CR-V (VIN: 5J6RW2H55NL012345) - Tire rotation needed</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-warning">
+                                        <span class="badge-text">Warning</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-info-circle icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Chevrolet Malibu (VIN: 1G1ZD5ST3JF123456) - Registration renewal in 30 days</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="badge badge-success">
+                                        <span class="badge-text">Info</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn-secondary btn-medium">
+                                <span class="btn-text">VIEW ALL ALERTS</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="card bg-white">
+                        <h2 class="card__title">Recent Activity</h2>
+                        <div class="card__content">
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-wrench icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Nissan Altima serviced - Oil change and filter replacement</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-gas-pump icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Fuel card transaction - Ford Explorer ($58.32)</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>4 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-car icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">New vehicle added - Tesla Model 3 (VIN: 5YJ3E1EA8JF123456)</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>1 day ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-tools icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Maintenance completed - Jeep Grand Cherokee (Brake service)</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>2 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn-secondary btn-medium">
+                                <span class="btn-text">VIEW ALL ACTIVITY</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Top Performing Vehicles -->
+            <section class="section">
+                <div class="card bg-white">
+                    <div class="card__title--with-icon">
+                        <div class="card__icon" style="display: none;">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <span class="card__title-text">Top Performing Vehicles</span>
+                    </div>
+                    <div class="card__content">
+                        <div class="grid grid-cols-3" style="gap: var(--space-4)">
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Best Fuel Economy</span>
+                                </div>
+                                <div class="overview-card__value">Toyota Prius</div>
+                                <div class="overview-card__subtitle">52.4 mpg average</div>
+                            </div>
+                            
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Lowest Maintenance Cost</span>
+                                </div>
+                                <div class="overview-card__value">Honda Civic</div>
+                                <div class="overview-card__subtitle">$0.08 per mile</div>
+                            </div>
+                            
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Highest Utilization</span>
+                                </div>
+                                <div class="overview-card__value">Ford Transit</div>
+                                <div class="overview-card__subtitle">92.7% utilization rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add New Vehicle Form -->
+            <section class="section">
+                <div class="card bg-white">
+                    <h2 class="card__title">Add New Vehicle</h2>
+                    <div class="card__content" style="display: flex; flex-direction: column; gap: var(--space-4)">
+                        <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                            <div class="form-group">
+                                <div class="text-input">
+                                    <div class="label">
+                                        <label class="label-text" for="vehicle-make">Make</label>
+                                    </div>
+                                    <div class="content">
+                                        <input type="text" id="vehicle-make" placeholder="e.g. Toyota">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="text-input">
+                                    <div class="label">
+                                        <label class="label-text" for="vehicle-model">Model</label>
+                                    </div>
+                                    <div class="content">
+                                        <input type="text" id="vehicle-model" placeholder="e.g. Camry">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                            <div class="form-group">
+                                <div class="text-input">
+                                    <div class="label">
+                                        <label class="label-text" for="vehicle-year">Year</label>
+                                    </div>
+                                    <div class="content">
+                                        <input type="number" id="vehicle-year" placeholder="e.g. 2023">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="text-input">
+                                    <div class="label">
+                                        <label class="label-text" for="vehicle-vin">VIN</label>
+                                    </div>
+                                    <div class="content">
+                                        <input type="text" id="vehicle-vin" placeholder="Vehicle Identification Number">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="select">
+                                <div class="label">
+                                    <label class="label-text" for="vehicle-type">Vehicle Type</label>
+                                </div>
+                                <button type="button" class="select-trigger" id="vehicle-type">
+                                    <span>Select vehicle type</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-input">
+                                <div class="label">
+                                    <label class="label-text" for="vehicle-notes">Notes</label>
+                                </div>
+                                <div class="content">
+                                    <textarea id="vehicle-notes" rows="3" placeholder="Additional information about the vehicle"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__footer">
+                        <button class="btn btn-primary btn-medium">
+                            <span class="btn-text">ADD VEHICLE</span>
+                        </button>
+                        <button class="btn btn-secondary btn-medium">
+                            <span class="btn-text">CANCEL</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html> 

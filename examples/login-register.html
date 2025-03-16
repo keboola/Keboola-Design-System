@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keboola Platform - Login & Register</title>
+    
+    <!-- Preload critical fonts for performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    
+    <!-- Required font dependencies -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Design System CSS -->
+    <link href="../dist/design-system.css" rel="stylesheet">
+    
+    <!-- REQUIRED: Base font styles -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-body-family);
+            background-color: var(--neutral-grey-50);
+            color: var(--neutral-grey-800);
+            line-height: var(--body-body-line-height);
+            min-height: 100vh;
+        }
+        
+        .auth-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: var(--space-4);
+        }
+        
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+            padding: var(--space-8);
+            border-radius: var(--radius-medium);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .auth-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--space-6);
+        }
+        
+        .auth-title {
+            margin-top: var(--space-6);
+            text-align: center;
+        }
+        
+        /* Removed custom auth-tabs and auth-tab styles */
+        
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+        
+        .auth-footer {
+            margin-top: var(--space-6);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+            align-items: center;
+        }
+        
+        .auth-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-2);
+            margin-top: var(--space-4);
+        }
+        
+        .remember-me {
+            align-self: flex-start;
+            margin-top: var(--space-2);
+        }
+        
+        .error-message {
+            color: var(--error-red-500-base);
+            font-size: var(--small-body-size);
+            margin-top: var(--space-1);
+            display: none;
+        }
+        
+        .form-container {
+            display: none;
+        }
+        
+        .form-container.active {
+            display: block;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            color: var(--success-green-500-base);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            background-color: var(--success-green-100);
+            border-radius: var(--radius-small);
+        }
+        
+        /* Added custom style for tabs in auth card */
+        .auth-card .tabs {
+            margin-bottom: var(--space-6);
+        }
+        
+        /* Make tabs fill the width */
+        .auth-card .tab-item {
+            flex: 1;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card bg-white">
+            <div class="auth-header">
+                <div class="logo-container logo-medium">
+                    <img src="../assets/logos/logo.svg" alt="Keboola Logo">
+                </div>
+                <h1 class="auth-title heading-2">Welcome to Keboola</h1>
+            </div>
+            
+            <!-- Updated to use proper tab component -->
+            <div class="tabs tabs-large">
+                <div class="tab-item active" data-tab="login">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </div>
+                        <div class="tab-text">Log In</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item" data-tab="register">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="tab-text">Register</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="loginForm" class="form-container active">
+                <form class="auth-form">
+                    <div class="form-group">
+                        <div class="text-input" id="loginEmailInput">
+                            <div class="label">
+                                <label class="label-text" for="loginEmail">Email</label>
+                            </div>
+                            <div class="content">
+                                <input type="email" id="loginEmail" placeholder="your@email.com">
+                            </div>
+                            <div class="error-message" id="loginEmailError">Please enter a valid email address</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="text-input" id="loginPasswordInput">
+                            <div class="label">
+                                <label class="label-text" for="loginPassword">Password</label>
+                            </div>
+                            <div class="content">
+                                <input type="password" id="loginPassword" placeholder="Enter your password">
+                            </div>
+                            <div class="error-message" id="loginPasswordError">Password is required</div>
+                        </div>
+                    </div>
+                    
+                    <div class="remember-me">
+                        <label class="checkbox">
+                            <input type="checkbox" id="remember-me">
+                            <div class="checkbox-box"></div>
+                            <div class="checkbox-label">
+                                <span class="checkbox-label-text">Remember me</span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        <button type="submit" class="btn btn-primary btn-medium" style="width: 100%;">
+                            <span class="btn-text">LOG IN</span>
+                        </button>
+                        
+                        <div class="auth-links">
+                            <a href="#" class="link-small-body-medium">Forgot password?</a>
+                            <span class="small-body-text">Don't have an account? <a href="#" class="link-small-body-medium" id="switchToRegister">Register</a></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Register Form -->
+            <div id="registerForm" class="form-container">
+                <form class="auth-form">
+                    <div class="form-group">
+                        <div class="text-input" id="registerNameInput">
+                            <div class="label">
+                                <label class="label-text" for="registerName">Full Name</label>
+                            </div>
+                            <div class="content">
+                                <input type="text" id="registerName" placeholder="Your full name">
+                            </div>
+                            <div class="error-message" id="registerNameError">Name is required</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="text-input" id="registerEmailInput">
+                            <div class="label">
+                                <label class="label-text" for="registerEmail">Email</label>
+                            </div>
+                            <div class="content">
+                                <input type="email" id="registerEmail" placeholder="your@email.com">
+                            </div>
+                            <div class="error-message" id="registerEmailError">Please enter a valid email address</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="text-input" id="registerPasswordInput">
+                            <div class="label">
+                                <label class="label-text" for="registerPassword">Password</label>
+                            </div>
+                            <div class="content">
+                                <input type="password" id="registerPassword" placeholder="Create a password (min. 8 characters)">
+                            </div>
+                            <div class="error-message" id="registerPasswordError">Password must be at least 8 characters</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="text-input" id="confirmPasswordInput">
+                            <div class="label">
+                                <label class="label-text" for="confirmPassword">Confirm Password</label>
+                            </div>
+                            <div class="content">
+                                <input type="password" id="confirmPassword" placeholder="Confirm your password">
+                            </div>
+                            <div class="error-message" id="confirmPasswordError">Passwords do not match</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="text-input" id="companyInput">
+                            <div class="label">
+                                <label class="label-text" for="company">Company (Optional)</label>
+                            </div>
+                            <div class="content">
+                                <input type="text" id="company" placeholder="Your company name">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        <button type="submit" class="btn btn-primary btn-medium" style="width: 100%;">
+                            <span class="btn-text">CREATE ACCOUNT</span>
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="success-message" id="registerSuccess">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-check-circle icon-success"></i>
+                        </div>
+                        <span class="body-text-medium">Account created successfully!</span>
+                    </div>
+                    <p class="small-body-text">You can now log in with your credentials.</p>
+                    <button id="goToLogin" class="btn btn-primary btn-medium" style="width: 100%; margin-top: var(--space-4);">
+                        <span class="btn-text">GO TO LOGIN</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabs = document.querySelectorAll('.tab-item');
+            const formContainers = document.querySelectorAll('.form-container');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding form
+                    formContainers.forEach(container => {
+                        container.classList.remove('active');
+                        if (container.id === tabId + 'Form') {
+                            container.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Switch to register tab when clicking the register link
+            document.getElementById('switchToRegister').addEventListener('click', function(e) {
+                e.preventDefault();
+                tabs.forEach(t => t.classList.remove('active'));
+                document.querySelector('[data-tab="register"]').classList.add('active');
+                
+                formContainers.forEach(container => {
+                    container.classList.remove('active');
+                    if (container.id === 'registerForm') {
+                        container.classList.add('active');
+                    }
+                });
+            });
+            
+            // Login form validation
+            const loginForm = document.querySelector('#loginForm form');
+            const loginEmailInput = document.getElementById('loginEmail');
+            const loginPasswordInput = document.getElementById('loginPassword');
+            const loginEmailError = document.getElementById('loginEmailError');
+            const loginPasswordError = document.getElementById('loginPasswordError');
+            const loginEmailContainer = document.getElementById('loginEmailInput');
+            const loginPasswordContainer = document.getElementById('loginPasswordInput');
+            
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                let isValid = true;
+                
+                // Reset error states
+                loginEmailContainer.classList.remove('error');
+                loginPasswordContainer.classList.remove('error');
+                loginEmailError.style.display = 'none';
+                loginPasswordError.style.display = 'none';
+                
+                // Validate email
+                const emailValue = loginEmailInput.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailValue || !emailRegex.test(emailValue)) {
+                    loginEmailContainer.classList.add('error');
+                    loginEmailError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate password
+                if (!loginPasswordInput.value.trim()) {
+                    loginPasswordContainer.classList.add('error');
+                    loginPasswordError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Form is valid, you can submit it or redirect
+                    console.log('Login form is valid, submitting...');
+                    // For demo purposes, we'll just log the values
+                    console.log('Email:', emailValue);
+                    console.log('Password:', loginPasswordInput.value);
+                    console.log('Remember me:', document.getElementById('remember-me').checked);
+                    
+                    // In a real application, you would send this data to your server
+                    // loginForm.submit();
+                    
+                    // For demo, show an alert
+                    alert('Login successful! (This is just a demo)');
+                }
+            });
+            
+            // Register form validation
+            const registerForm = document.querySelector('#registerForm form');
+            const registerNameInput = document.getElementById('registerName');
+            const registerEmailInput = document.getElementById('registerEmail');
+            const registerPasswordInput = document.getElementById('registerPassword');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const registerNameError = document.getElementById('registerNameError');
+            const registerEmailError = document.getElementById('registerEmailError');
+            const registerPasswordError = document.getElementById('registerPasswordError');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            const registerNameContainer = document.getElementById('registerNameInput');
+            const registerEmailContainer = document.getElementById('registerEmailInput');
+            const registerPasswordContainer = document.getElementById('registerPasswordInput');
+            const confirmPasswordContainer = document.getElementById('confirmPasswordInput');
+            const registerSuccess = document.getElementById('registerSuccess');
+            
+            registerForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                let isValid = true;
+                
+                // Reset error states
+                registerNameContainer.classList.remove('error');
+                registerEmailContainer.classList.remove('error');
+                registerPasswordContainer.classList.remove('error');
+                confirmPasswordContainer.classList.remove('error');
+                registerNameError.style.display = 'none';
+                registerEmailError.style.display = 'none';
+                registerPasswordError.style.display = 'none';
+                confirmPasswordError.style.display = 'none';
+                
+                // Validate name
+                if (!registerNameInput.value.trim()) {
+                    registerNameContainer.classList.add('error');
+                    registerNameError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate email
+                const emailValue = registerEmailInput.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailValue || !emailRegex.test(emailValue)) {
+                    registerEmailContainer.classList.add('error');
+                    registerEmailError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate password
+                const passwordValue = registerPasswordInput.value.trim();
+                if (!passwordValue || passwordValue.length < 8) {
+                    registerPasswordContainer.classList.add('error');
+                    registerPasswordError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate confirm password
+                if (confirmPasswordInput.value.trim() !== passwordValue) {
+                    confirmPasswordContainer.classList.add('error');
+                    confirmPasswordError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Form is valid, you can submit it or redirect
+                    console.log('Register form is valid, submitting...');
+                    // For demo purposes, we'll just log the values
+                    console.log('Name:', registerNameInput.value);
+                    console.log('Email:', emailValue);
+                    console.log('Password:', passwordValue);
+                    console.log('Company:', document.getElementById('company').value);
+                    
+                    // In a real application, you would send this data to your server
+                    // registerForm.submit();
+                    
+                    // Show success message
+                    registerForm.style.display = 'none';
+                    registerSuccess.style.display = 'block';
+                }
+            });
+            
+            // Go to login button
+            document.getElementById('goToLogin').addEventListener('click', function() {
+                // Switch to login tab
+                tabs.forEach(t => t.classList.remove('active'));
+                document.querySelector('[data-tab="login"]').classList.add('active');
+                
+                // Show login form
+                formContainers.forEach(container => {
+                    container.classList.remove('active');
+                    if (container.id === 'loginForm') {
+                        container.classList.add('active');
+                    }
+                });
+                
+                // Reset register form
+                registerForm.style.display = 'block';
+                registerSuccess.style.display = 'none';
+                registerForm.reset();
+            });
+            
+            // Clear errors on input for login form
+            loginEmailInput.addEventListener('input', function() {
+                loginEmailContainer.classList.remove('error');
+                loginEmailError.style.display = 'none';
+            });
+            
+            loginPasswordInput.addEventListener('input', function() {
+                loginPasswordContainer.classList.remove('error');
+                loginPasswordError.style.display = 'none';
+            });
+            
+            // Clear errors on input for register form
+            registerNameInput.addEventListener('input', function() {
+                registerNameContainer.classList.remove('error');
+                registerNameError.style.display = 'none';
+            });
+            
+            registerEmailInput.addEventListener('input', function() {
+                registerEmailContainer.classList.remove('error');
+                registerEmailError.style.display = 'none';
+            });
+            
+            registerPasswordInput.addEventListener('input', function() {
+                registerPasswordContainer.classList.remove('error');
+                registerPasswordError.style.display = 'none';
+                
+                // Also check confirm password match if it has a value
+                if (confirmPasswordInput.value.trim()) {
+                    if (confirmPasswordInput.value.trim() === registerPasswordInput.value.trim()) {
+                        confirmPasswordContainer.classList.remove('error');
+                        confirmPasswordError.style.display = 'none';
+                    } else {
+                        confirmPasswordContainer.classList.add('error');
+                        confirmPasswordError.style.display = 'block';
+                    }
+                }
+            });
+            
+            confirmPasswordInput.addEventListener('input', function() {
+                if (confirmPasswordInput.value.trim() === registerPasswordInput.value.trim()) {
+                    confirmPasswordContainer.classList.remove('error');
+                    confirmPasswordError.style.display = 'none';
+                } else {
+                    confirmPasswordContainer.classList.add('error');
+                    confirmPasswordError.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,59 @@
+.overview-card {
+    background: var(--neutral-white);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--card-shadow);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* Prevent text overflow */
+    /* No margin-top/bottom needed - parent container should use gap */
+}
+
+.overview-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.overview-card__title {
+    font-family: var(--body-small-body-family);
+    color: var(--neutral-grey-600);
+    font-size: var(--body-small-body-size);
+    font-weight: var(--body-body-medium-weight);
+    flex: 1;
+    min-width: 0;
+    line-height: var(--body-small-body-line-height);
+    display: flex;
+    align-items: center;
+}
+
+.overview-card__value {
+    font-family: var(--headings-h1-family);
+    font-size: var(--headings-h1-size);
+    font-weight: var(--headings-h1-weight);
+    color: var(--neutral-grey-800);
+    line-height: var(--headings-h1-line-height);
+    margin: var(--space-2) 0; /* Keep this margin as it's internal component spacing */
+}
+
+.overview-card__subtitle {
+    font-family: var(--body-small-body-family);
+    color: var(--neutral-grey-600);
+    font-size: var(--body-small-body-size);
+    line-height: var(--body-small-body-line-height);
+}
+
+/* Ensure badge doesn't shrink */
+.overview-card__header .badge {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Grey Overview Card Variant */
+.overview-card--grey {
+    background: var(--neutral-grey-100);
+    box-shadow: none;
+    border: none;
+} 

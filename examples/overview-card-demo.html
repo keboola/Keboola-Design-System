@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview Card Demo - Keboola Design System</title>
+    
+    <!-- Required Dependencies -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="../dist/design-system.css" rel="stylesheet">
+</head>
+<body class="bg-grey-50">
+    <div class="container page-container" style="padding: var(--space-16)">
+        <div class="content-wrapper" style="display: flex; flex-direction: column; gap: var(--space-6)">
+            <!-- Header -->
+            <header class="header">
+                <h1 class="header__title heading-1">Overview Card Examples</h1>
+                <div class="header__actions">
+                    <button class="btn btn-secondary btn-medium">
+                        <div class="btn-icon">
+                            <i class="fas fa-book icon-muted"></i>
+                        </div>
+                        <span class="btn-text">DOCUMENTATION</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Basic Overview Cards -->
+            <section class="section">
+                <h2 class="heading-2">Basic Overview Cards</h2>
+                <div class="grid grid-cols-4" style="gap: var(--space-4)">
+                    <!-- Basic Card with Success Badge -->
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Total Users</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">+12.5%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">1,234</div>
+                        <div class="overview-card__subtitle">+154 this month</div>
+                    </div>
+
+                    <!-- Basic Card with Warning Badge -->
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Active Projects</span>
+                            <span class="badge badge-warning">
+                                <span class="badge-text">-2.8%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">89</div>
+                        <div class="overview-card__subtitle">-3 from last week</div>
+                    </div>
+
+                    <!-- Basic Card with Error Badge -->
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Failed Jobs</span>
+                            <span class="badge badge-error">
+                                <span class="badge-text">+5.7%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">23</div>
+                        <div class="overview-card__subtitle">Critical attention needed</div>
+                    </div>
+
+                    <!-- Basic Card without Badge -->
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Total Revenue</span>
+                        </div>
+                        <div class="overview-card__value">$45.2K</div>
+                        <div class="overview-card__subtitle">Monthly recurring</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Overview Cards with Icons -->
+            <section class="section">
+                <h2 class="heading-2">Overview Cards with Icons</h2>
+                <div class="grid grid-cols-3" style="gap: var(--space-4)">
+                    <!-- Card with Icon -->
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Storage Usage</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">Healthy</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">
+                            <div class="icon-container icon-large">
+                                <i class="fas fa-database icon-muted"></i>
+                            </div>
+                        </div>
+                        <div class="overview-card__subtitle">2.4 TB used</div>
+                    </div>
+
+                    <!-- Card with Icon -->
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">API Status</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">Online</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">
+                            <div class="icon-container icon-large">
+                                <i class="fas fa-cloud icon-muted"></i>
+                            </div>
+                        </div>
+                        <div class="overview-card__subtitle">All systems operational</div>
+                    </div>
+
+                    <!-- Card with Icon -->
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Security Status</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">Secure</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">
+                            <div class="icon-container icon-large">
+                                <i class="fas fa-shield-alt icon-muted"></i>
+                            </div>
+                        </div>
+                        <div class="overview-card__subtitle">No threats detected</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grey Overview Cards -->
+            <section class="section">
+                <h2 class="heading-2">Grey Overview Cards</h2>
+                <div class="card bg-white">
+                    <h2 class="card__title">Top Performing Categories</h2>
+                    <div class="card__content">
+                        <div class="grid grid-cols-3" style="gap: var(--space-4)">
+                            <!-- Grey Card -->
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Best Performance</span>
+                                </div>
+                                <div class="overview-card__value">Project X</div>
+                                <div class="overview-card__subtitle">98% efficiency rate</div>
+                            </div>
+
+                            <!-- Grey Card -->
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Most Active</span>
+                                </div>
+                                <div class="overview-card__value">Team Alpha</div>
+                                <div class="overview-card__subtitle">324 commits this month</div>
+                            </div>
+
+                            <!-- Grey Card -->
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Top Region</span>
+                                </div>
+                                <div class="overview-card__value">Europe</div>
+                                <div class="overview-card__subtitle">42% of total traffic</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Alignment Demonstration -->
+            <section class="section">
+                <h2 class="heading-2">Improved Header Alignment</h2>
+                <div class="grid grid-cols-2" style="gap: var(--space-4)">
+                    <!-- Card with Long Title -->
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">This is a longer title that demonstrates proper alignment with the badge</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">ALIGNED</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">Proper Alignment</div>
+                        <div class="overview-card__subtitle">Title and badge now share the same baseline</div>
+                    </div>
+                    
+                    <!-- Card with Multi-word Badge -->
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Alignment Example</span>
+                            <span class="badge badge-warning">
+                                <span class="badge-text">MULTI WORD BADGE</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">Visual Balance</div>
+                        <div class="overview-card__subtitle">Improved vertical alignment for better readability</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html> 

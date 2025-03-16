@@ -1,0 +1,39 @@
+/**
+ * Keboola Design System - Activity Row Component
+ */
+
+.activity-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3) 0;
+    /* For spacing between activity rows, parent container should use gap */
+}
+
+.activity-row .icon-container {
+    color: var(--neutral-grey-400);
+}
+
+.activity-row__content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.activity-row__text {
+    color: var(--neutral-grey-800);
+    font-family: var(--body-body-family);
+    font-size: var(--body-body-size);
+    font-weight: var(--body-body-weight);
+    line-height: var(--body-body-line-height);
+}
+
+.activity-row__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--neutral-grey-600);
+    font-family: var(--body-small-body-family);
+    font-size: var(--body-small-body-size);
+    line-height: var(--body-small-body-line-height);
+} 

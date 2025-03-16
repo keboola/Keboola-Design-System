@@ -1,0 +1,86 @@
+/* Select Component */
+.select {
+    position: relative;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    width: 100%;
+}
+
+.select .label {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-1);
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+    width: 100%;
+}
+
+.select .label-text {
+    color: var(--neutral-grey-800);
+    text-align: left;
+    font-family: var(--body-body-family);
+    font-size: var(--body-body-size);
+    font-weight: var(--body-body-weight);
+    line-height: var(--body-body-line-height);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.select-trigger {
+    background: var(--neutral-grey-100);
+    border-radius: var(--radius-small);
+    padding: var(--space-2) var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    min-height: 40px;
+    width: 100%;
+    border: 1px solid transparent;
+    color: var(--neutral-grey-800);
+    font-family: var(--body-body-family);
+    font-size: var(--body-body-size);
+    font-weight: var(--body-body-weight);
+    line-height: var(--body-body-line-height);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.select-trigger i {
+    color: var(--neutral-grey-400);
+}
+
+/* Focus state */
+.select-trigger:focus {
+    outline: none;
+    border-color: var(--secondary-blue-500-base);
+    box-shadow: var(--active-element);
+}
+
+/* Required State */
+.select.required .label-text::after {
+    content: "*";
+    color: var(--error-red-500-base);
+    margin-left: var(--space-1);
+}
+
+/* Disabled state */
+.select.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.select.disabled .select-trigger {
+    background: var(--neutral-grey-50);
+    cursor: not-allowed;
+}
+
+.select.disabled .label-text {
+    color: var(--neutral-grey-400);
+} 

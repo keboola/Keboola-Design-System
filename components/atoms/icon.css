@@ -1,0 +1,102 @@
+/* Icon Component */
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--space-4);
+    height: var(--space-4);
+    flex-shrink: 0;
+}
+
+/* Icon Container Base */
+.icon-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: var(--radius-small);
+}
+
+/* Icon Sizes */
+.icon-small {
+    width: 20px;
+    height: 20px;
+}
+
+.icon-large {
+    width: 32px;
+    height: 32px;
+}
+
+/* Icon Content Sizing */
+.icon-small i {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.icon-large i {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* Icon colors */
+.icon-primary {
+    color: var(--secondary-blue-500-base);
+}
+
+.icon-muted {
+    color: var(--neutral-grey-400);
+}
+
+.icon-success {
+    color: var(--success-green-500-base);
+}
+
+.icon-warning {
+    color: var(--warning-orange-500-base);
+}
+
+.icon-error {
+    color: var(--error-red-500-base);
+}
+
+/* Icon sizes */
+.icon-small {
+    width: var(--space-4);
+    height: var(--space-4);
+    font-size: var(--space-4);
+}
+
+.icon-medium {
+    width: var(--space-5);
+    height: var(--space-5);
+    font-size: var(--space-5);
+}
+
+.icon-large {
+    width: var(--space-6);
+    height: var(--space-6);
+    font-size: var(--space-6);
+}
+
+/* Fix Font Awesome alignment */
+.icon-container i.fas,
+.icon-container i.far,
+.icon-container i.fab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+} 

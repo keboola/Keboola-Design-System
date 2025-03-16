@@ -1,0 +1,101 @@
+/**
+ * Keboola Design System - Tabs Component
+ */
+
+.tabs {
+  display: flex;
+  gap: var(--space-8);
+  border-bottom: 1px solid var(--neutral-grey-200);
+  /* Removed margin-bottom in favor of gap-based spacing in content-wrapper */
+  height: var(--space-10);
+}
+
+/* Tab sizes */
+.tabs-large {
+  height: var(--space-10);
+}
+
+/* Tab Item */
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  position: relative;
+  height: var(--space-10);
+}
+
+/* Icon and Text Container */
+.tab-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--neutral-grey-400);
+}
+
+/* Tab Text */
+.tab-text {
+  font-family: var(--body-body-family);
+  font-size: var(--body-body-size);
+  line-height: var(--body-body-line-height);
+  font-weight: var(--body-body-medium-weight);
+  white-space: nowrap;
+}
+
+/* Tab Icon */
+.tab-icon {
+  width: var(--space-4);
+  height: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Active Line */
+.tab-active-line {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  transition: background-color 0.2s ease;
+}
+
+/* States */
+.tab-item .icon-container {
+  color: var(--neutral-grey-400);
+}
+
+/* Active State */
+.tab-item.active .tab-content,
+.tab-item.active .icon-container {
+  color: var(--secondary-blue-500-base);
+}
+
+.tab-item.active .tab-active-line {
+  background: var(--secondary-blue-500-base);
+}
+
+/* Hover State */
+.tab-item:hover:not(.active):not(.disabled) .tab-content,
+.tab-item:hover:not(.active):not(.disabled) .icon-container {
+  color: var(--secondary-blue-500-base);
+}
+
+/* Add hover effect for the border */
+.tab-item:hover:not(.active):not(.disabled) .tab-active-line {
+  background: var(--secondary-blue-450);
+}
+
+/* Disabled State */
+.tab-item.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.tab-item.disabled .tab-content,
+.tab-item.disabled .icon-container {
+  color: var(--neutral-grey-300);
+} 
