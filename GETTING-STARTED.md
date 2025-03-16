@@ -423,7 +423,7 @@ When using the Keboola Design System, follow these core principles:
 </div>
 
 <!-- Warning Banner (Persistent) -->
-<div class="banner style-variant-warning style-variant-persistent">
+<div class="banner style-variant-warning">
     <div class="icon-container icon-small">
         <i class="fas fa-exclamation-triangle icon-warning"></i>
     </div>
@@ -481,4 +481,4 @@ The `people-management.html` example demonstrates:
 - Modal dialogs for editing and creating records
 - Responsive layout for different screen sizes
 
-For more detailed information, refer to the full documentation sections in the README. 
+For more detailed information, refer to the full documentation sections in the README.

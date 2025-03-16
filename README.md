@@ -6,6 +6,7 @@ A comprehensive design system for building consistent web interfaces with Kebool
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
    - [Required Dependencies](#required-dependencies)
+   - [Installation Notes and Potential Issues](#installation-notes-and-potential-issues)
    - [Example Pages](#example-pages)
    - [Basic Page Structure](#basic-page-structure)
 3. [Design Tokens](#design-tokens)
@@ -75,6 +76,29 @@ Include these dependencies in your HTML file:
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <link href="dist/design-system.css" rel="stylesheet">
 ```
+
+### Installation Notes and Potential Issues
+
+⚠️ **Important Installation Considerations**:
+
+1. **Folder Naming**: 
+   - ✅ Recommended: Use "keboola-design-system" with hyphens
+   - ❌ Avoid: Spaces in folder names like "keboola design system" can cause issues in some environments
+
+2. **Path References**: 
+   - If you place the design system in a subfolder of your project, update CSS paths accordingly:
+   ```html
+   <!-- Example if design system is in a subfolder -->
+   <link href="keboola-design-system/dist/design-system.css" rel="stylesheet">
+   ```
+
+3. **Asset References**:
+   - Update any paths to assets (logos, images) to reflect your folder structure
+   - Example files may need path adjustments to work in your specific setup
+
+4. **Testing After Installation**:
+   - Always verify that styles are loading correctly after installation
+   - Check browser console for any 404 errors related to missing files
 
 ### Example Pages
 
@@ -855,6 +879,15 @@ Card variant requirements:
   - Adds 16px top margin for proper spacing from content
   - Supports multiple buttons with 16px gap between them
   - Aligns with the card's content area
+- `card--no-padding`: Removes all internal padding from the card
+  - Useful for cards that need custom internal spacing
+  - Often used for cards with full-width content like tables or charts
+- `card--compact`: Reduces the card's internal padding
+  - Uses smaller padding values for more condensed layouts
+  - Useful for information-dense interfaces
+- `card--bordered`: Adds a border to the card instead of a shadow
+  - Uses a 1px border with neutral-grey-200 color
+  - Useful for cards that need to be visually separated but with less visual weight
 
 #### Card Layout Helper Classes
 
@@ -1339,11 +1372,11 @@ All banners use a 1px border with the 200 shade of their respective color and ha
 
 #### Persistent Banners (Without Close Button)
 
-For messages that should remain visible and cannot be dismissed, use the `style-variant-persistent` class:
+For messages that should remain visible and cannot be dismissed, simply omit the close button element:
 
 ```html
 <!-- Persistent Warning Banner (without close button) -->
-<div class="banner style-variant-warning style-variant-persistent">
+<div class="banner style-variant-warning">
     <div class="icon-container icon-small">
         <i class="fas fa-exclamation-triangle icon-warning"></i>
     </div>
