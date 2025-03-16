@@ -1,5 +1,15 @@
 /**
- * Keboola Design System - Card Component
+ * Card Components
+ * 
+ * For detailed implementation instructions, see:
+ * - Component Guide: ../../COMPONENT-GUIDE.md#layout-components
+ *
+ * USAGE GUIDE:
+ * 
+ * Cards follow a consistent structure with specific class naming
+ * conventions for different sections of the card.
+ * 
+ * See the Component Guide for detailed implementation examples.
  */
 
 .card {

@@ -1,5 +1,43 @@
 /**
- * Keboola Design System - Button Components
+ * Button Components
+ * 
+ * For detailed implementation instructions, see:
+ * - Component Guide: ../COMPONENT-GUIDE.md#button-components
+ *
+ * USAGE GUIDE:
+ * 
+ * Required classes for all buttons:
+ * - btn: Base button class
+ * - Style variant: btn-primary OR btn-secondary
+ * - Size: btn-medium OR btn-small
+ * 
+ * For icon-only buttons, add:
+ * - btn-icon-only: Indicates an icon-only button
+ * 
+ * EXAMPLES:
+ * 
+ * 1. Standard button:
+ * <button class="btn btn-primary btn-medium">
+ *   <span class="btn-text">BUTTON TEXT</span>
+ * </button>
+ * 
+ * 2. Button with icon:
+ * <button class="btn btn-primary btn-medium">
+ *   <div class="btn-icon">
+ *     <i class="fas fa-plus"></i>
+ *   </div>
+ *   <span class="btn-text">BUTTON TEXT</span>
+ * </button>
+ * 
+ * 3. Icon-only button:
+ * <button class="btn btn-primary btn-icon-only btn-medium">
+ *   <div class="btn-icon">
+ *     <i class="fas fa-plus"></i>
+ *   </div>
+ * </button>
+ * 
+ * NOTE: Icon container is required inside icon-only buttons.
+ * NOTE: A style variant (btn-primary or btn-secondary) is always required.
  */
 
 /* Base Button */
@@ -63,7 +101,7 @@
   line-height: 1;
 }
 
-/* Icon Only Button */
+/* Icon Only Button - REQUIRES a style variant (btn-primary or btn-secondary) */
 .btn-icon-only {
   width: var(--space-10);
   height: var(--space-10);
@@ -75,6 +113,7 @@
   height: var(--space-8);
 }
 
+/* The icon container is required inside icon-only buttons */
 .btn-icon-only .btn-icon {
   margin: auto;
 }

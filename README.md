@@ -2,13 +2,18 @@
 
 A comprehensive design system for building consistent web interfaces with Keboola style.
 
+## Documentation
+
+- [Component Guide](./COMPONENT-GUIDE.md) - Detailed implementation guide for all components
+- [Tokens](./tokens/) - Design tokens for colors, typography, and variables
+- [Components](./components/) - Reusable UI components
+
 ## Overview
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
-   - [Required Dependencies](#required-dependencies)
-   - [Installation Notes and Potential Issues](#installation-notes-and-potential-issues)
-   - [Example Pages](#example-pages)
+   - [Installation](#installation)
    - [Basic Page Structure](#basic-page-structure)
+   - [Example Pages](#example-pages)
 3. [Design Tokens](#design-tokens)
    - [Color System](#color-system)
    - [Typography System](#typography-system)
@@ -62,22 +67,9 @@ The Keboola Design System provides a consistent set of components, patterns, and
 
 ## Getting Started
 
-For a comprehensive guide on getting started with the Keboola Design System, please refer to the [GETTING-STARTED.md](GETTING-STARTED.md) file.
+For a comprehensive guide on getting started with the Keboola Design System, please refer to the [Component Guide](./COMPONENT-GUIDE.md).
 
-Below is a quick overview of the essential steps:
-
-### Required Dependencies
-
-Include these dependencies in your HTML file:
-
-```html
-<!-- Required Dependencies -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-<link href="dist/design-system.css" rel="stylesheet">
-```
-
-### Installation Notes and Potential Issues
+### Installation
 
 ⚠️ **Important Installation Considerations**:
 
@@ -111,7 +103,6 @@ The `examples/` directory contains complete, ready-to-use example pages that dem
 - **car-dashboard.html**: An automotive metrics dashboard
 - **bitcoin-dashboard.html**: A cryptocurrency tracking dashboard
 - **overview-card-demo.html**: Examples of different overview card implementations
-- **button-sizes.html**: A showcase of button size variants and styles
 
 These examples showcase proper implementation of components, layout patterns, and responsive design. They're a great starting point for building your own pages.
 
@@ -922,11 +913,6 @@ The design system provides helper classes for controlling card layouts within gr
 - If some cards don't need footers, don't use the `aligned-footers` class
 - For simple card layouts, use only the grid classes without these helpers
 
-**Example use cases:**
-- Use `equal-height-cards` when cards have varying content lengths but should appear uniform
-- Use `aligned-footers` when cards have action buttons that should be aligned at the bottom
-- For dashboard layouts with mixed content types, prefer simple grid layouts without these helpers
-
 **Common mistakes to avoid:**
 - ❌ Don't use `aligned-footers` when some cards don't have footer elements
 - ❌ Don't add these helper classes to all grid containers by default
@@ -1595,7 +1581,7 @@ project/
 │   └── layout.css
 ├── components/
 │   ├── atoms/
-│   └── molecules/
+│   ├── molecules/
 └── assets/
 ```
 
@@ -1606,7 +1592,7 @@ project/
    - `login-register.html`: Authentication forms with validation
    - `people-management.html`: User management interface
    - `transportation-dashboard.html`: Data dashboard layout with proper card grid implementation
-2. Review component usage in `showcase.html`
+2. Review component usage in the example pages
 3. Follow BEM naming conventions
 4. Use the design tokens consistently
 
