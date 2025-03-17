@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard with Sidemenu - Keboola Design System</title>
+    
+    <!-- Preload critical fonts for performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    
+    <!-- Required Dependencies -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="../dist/design-system.css" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- REQUIRED: Base font styles -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family-base);
+            background-color: var(--neutral-grey-50);
+            color: var(--neutral-grey-800);
+            line-height: var(--body-body-line-height);
+        }
+        
+        /* Sidemenu Styles */
+        .sidemenu {
+            width: 240px;
+            background-color: var(--neutral-white);
+            border-right: 1px solid var(--neutral-grey-150);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        .sidemenu__header {
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--neutral-grey-150);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+        
+        .sidemenu__logo {
+            background-color: var(--secondary-blue-500-base);
+            border-radius: var(--radius-small);
+            width: var(--space-8);
+            height: var(--space-8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .sidemenu__title {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--neutral-grey-900);
+        }
+        
+        .sidemenu__nav {
+            padding: var(--space-4) 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidemenu__section {
+            margin-bottom: var(--space-4);
+        }
+        
+        .sidemenu__section-title {
+            padding: 0 var(--space-4);
+            margin-bottom: var(--space-2);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--neutral-grey-600);
+            text-transform: uppercase;
+        }
+        
+        .sidemenu__item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-2) var(--space-4);
+            color: var(--neutral-grey-800);
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        
+        .sidemenu__item:hover {
+            background-color: var(--neutral-grey-100);
+        }
+        
+        .sidemenu__item.active {
+            background-color: var(--secondary-blue-100);
+            color: var(--secondary-blue-600);
+            font-weight: 500;
+        }
+        
+        .sidemenu__item-icon {
+            width: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .sidemenu__item-text {
+            font-size: 14px;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 240px;
+            padding: var(--space-6);
+            min-height: 100vh;
+        }
+        
+        .dashboard-header {
+            margin-bottom: var(--space-6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--neutral-grey-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-grey-600);
+        }
+    </style>
+</head>
+<body class="bg-grey-50">
+    <!-- Sidemenu -->
+    <aside class="sidemenu">
+        <div class="sidemenu__header">
+            <div class="sidemenu__logo">
+                <svg width="20" height="20" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M130.979 162.525C95.5288 162.525 68.424 118.762 68.424 63.3339C68.424 7.91454 91.0084 0 130.979 0C170.949 0 191.578 7.91454 191.578 63.3339C191.578 118.762 163.213 162.525 130.979 162.525ZM202.062 213.111C204.974 218.015 203.322 224.345 198.385 227.233C196.724 228.201 194.907 228.659 193.117 228.659C189.561 228.659 186.093 226.845 184.154 223.579C180.807 217.962 177.382 213.965 173.523 210.312C169.663 206.676 165.282 203.419 160.266 199.624C157.814 197.784 155.372 196.191 152.938 194.835C153.224 195.363 153.511 195.9 153.807 196.455C160.848 209.872 168.116 228.492 168.15 249.7C168.15 255.387 163.5 260 157.762 260C152.016 260 147.365 255.387 147.365 249.7C147.4 233.571 141.697 218.059 135.682 206.561C133.735 202.811 131.77 199.501 129.997 196.737C128.319 199.369 126.459 202.494 124.598 206.016C118.487 217.566 112.593 233.325 112.628 249.7C112.628 255.387 107.977 260 102.24 260C96.5024 260 91.8517 255.387 91.8517 249.7C91.8864 228.492 99.1451 209.872 106.195 196.455C106.482 195.9 106.769 195.363 107.064 194.835C104.622 196.191 102.188 197.784 99.7362 199.624C94.7117 203.419 90.3304 206.676 86.4794 210.312C82.6197 213.965 79.1859 217.962 75.8391 223.588C72.927 228.492 66.555 230.12 61.6173 227.233C56.671 224.345 55.028 218.015 57.9402 213.111C62.2867 205.778 67.1722 200.056 72.1793 195.354C77.1952 190.644 82.2459 186.929 87.1487 183.214C89.4698 181.453 91.8517 179.833 94.2857 178.363C91.8517 176.893 89.4698 175.264 87.1487 173.504C75.9347 165.026 66.1899 153.59 57.9402 139.706C55.028 134.794 56.671 128.473 61.6173 125.585C66.555 122.697 72.927 124.326 75.8391 129.23C82.9848 141.264 91.0954 150.579 99.7275 157.093C108.986 164.04 118.078 167.482 127.432 168.028C128.284 168.001 129.145 167.975 129.997 167.975C130.857 167.975 131.709 168.001 132.561 168.028C141.915 167.482 151.016 164.04 160.266 157.093C168.898 150.579 177.017 141.264 184.154 129.23C187.075 124.326 193.438 122.697 198.385 125.585C203.322 128.473 204.974 134.794 202.062 139.697C193.812 153.59 184.059 165.026 172.845 173.504C170.523 175.264 168.142 176.893 165.716 178.363C168.142 179.833 170.523 181.453 172.845 183.214C177.756 186.929 182.798 190.644 187.823 195.354C192.83 200.056 197.707 205.778 202.062 213.111ZM116.331 126.58C110.594 126.58 105.943 131.202 105.943 136.889C105.943 142.594 110.594 147.207 116.331 147.207C122.069 147.207 126.719 142.594 126.719 136.889C126.719 131.202 122.069 126.58 116.331 126.58ZM143.662 126.58C137.925 126.58 133.274 131.202 133.274 136.889C133.274 142.594 137.925 147.207 143.662 147.207C149.399 147.207 154.05 142.594 154.05 136.889C154.05 131.202 149.399 126.58 143.662 126.58Z" fill="white"/>
+                </svg>
+            </div>
+            <div class="sidemenu__title">Keboola Analytics</div>
+        </div>
+        
+        <nav class="sidemenu__nav">
+            <div class="sidemenu__section">
+                <div class="sidemenu__section-title">Main</div>
+                <a href="#" class="sidemenu__item active">
+                    <div class="sidemenu__item-icon">
+                        <i class="fas fa-home icon-primary"></i>
+                    </div>
+                    <div class="sidemenu__item-text">Dashboard</div>
+                </a>
+                <a href="#" class="sidemenu__item">
+                    <div class="sidemenu__item-icon">
+                        <i class="fas fa-chart-line icon-muted"></i>
+                    </div>
+                    <div class="sidemenu__item-text">Analytics</div>
+                </a>
+                <a href="#" class="sidemenu__item">
+                    <div class="sidemenu__item-icon">
+                        <i class="fas fa-table icon-muted"></i>
+                    </div>
+                    <div class="sidemenu__item-text">Data Tables</div>
+                </a>
+            </div>
+            
+            <div class="sidemenu__section">
+                <div class="sidemenu__section-title">Management</div>
+                <a href="#" class="sidemenu__item">
+                    <div class="sidemenu__item-icon">
+                        <i class="fas fa-users icon-muted"></i>
+                    </div>
+                    <div class="sidemenu__item-text">Users</div>
+                </a>
+                <a href="#" class="sidemenu__item">
+                    <div class="sidemenu__item-icon">
+                        <i class="fas fa-cog icon-muted"></i>
+                    </div>
+                    <div class="sidemenu__item-text">Settings</div>
+                </a>
+                <a href="#" class="sidemenu__item">
+                    <div class="sidemenu__item-icon">
+                        <i class="fas fa-bell icon-muted"></i>
+                    </div>
+                    <div class="sidemenu__item-text">Notifications</div>
+                </a>
+            </div>
+            
+            <div class="sidemenu__section">
+                <div class="sidemenu__section-title">Resources</div>
+                <a href="#" class="sidemenu__item">
+                    <div class="sidemenu__item-icon">
+                        <i class="fas fa-book icon-muted"></i>
+                    </div>
+                    <div class="sidemenu__item-text">Documentation</div>
+                </a>
+                <a href="#" class="sidemenu__item">
+                    <div class="sidemenu__item-icon">
+                        <i class="fas fa-question-circle icon-muted"></i>
+                    </div>
+                    <div class="sidemenu__item-text">Help Center</div>
+                </a>
+            </div>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="dashboard-header">
+            <h1 class="heading-1">Analytics Dashboard</h1>
+            <div class="user-menu">
+                <div class="icon-container icon-small">
+                    <i class="fas fa-bell icon-muted"></i>
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- KPI Section -->
+        <section class="section" style="margin-bottom: var(--space-6);">
+            <div class="grid-responsive-kpi">
+                <div class="overview-card bg-white">
+                    <div class="overview-card__header">
+                        <span class="overview-card__title">Total Revenue</span>
+                        <span class="badge badge-success">
+                            <span class="badge-text">+12.5%</span>
+                        </span>
+                    </div>
+                    <div class="overview-card__value">$128,450</div>
+                    <div class="overview-card__subtitle">+$14,250 vs last month</div>
+                </div>
+
+                <div class="overview-card bg-white">
+                    <div class="overview-card__header">
+                        <span class="overview-card__title">Active Users</span>
+                        <span class="badge badge-success">
+                            <span class="badge-text">+8.3%</span>
+                        </span>
+                    </div>
+                    <div class="overview-card__value">1,842</div>
+                    <div class="overview-card__subtitle">+142 vs last month</div>
+                </div>
+
+                <div class="overview-card bg-white">
+                    <div class="overview-card__header">
+                        <span class="overview-card__title">Conversion Rate</span>
+                        <span class="badge badge-warning">
+                            <span class="badge-text">-2.1%</span>
+                        </span>
+                    </div>
+                    <div class="overview-card__value">4.8%</div>
+                    <div class="overview-card__subtitle">-0.1% vs last month</div>
+                </div>
+
+                <div class="overview-card bg-white">
+                    <div class="overview-card__header">
+                        <span class="overview-card__title">Avg. Session</span>
+                        <span class="badge badge-success">
+                            <span class="badge-text">+3.2%</span>
+                        </span>
+                    </div>
+                    <div class="overview-card__value">5:42</div>
+                    <div class="overview-card__subtitle">+10s vs last month</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Charts Section -->
+        <section class="section" style="margin-bottom: var(--space-6);">
+            <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                <div class="card bg-white">
+                    <div class="card__title--with-icon">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span class="card__title-text">Revenue Trend</span>
+                    </div>
+                    <div class="card__content">
+                        <!-- Revenue Chart -->
+                        <div style="height: 250px; position: relative;">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card bg-white">
+                    <div class="card__title--with-icon">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <span class="card__title-text">Traffic Sources</span>
+                    </div>
+                    <div class="card__content">
+                        <!-- Traffic Sources Chart -->
+                        <div style="height: 250px; position: relative;">
+                            <canvas id="trafficChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Recent Activity and Top Products -->
+        <section class="section">
+            <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                <div class="card bg-white">
+                    <h2 class="card__title">Recent Activity</h2>
+                    <div class="card__content">
+                        <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-user-plus icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">New user registered</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="small-body-text">5 min ago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-shopping-cart icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">New order placed</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="small-body-text">15 min ago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-comment icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">New comment on product</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="small-body-text">1 hour ago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-credit-card icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Payment processed</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="small-body-text">2 hours ago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-truck icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Order shipped</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span class="small-body-text">3 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card bg-white">
+                    <h2 class="card__title">Top Products</h2>
+                    <div class="card__content">
+                        <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-laptop icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Premium Laptop</span>
+                                </div>
+                                <div class="activity-row__meta" style="display: flex; align-items: center;">
+                                    <span class="badge badge-success" style="width: 80px; text-align: center;">
+                                        <span class="badge-text">High</span>
+                                    </span>
+                                    <span style="width: 70px; text-align: right;">$1,299</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-mobile-alt icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Smartphone Pro</span>
+                                </div>
+                                <div class="activity-row__meta" style="display: flex; align-items: center;">
+                                    <span class="badge badge-success" style="width: 80px; text-align: center;">
+                                        <span class="badge-text">High</span>
+                                    </span>
+                                    <span style="width: 70px; text-align: right;">$999</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-headphones icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Wireless Headphones</span>
+                                </div>
+                                <div class="activity-row__meta" style="display: flex; align-items: center;">
+                                    <span class="badge badge-warning" style="width: 80px; text-align: center;">
+                                        <span class="badge-text">Medium</span>
+                                    </span>
+                                    <span style="width: 70px; text-align: right;">$199</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-tablet-alt icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Tablet Ultra</span>
+                                </div>
+                                <div class="activity-row__meta" style="display: flex; align-items: center;">
+                                    <span class="badge badge-warning" style="width: 80px; text-align: center;">
+                                        <span class="badge-text">Medium</span>
+                                    </span>
+                                    <span style="width: 70px; text-align: right;">$649</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-keyboard icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Mechanical Keyboard</span>
+                                </div>
+                                <div class="activity-row__meta" style="display: flex; align-items: center;">
+                                    <span class="badge badge-error" style="width: 80px; text-align: center;">
+                                        <span class="badge-text">Low</span>
+                                    </span>
+                                    <span style="width: 70px; text-align: right;">$149</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Chart.js implementation
+        let revenueChart, trafficChart;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Revenue Chart
+            const revenueCanvas = document.getElementById('revenueChart');
+            const revenueCtx = revenueCanvas.getContext('2d');
+            
+            // Traffic Sources Chart
+            const trafficCanvas = document.getElementById('trafficChart');
+            const trafficCtx = trafficCanvas.getContext('2d');
+            
+            // Function to create/update charts
+            function createCharts() {
+                // Destroy existing charts if they exist
+                if (revenueChart) revenueChart.destroy();
+                if (trafficChart) trafficChart.destroy();
+                
+                // Create Revenue Chart
+                revenueChart = new Chart(revenueCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        datasets: [{
+                            label: 'Revenue',
+                            data: [65000, 59000, 80000, 81000, 86000, 95000, 98000, 110000, 105000, 118000, 123000, 128450],
+                            backgroundColor: 'rgba(31, 143, 255, 0.1)',
+                            borderColor: 'rgba(31, 143, 255, 1)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                grid: {
+                                    color: 'rgba(217, 221, 229, 0.5)'
+                                },
+                                ticks: {
+                                    callback: function(value) {
+                                        return '$' + value.toLocaleString();
+                                    }
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Create Traffic Sources Chart
+                trafficChart = new Chart(trafficCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Organic Search', 'Direct', 'Social Media', 'Referral', 'Email'],
+                        datasets: [{
+                            data: [35, 25, 20, 15, 5],
+                            backgroundColor: [
+                                'rgba(31, 143, 255, 0.8)',
+                                'rgba(30, 199, 30, 0.8)',
+                                'rgba(245, 147, 0, 0.8)',
+                                'rgba(146, 92, 255, 0.8)',
+                                'rgba(0, 194, 135, 0.8)'
+                            ],
+                            borderColor: [
+                                'rgba(31, 143, 255, 1)',
+                                'rgba(30, 199, 30, 1)',
+                                'rgba(245, 147, 0, 1)',
+                                'rgba(146, 92, 255, 1)',
+                                'rgba(0, 194, 135, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 12,
+                                    padding: 15,
+                                    font: {
+                                        family: 'Inter',
+                                        size: 12
+                                    }
+                                }
+                            }
+                        },
+                        cutout: '65%'
+                    }
+                });
+            }
+            
+            // Create charts initially
+            createCharts();
+            
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                // Clear the timeout if it exists
+                if (resizeTimeout) clearTimeout(resizeTimeout);
+                
+                // Set a timeout to avoid excessive updates
+                resizeTimeout = setTimeout(function() {
+                    createCharts();
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html> 
