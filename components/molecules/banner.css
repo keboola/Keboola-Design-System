@@ -24,17 +24,18 @@
   flex: 1;
 }
 
+/* Banner title - only layout properties, typography comes from body-text-medium class */
 .banner .title {
-  font-family: var(--body-body-medium-family);
-  color: var(--neutral-grey-800);
   margin-bottom: var(--space-3);
+  color: var(--neutral-grey-800);
 }
 
-.banner .title2 {
-  font-family: var(--body-body-family);
-  font-size: var(--body-body-size);
-  font-weight: var(--body-body-weight);
+/* Banner text - only layout properties, typography comes from body-text class */
+.banner .text {
   color: var(--neutral-grey-800);
+  text-align: left;
+  position: relative;
+  flex: 1;
 }
 
 .banner .info {
@@ -66,12 +67,8 @@
   overflow: visible;
 }
 
+/* Remove typography properties from paragraph, use body-text class instead */
 .banner .paragraph {
-  font-family: var(--body-body-family);
-  font-size: var(--body-body-size);
-  font-weight: var(--body-body-weight);
-  line-height: var(--body-body-line-height);
-  color: var(--neutral-grey-800);
   padding: var(--space-1) 0 0 0;
   display: flex;
   flex-direction: row;
@@ -88,17 +85,6 @@
   width: var(--space-5);
   height: var(--space-5);
   position: relative;
-}
-
-.banner .text {
-  color: var(--neutral-grey-800);
-  text-align: left;
-  font-family: var(--font-family-base);
-  font-size: var(--body-body-size);
-  line-height: var(--body-body-line-height);
-  font-weight: var(--body-body-weight);
-  position: relative;
-  flex: 1;
 }
 
 /* Icon Colors */

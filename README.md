@@ -8,7 +8,8 @@ A comprehensive design system for building consistent web interfaces with Kebool
 - [Tokens](./tokens/) - Design tokens for colors, typography, and variables
 - [Components](./components/) - Reusable UI components
 
-## Overview
+## Table of Contents
+
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
    - [Installation](#installation)
@@ -102,6 +103,7 @@ The `examples/` directory contains complete, ready-to-use example pages that dem
 - **transportation-dashboard.html**: A data visualization dashboard example
 - **car-dashboard.html**: An automotive metrics dashboard
 - **bitcoin-dashboard.html**: A cryptocurrency tracking dashboard
+- **sales-dashboard.html**: A sales analytics dashboard with proper banner implementation
 - **overview-card-demo.html**: Examples of different overview card implementations
 
 These examples showcase proper implementation of components, layout patterns, and responsive design. They're a great starting point for building your own pages.
@@ -1515,9 +1517,13 @@ This consistent 12px spacing creates proper visual hierarchy and improves readab
 - ✅ Use typography classes instead of direct font properties
 - ✅ Follow the font-weight guidelines
 - ✅ Include proper text color classes
+- ✅ Always apply typography classes to component text elements
+- ✅ Combine component classes with typography classes (e.g., `<div class="title body-text-medium">`)
 - ❌ Don't mix typography classes incorrectly
 - ❌ Don't skip small-body-text for subtitles
 - ❌ Don't use raw font-size or font-weight values
+- ❌ Don't create components with text elements missing typography classes
+- ❌ Don't define typography properties in component CSS (use typography classes instead)
 
 ### Layout
 - ✅ Use `bg-grey-50` on body element

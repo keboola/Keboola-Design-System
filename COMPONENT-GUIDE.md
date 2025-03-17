@@ -21,12 +21,25 @@ This guide provides detailed instructions on how to correctly implement componen
 3. [Common Patterns](#common-patterns)
    - [Form Card Pattern](#form-card-pattern)
    - [Activity List Pattern](#activity-list-pattern)
-4. [Best Practices and Common Mistakes](#common-mistakes)
+4. [Typography Guidelines](#typography-guidelines)
+   - [Typography in Components](#typography-in-components)
+5. [Banner Placement Guidelines](#banner-placement-guidelines)
+   - [Page-Level Banners](#page-level-banners)
+   - [Card-Level Banners](#card-level-banners)
+6. [Best Practices and Common Mistakes](#common-mistakes)
    - [General Component Mistakes](#general-component-mistakes)
    - [Specific Component Issues](#specific-component-issues)
    - [Typography Best Practices](#typography-best-practices)
    - [Layout Best Practices](#layout-best-practices)
    - [Spacing Best Practices](#spacing-best-practices)
+7. [Responsive Grid Layouts](#responsive-grid-layouts)
+   - [Responsive Grid Classes](#responsive-grid-classes)
+   - [Breakpoints](#breakpoints)
+   - [Balanced Layouts for Uneven Numbers](#balanced-layouts-for-uneven-numbers)
+   - [Example Implementation](#example-implementation)
+   - [Fixed vs Responsive Grid](#fixed-vs-responsive-grid)
+   - [How It Works](#how-it-works)
+   - [Recommended Minimum Widths](#recommended-minimum-widths)
 
 ## Getting Started
 
@@ -663,7 +676,132 @@ Base Class + Style Variant + Size + Optional Modifiers
 </div>
 ```
 
-## Common Mistakes
+## Typography Guidelines
+
+### Typography in Components
+
+When implementing components, always follow these typography rules:
+
+1. **Always Use Typography Classes**: Every text element must use one of the design system's typography classes:
+   - `heading-1`, `heading-2`, `heading-3`, `heading-4` for headings
+   - `body-text`, `body-text-medium` for standard text
+   - `small-body-text`, `small-body-text-medium` for smaller text
+
+2. **Never Define Custom Typography**: Components should never define their own font properties. Instead:
+   ```html
+   <!-- ✅ CORRECT: Using typography classes -->
+   <div class="banner">
+     <div class="title body-text-medium">Title Text</div>
+     <div class="text body-text">Description text</div>
+   </div>
+   
+   <!-- ❌ INCORRECT: Missing typography classes -->
+   <div class="banner">
+     <div class="title">Title Text</div>
+     <div class="text">Description text</div>
+   </div>
+   ```
+
+3. **Component CSS Should Extend, Not Replace**: Component CSS should handle layout, spacing, and colors, but typography should come from the design system classes:
+   ```css
+   /* ✅ CORRECT: CSS focuses on layout, not typography */
+   .component .title {
+     margin-bottom: var(--space-3);
+     color: var(--neutral-grey-800);
+   }
+   
+   /* ❌ INCORRECT: CSS defines typography properties */
+   .component .title {
+     font-family: var(--body-body-medium-family);
+     font-size: var(--body-body-medium-size);
+     font-weight: var(--body-body-medium-weight);
+     line-height: var(--body-body-medium-line-height);
+     margin-bottom: var(--space-3);
+   }
+   ```
+
+4. **Typography Class Combinations**: When a component needs specific styling beyond typography, combine the typography class with the component class:
+   ```html
+   <div class="component-title body-text-medium">Title</div>
+   ```
+
+Following these guidelines ensures consistent typography across all components and makes the design system more maintainable.
+
+## Banner Placement Guidelines
+
+Banners are important notification elements that should be placed in prominent positions to ensure visibility:
+
+### Page-Level Banners
+
+1. **Primary Placement**: Banners should appear at the top of the page content, immediately:
+   - After the header if there are no tabs
+   - After the tabs if tabs are present
+
+2. **Example - Banner after header**:
+   ```html
+   <header class="header">
+     <!-- Header content -->
+   </header>
+   
+   <!-- Banner immediately after header -->
+   <div class="banner style-variant-success">
+     <!-- Banner content -->
+   </div>
+   
+   <section class="section">
+     <!-- Page content -->
+   </section>
+   ```
+
+3. **Example - Banner after tabs**:
+   ```html
+   <header class="header">
+     <!-- Header content -->
+   </header>
+   
+   <div class="tabs tabs-large">
+     <!-- Tabs content -->
+   </div>
+   
+   <!-- Banner after tabs -->
+   <div class="banner style-variant-success">
+     <!-- Banner content -->
+   </div>
+   
+   <section class="section">
+     <!-- Page content -->
+   </section>
+   ```
+
+### Card-Level Banners
+
+1. **Within Cards**: When a banner is specific to a card, place it immediately after the card title:
+   ```html
+   <div class="card bg-white">
+     <h2 class="card__title">Card Title</h2>
+     
+     <!-- Banner immediately after card title -->
+     <div class="banner style-variant-warning">
+       <!-- Banner content -->
+     </div>
+     
+     <!-- Add margin-top to create space between banner and content -->
+     <div class="card__content" style="margin-top: var(--space-4);">
+       <!-- Card content -->
+     </div>
+   </div>
+   ```
+
+2. **Spacing Guidelines**:
+   - The banner should not have any margin itself
+   - Add `margin-top: var(--space-4)` to the card__content element to create proper spacing
+   - This ensures consistent spacing while maintaining the banner's full width within the card
+
+3. **Priority**: Banners should always be the first element after the title to ensure they're noticed before the user engages with the content.
+
+Following these placement guidelines ensures that important notifications are visible and properly positioned in the interface hierarchy. 
+
+## Best Practices and Common Mistakes
 
 ### General Component Mistakes
 
@@ -730,3 +868,104 @@ Base Class + Style Variant + Size + Optional Modifiers
 - ❌ Don't mix margin-based and gap-based spacing at the same level
 - ❌ Don't use raw pixel values instead of spacing variables
 - ❌ Don't use different gap values for cards within the same layout 
+
+## Responsive Grid Layouts
+
+The design system provides responsive grid classes that automatically adjust their layout based on screen size.
+
+### Responsive Grid Classes
+
+Instead of using fixed column counts or inline styles, use these responsive grid classes:
+
+```html
+<!-- For KPI/Overview cards (4-2-1 columns) -->
+<div class="grid-responsive-kpi">
+  <!-- Cards -->
+</div>
+
+<!-- For content cards (2-1 columns) -->
+<div class="grid-responsive-cards">
+  <!-- Cards -->
+</div>
+
+<!-- For small cards (4-1 columns) -->
+<div class="grid-responsive-small">
+  <!-- Cards -->
+</div>
+```
+
+### Breakpoints
+
+These classes use the following breakpoints:
+
+| Class | Large (>1024px) | Medium (768-1024px) | Small (576-768px) | Extra Small (<576px) |
+|-------|----------------|---------------------|-------------------|----------------------|
+| `grid-responsive-kpi` | 4 columns | 2 columns | 2 columns | 1 column |
+| `grid-responsive-cards` | 2 columns | 2 columns | 1 column | 1 column |
+| `grid-responsive-small` | 4 columns | 4 columns | 1 column | 1 column |
+
+This creates balanced layouts at different screen sizes:
+- At large screens, KPI cards show in a row of 4
+- At medium screens, KPI cards show in a 2×2 grid
+- At small screens, cards stack in a single column
+
+### Balanced Layouts for Uneven Numbers
+
+For more balanced layouts with specific numbers of cards, add these modifier classes:
+
+```html
+<!-- For 3 KPI cards (single row of 3) -->
+<div class="grid-responsive-kpi grid-3-cards">
+  <!-- 3 cards -->
+</div>
+
+<!-- For 5 KPI cards (3-2 layout) -->
+<div class="grid-responsive-kpi grid-5-cards">
+  <!-- 5 cards -->
+</div>
+```
+
+#### For 5 KPI Cards with `grid-5-cards` class:
+- Large screens: 3-2 layout (3 cards in first row, 2 in second)
+- Medium screens: 3-2 layout
+- Small screens: Single column
+
+#### For 3 KPI Cards with `grid-3-cards` class:
+- Large screens: Single row of 3
+- Medium screens: Single row of 3
+- Small screens: Single column
+
+This ensures that cards are distributed evenly across rows, with more cards in the first row if the number is not even.
+
+### Example Implementation
+
+```html
+<!-- 5 KPI cards with balanced 3-2 layout -->
+<section class="section">
+  <div class="grid-responsive-kpi grid-5-cards">
+    <div class="overview-card bg-white"><!-- Card 1 --></div>
+    <div class="overview-card bg-white"><!-- Card 2 --></div>
+    <div class="overview-card bg-white"><!-- Card 3 --></div>
+    <div class="overview-card bg-white"><!-- Card 4 --></div>
+    <div class="overview-card bg-white"><!-- Card 5 --></div>
+  </div>
+</section>
+```
+
+### Fixed vs Responsive Grid
+
+While the design system still supports fixed column grids, responsive grids are recommended for most use cases:
+
+```html
+<!-- Fixed 4-column grid (not recommended) -->
+<div class="grid grid-cols-4" style="gap: var(--space-4)">
+  <!-- Grid items -->
+</div>
+
+<!-- Responsive grid (recommended) -->
+<div class="grid-responsive-kpi">
+  <!-- Grid items -->
+</div>
+```
+
+This approach ensures your layouts adapt gracefully to different screen sizes with predictable breakpoints. 

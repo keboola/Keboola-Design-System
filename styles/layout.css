@@ -45,13 +45,93 @@ body {
 .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
 .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-cols-4 { 
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Responsive Grid Variants */
+.grid-responsive-kpi {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-4);
 }
 
-/* Auto-fit Grid Variants */
+/* Media queries for responsive grids */
+@media (max-width: 1280px) {
+    .grid-responsive-kpi {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .grid-responsive-kpi {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Special case for 3 and 5 cards */
+.grid-responsive-kpi.grid-3-cards {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-responsive-kpi.grid-5-cards {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+    .grid-responsive-kpi.grid-3-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .grid-responsive-kpi.grid-5-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.grid-responsive-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+}
+
+/* Special case for 3 cards */
+.grid-responsive-cards.grid-3-cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-responsive-small {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+}
+
+/* Special case for 5 cards */
+.grid-responsive-small.grid-5-cards {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+    .grid-responsive-cards,
+    .grid-responsive-small {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Reset special case layouts on small screens */
+    .grid-responsive-kpi.grid-3-cards,
+    .grid-responsive-kpi.grid-5-cards,
+    .grid-responsive-cards.grid-3-cards,
+    .grid-responsive-small.grid-5-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .grid-responsive-kpi,
+    .grid-responsive-kpi.grid-3-cards,
+    .grid-responsive-kpi.grid-5-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Legacy Auto-fit Grid Variants - Maintained for backward compatibility */
 .grid-cols-cards { 
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-4);
