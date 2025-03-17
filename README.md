@@ -160,7 +160,7 @@ Every page should follow this basic structure:
 /* Secondary Colors - Blue */
 --secondary-blue-800: #064a8f;
 --secondary-blue-700: #075fb8;
---secondary-blue-600: #0975e0;  /* Primary blue for icons and accents */
+--secondary-blue-600: #0975e0;
 --secondary-blue-500-base: #1f8fff;
 --secondary-blue-450: #3e9eff;
 --secondary-blue-200: #c2e0ff;
