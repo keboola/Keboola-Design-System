@@ -612,11 +612,24 @@ A common pattern is to place multiple grey overview cards in a grid inside a whi
   </div>
   <div class="tab-item">
     <div class="tab-content">
+      <div class="icon-container icon-small">
+        <i class="fas fa-chart-line"></i>
+      </div>
       <div class="tab-text">Another Tab</div>
     </div>
+    <div class="tab-active-line"></div>
   </div>
 </div>
 ```
+
+#### Tab Component Requirements
+
+- Always use the `tabs tabs-large` class for the container
+- Use `tab-item` for each tab (with `active` class for the active tab)
+- Include `tab-content` for the content wrapper
+- Use `icon-container icon-small` for icons
+- Include `tab-active-line` in all tabs (required for hover effects)
+- Don't wrap tabs in cards - they should be standalone components
 
 ### Badges
 

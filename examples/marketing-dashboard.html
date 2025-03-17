@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Analytics Dashboard</title>
+    
+    <!-- Required dependencies -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Design System CSS -->
+    <link href="../dist/design-system.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-body-family);
+            background-color: var(--neutral-grey-50);
+            color: var(--neutral-grey-800);
+            line-height: var(--body-body-line-height);
+        }
+        
+        /* Chart placeholder styles */
+        .chart-placeholder {
+            background-color: var(--neutral-grey-100);
+            border-radius: 8px;
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Grid layouts */
+        .grid-responsive-kpi {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-4);
+        }
+        
+        .grid-responsive-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-4);
+        }
+        
+        @media (max-width: 1200px) {
+            .grid-responsive-kpi {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid-responsive-kpi,
+            .grid-responsive-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-grey-50">
+    <div class="container page-container" style="padding: var(--space-16)">
+        <div class="content-wrapper" style="display: flex; flex-direction: column; gap: var(--space-6)">
+            <header class="header">
+                <h1 class="header__title heading-1">Marketing Analytics Dashboard</h1>
+                <div class="header__actions">
+                    <button class="btn btn-secondary btn-medium">
+                        <div class="btn-icon">
+                            <i class="fas fa-download icon-muted"></i>
+                        </div>
+                        <span class="btn-text">EXPORT REPORT</span>
+                    </button>
+                    <button class="btn btn-primary btn-medium">
+                        <div class="btn-icon">
+                            <i class="fas fa-plus text-white"></i>
+                        </div>
+                        <span class="btn-text">NEW CAMPAIGN</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="tabs tabs-large">
+                <div class="tab-item active">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="tab-text">Overview</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="tab-text">Campaigns</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+                
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="tab-text">Audience</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+
+                <div class="tab-item">
+                    <div class="tab-content">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-hashtag"></i>
+                        </div>
+                        <div class="tab-text">Social Media</div>
+                    </div>
+                    <div class="tab-active-line"></div>
+                </div>
+            </div>
+
+            <!-- Success Banner -->
+            <div class="banner style-variant-success">
+                <div class="icon-container icon-small">
+                    <i class="fas fa-bullseye icon-success"></i>
+                </div>
+                <div class="content">
+                    <div class="title body-text-medium">Campaign Performance Insight</div>
+                    <div class="text body-text">Your email campaign "Summer Sale" has achieved a 28% higher open rate than industry average. Consider expanding this approach to other product lines.</div>
+                </div>
+                <button class="button-close">
+                    <i class="fas fa-times icon-small"></i>
+                </button>
+            </div>
+
+            <!-- Key Performance Indicators -->
+            <section class="section">
+                <div class="grid-responsive-kpi">
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Website Visitors</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">+15.2%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">24,892</div>
+                        <div class="overview-card__subtitle">+3,280 vs last month</div>
+                    </div>
+
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Conversion Rate</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">+2.8%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">3.6%</div>
+                        <div class="overview-card__subtitle">+0.1% vs last month</div>
+                    </div>
+
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">Cost Per Acquisition</span>
+                            <span class="badge badge-success">
+                                <span class="badge-text">-8.5%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">$42.18</div>
+                        <div class="overview-card__subtitle">-$3.92 vs last month</div>
+                    </div>
+
+                    <div class="overview-card bg-white">
+                        <div class="overview-card__header">
+                            <span class="overview-card__title">ROI</span>
+                            <span class="badge badge-warning">
+                                <span class="badge-text">-1.2%</span>
+                            </span>
+                        </div>
+                        <div class="overview-card__value">287%</div>
+                        <div class="overview-card__subtitle">-3.5% vs last month</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Traffic Sources Chart -->
+            <section class="section">
+                <div class="card bg-white">
+                    <div class="card__title--with-icon">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <span class="card__title-text">Traffic Sources</span>
+                    </div>
+                    
+                    <div class="banner style-variant-warning">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-lightbulb icon-warning"></i>
+                        </div>
+                        <div class="content">
+                            <div class="title body-text-medium">Traffic Insight</div>
+                            <div class="text body-text">Direct traffic has increased by 32% since your latest social media campaign. Consider allocating more budget to social channels.</div>
+                        </div>
+                        <button class="button-close">
+                            <i class="fas fa-times icon-small"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="card__content" style="margin-top: var(--space-4);">
+                        <div class="chart-placeholder">
+                            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                <div class="icon-container icon-large">
+                                    <i class="fas fa-chart-pie icon-muted"></i>
+                                </div>
+                                <span class="body-text-medium">Traffic sources chart would appear here</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Campaign Performance and Channel Metrics -->
+            <section class="section">
+                <div class="grid-responsive-cards">
+                    <!-- Campaign Performance -->
+                    <div class="card bg-white">
+                        <h2 class="card__title">Top Campaigns</h2>
+                        <div class="card__content">
+                            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                                <div class="activity-row">
+                                    <div class="activity-row__content">
+                                        <div class="icon-container icon-small">
+                                            <i class="fas fa-envelope icon-muted"></i>
+                                        </div>
+                                        <span class="activity-row__text">Summer Sale Email</span>
+                                    </div>
+                                    <div class="activity-row__meta">
+                                        <span>$12,450</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-row">
+                                    <div class="activity-row__content">
+                                        <div class="icon-container icon-small">
+                                            <i class="fab fa-facebook icon-muted"></i>
+                                        </div>
+                                        <span class="activity-row__text">Facebook Retargeting</span>
+                                    </div>
+                                    <div class="activity-row__meta">
+                                        <span>$9,820</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-row">
+                                    <div class="activity-row__content">
+                                        <div class="icon-container icon-small">
+                                            <i class="fab fa-google icon-muted"></i>
+                                        </div>
+                                        <span class="activity-row__text">Google Search Ads</span>
+                                    </div>
+                                    <div class="activity-row__meta">
+                                        <span>$8,340</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-row">
+                                    <div class="activity-row__content">
+                                        <div class="icon-container icon-small">
+                                            <i class="fab fa-instagram icon-muted"></i>
+                                        </div>
+                                        <span class="activity-row__text">Instagram Stories</span>
+                                    </div>
+                                    <div class="activity-row__meta">
+                                        <span>$6,720</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-row">
+                                    <div class="activity-row__content">
+                                        <div class="icon-container icon-small">
+                                            <i class="fas fa-podcast icon-muted"></i>
+                                        </div>
+                                        <span class="activity-row__text">Podcast Sponsorship</span>
+                                    </div>
+                                    <div class="activity-row__meta">
+                                        <span>$5,280</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Channel Metrics -->
+                    <div class="card bg-white">
+                        <h2 class="card__title">Channel Performance</h2>
+                        <div class="card__content">
+                            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                                <div class="activity-row">
+                                    <div class="activity-row__content">
+                                        <div class="icon-container icon-small">
+                                            <i class="fas fa-envelope icon-muted"></i>
+                                        </div>
+                                        <span class="activity-row__text">Email Marketing</span>
+                                    </div>
+                                    <div class="activity-row__meta">
+                                        <span class="badge badge-success">
+                                            <span class="badge-text">28% CTR</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-row">
+                                    <div class="activity-row__content">
+                                        <div class="icon-container icon-small">
+                                            <i class="fas fa-search icon-muted"></i>
+                                        </div>
+                                        <span class="activity-row__text">Search</span>
+                                    </div>
+                                    <div class="activity-row__meta">
+                                        <span class="badge badge-success">
+                                            <span class="badge-text">22% CTR</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-row">
+                                    <div class="activity-row__content">
+                                        <div class="icon-container icon-small">
+                                            <i class="fas fa-hashtag icon-muted"></i>
+                                        </div>
+                                        <span class="activity-row__text">Social Media</span>
+                                    </div>
+                                    <div class="activity-row__meta">
+                                        <span class="badge badge-warning">
+                                            <span class="badge-text">15% CTR</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-row">
+                                    <div class="activity-row__content">
+                                        <div class="icon-container icon-small">
+                                            <i class="fas fa-ad icon-muted"></i>
+                                        </div>
+                                        <span class="activity-row__text">Display Ads</span>
+                                    </div>
+                                    <div class="activity-row__meta">
+                                        <span class="badge badge-warning">
+                                            <span class="badge-text">8% CTR</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-row">
+                                    <div class="activity-row__content">
+                                        <div class="icon-container icon-small">
+                                            <i class="fas fa-handshake icon-muted"></i>
+                                        </div>
+                                        <span class="activity-row__text">Affiliates</span>
+                                    </div>
+                                    <div class="activity-row__meta">
+                                        <span class="badge badge-error">
+                                            <span class="badge-text">5% CTR</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Audience Demographics -->
+            <section class="section">
+                <div class="card bg-white">
+                    <div class="card__title--with-icon">
+                        <div class="icon-container icon-small">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <span class="card__title-text">Audience Demographics</span>
+                    </div>
+                    <div class="card__content">
+                        <div class="grid-responsive-cards" style="gap: var(--space-4);">
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Age Group</span>
+                                </div>
+                                <div class="overview-card__value">25-34</div>
+                                <div class="overview-card__subtitle">42% of audience</div>
+                            </div>
+                            
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Gender</span>
+                                </div>
+                                <div class="overview-card__value">Female</div>
+                                <div class="overview-card__subtitle">58% of audience</div>
+                            </div>
+                            
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Top Location</span>
+                                </div>
+                                <div class="overview-card__value">New York</div>
+                                <div class="overview-card__subtitle">18% of audience</div>
+                            </div>
+                            
+                            <div class="overview-card overview-card--grey">
+                                <div class="overview-card__header">
+                                    <span class="overview-card__title">Device</span>
+                                </div>
+                                <div class="overview-card__value">Mobile</div>
+                                <div class="overview-card__subtitle">72% of sessions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="section">
+                <div class="card bg-white">
+                    <h2 class="card__title">Recent Marketing Activities</h2>
+                    <div class="card__content">
+                        <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-envelope icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Email campaign "Summer Sale" sent</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>2 hours ago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fab fa-facebook icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Facebook ad campaign updated</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>Yesterday</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-blog icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">New blog post published</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>2 days ago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fab fa-instagram icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Instagram story campaign launched</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>3 days ago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-row">
+                                <div class="activity-row__content">
+                                    <div class="icon-container icon-small">
+                                        <i class="fas fa-ad icon-muted"></i>
+                                    </div>
+                                    <span class="activity-row__text">Google Ads budget increased</span>
+                                </div>
+                                <div class="activity-row__meta">
+                                    <span>5 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__footer">
+                        <button class="btn btn-secondary btn-small">
+                            <span class="btn-text">VIEW ALL ACTIVITIES</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html> 

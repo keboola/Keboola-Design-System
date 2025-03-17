@@ -962,13 +962,22 @@ This prevents the default browser link color (#0000ee) from being inherited by c
         </div>
         <div class="tab-active-line"></div>
     </div>
+    <div class="tab-item">
+        <div class="tab-content">
+            <div class="icon-container icon-small">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="tab-text">Another Tab</div>
+        </div>
+        <div class="tab-active-line"></div>
+    </div>
 </div>
 ```
 
 Tab requirements:
 - Use tabs as standalone components
 - Don't wrap tabs in cards
-- Include `.tab-active-line` for active tabs
+- Include `.tab-active-line` for all tabs (required for hover effects)
 - Use proper icon containers in tabs
 
 ### Form Elements
