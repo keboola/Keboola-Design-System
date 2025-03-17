@@ -1283,7 +1283,29 @@ The design system includes styles for form validation states:
 <span class="badge badge-error">
   <span class="badge-text">Error</span>
 </span>
+
+<!-- Inline Badge (with left margin) -->
+<span class="badge badge-success badge-inline">
+  <span class="badge-text">Active</span>
+</span>
 ```
+
+#### Badge Variants
+
+- **Default**: Blue badge (no additional class needed)
+- **Success**: Green badge with `badge-success` class
+- **Warning**: Orange badge with `badge-warning` class
+- **Error**: Red badge with `badge-error` class
+- **Inline**: Any badge with `badge-inline` class (adds left margin for inline use with text)
+
+#### Badge Usage
+
+- Use badges to indicate status, counts, or labels
+- Always use `<span>` elements for badges, not `<div>` elements
+- When placing badges inline with text, use the `badge-inline` class instead of inline styles
+- For detailed examples, see the [badge-showcase.html](examples/badge-showcase.html) example page
+
+> **Note**: Until dedicated label and tag components are created, the badge component can be used for these purposes. For label-like usage, consider using the default blue badge or the grey badge (`badge-grey`) for a more neutral appearance.
 
 ### Banners
 

@@ -3,9 +3,20 @@
  *
  * Badges should be implemented using <span> elements as they are inline-level components.
  * Width is dynamic based on content.
- * Example:
+ * 
+ * Basic usage:
  * <span class="badge">
  *   <span class="badge-text">Label</span>
+ * </span>
+ * 
+ * With color variants:
+ * <span class="badge badge-success">
+ *   <span class="badge-text">Success</span>
+ * </span>
+ * 
+ * With custom colors:
+ * <span class="badge badge-purple">
+ *   <span class="badge-text">Purple</span>
  * </span>
  */
 
@@ -16,6 +27,7 @@
 
 .badge {
   background: var(--secondary-blue-500-base);
+  color: var(--neutral-white);
   border-radius: var(--radius-large);
   padding: 2px var(--space-2);
   display: inline-flex;
@@ -29,7 +41,7 @@
 }
 
 .badge-text {
-  color: var(--neutral-white);
+  color: inherit;
   text-align: center;
   font-family: var(--additional-badge-family);
   font-size: var(--additional-badge-size);
@@ -54,4 +66,30 @@
 
 .badge-error {
   background: var(--error-red-500-base);
+}
+
+/* Badge with icon */
+.badge-with-icon {
+  gap: var(--space-1);
+}
+
+.badge-with-icon .icon-container {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+
+/* Custom color badges */
+.badge-purple {
+  background: var(--accent-purple-500-base);
+}
+
+.badge-grey {
+  background: var(--neutral-grey-500-base);
+}
+
+/* Badge with left margin - for inline use with text */
+.badge-inline {
+  margin-left: var(--space-2);
 } 

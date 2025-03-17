@@ -13,9 +13,18 @@ This guide provides detailed instructions on how to correctly implement componen
    - [Form Components](#form-components)
    - [Layout Components](#layout-components)
    - [Card Components](#card-components)
+     - [Basic Card](#basic-card)
+     - [Overview Card](#overview-card)
+     - [Grey Overview Card](#grey-overview-card)
+     - [Card Variants](#card-variants)
    - [Activity Row](#activity-row)
    - [Tabs](#tabs)
    - [Badges](#badges)
+     - [Standard Variants](#standard-variants)
+     - [Inline Badge Variant](#inline-badge-variant)
+     - [Using Badges as Labels or Tags](#using-badges-as-labels-or-tags)
+     - [Custom Color Badges](#custom-color-badges)
+     - [Badges with Icons](#badges-with-icons)
    - [Banners](#banners)
    - [Icons](#icons)
 3. [Common Patterns](#common-patterns)
@@ -471,6 +480,8 @@ Base Class + Style Variant + Size + Optional Modifiers
 
 #### Grey Overview Card
 
+The grey overview card variant (`overview-card--grey`) is designed to be used on white backgrounds, typically inside white cards or containers. This creates visual hierarchy and helps group related metrics.
+
 ```html
 <div class="overview-card overview-card--grey">
   <div class="overview-card__header">
@@ -480,6 +491,46 @@ Base Class + Style Variant + Size + Optional Modifiers
   <div class="overview-card__subtitle">Subtitle</div>
 </div>
 ```
+
+##### Common Usage Pattern: Grey Overview Cards in White Container
+
+A common pattern is to place multiple grey overview cards in a grid inside a white card:
+
+```html
+<!-- White container card with grey overview cards -->
+<div class="card bg-white">
+  <h2 class="card__title">Metrics Overview</h2>
+  <div class="card__content">
+    <div class="grid grid-cols-3" style="gap: var(--space-4)">
+      <div class="overview-card overview-card--grey">
+        <div class="overview-card__header">
+          <span class="overview-card__title">Revenue</span>
+        </div>
+        <div class="overview-card__value">$45,678</div>
+        <div class="overview-card__subtitle">This month</div>
+      </div>
+      
+      <div class="overview-card overview-card--grey">
+        <div class="overview-card__header">
+          <span class="overview-card__title">Users</span>
+        </div>
+        <div class="overview-card__value">1,234</div>
+        <div class="overview-card__subtitle">Active users</div>
+      </div>
+      
+      <div class="overview-card overview-card--grey">
+        <div class="overview-card__header">
+          <span class="overview-card__title">Conversion</span>
+        </div>
+        <div class="overview-card__value">12.5%</div>
+        <div class="overview-card__subtitle">+2.4% from last month</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+> ⚠️ **Important**: Always use the grey overview card variant on white backgrounds (like inside a white card). Using it directly on the page's grey background (`bg-grey-50`) will result in poor contrast and visual confusion.
 
 #### Card Variants
 
@@ -569,17 +620,101 @@ Base Class + Style Variant + Size + Optional Modifiers
 
 ### Badges
 
+Badges are small, inline components used to display status, counts, or labels. They should be implemented using `<span>` elements.
+
+#### Standard Variants
+
 ```html
+<!-- Default Badge (Blue) -->
+<span class="badge">
+  <span class="badge-text">Default</span>
+</span>
+
+<!-- Success Badge (Green) -->
 <span class="badge badge-success">
   <span class="badge-text">Success</span>
 </span>
 
+<!-- Warning Badge (Orange) -->
 <span class="badge badge-warning">
   <span class="badge-text">Warning</span>
 </span>
 
+<!-- Error Badge (Red) -->
 <span class="badge badge-error">
   <span class="badge-text">Error</span>
+</span>
+```
+
+#### Inline Badge Variant
+
+When a badge needs to be placed inline with text (such as in activity rows or user listings), use the `badge-inline` class to add appropriate spacing:
+
+```html
+<!-- Inline Badge (with left margin) -->
+<span class="badge badge-success badge-inline">
+  <span class="badge-text">Active</span>
+</span>
+```
+
+Example usage in context:
+```html
+<div style="display: flex; align-items: center;">
+  <div class="icon-container icon-small">
+    <i class="fas fa-user-circle icon-muted"></i>
+  </div>
+  <span class="body-text" style="margin-left: var(--space-2);">John Smith</span>
+  <span class="badge badge-success badge-inline">
+    <span class="badge-text">Active</span>
+  </span>
+</div>
+```
+
+> ⚠️ **Important**: Always use the `badge-inline` class when placing badges next to text elements, rather than using inline styles for spacing.
+
+#### Using Badges as Labels or Tags
+
+> **Note**: Until dedicated label and tag components are created, the badge component can be used for these purposes. For label-like usage, consider using the default blue badge or the grey badge (`badge-grey`) for a more neutral appearance.
+
+```html
+<!-- Label-like usage (grey for neutral appearance) -->
+<span class="badge badge-grey">
+  <span class="badge-text">Category</span>
+</span>
+
+<!-- Tag-like usage -->
+<span class="badge">
+  <span class="badge-text">Tag Name</span>
+</span>
+```
+
+#### Custom Color Badges
+
+```html
+<!-- Purple Badge -->
+<span class="badge badge-purple">
+  <span class="badge-text">Purple</span>
+</span>
+
+<!-- Grey Badge -->
+<span class="badge badge-grey">
+  <span class="badge-text">Grey</span>
+</span>
+
+<!-- Custom Color Badge (using inline styles) -->
+<span class="badge" style="--badge-bg: #6200EA; --badge-text: white;">
+  <span class="badge-text">Custom</span>
+</span>
+```
+
+#### Badges with Icons
+
+```html
+<span class="badge badge-success badge-with-icon">
+  <div class="icon-container">
+    <i class="fas fa-check"></i>
+  </div>
+  <span class="badge-text">Verified</span>
 </span>
 ```
 
