@@ -14,7 +14,7 @@
     
     <!-- Critical CSS to prevent FOUC -->
     <style>
-        .app-nav {
+        .topbar {
             height: 68px;
             position: fixed;
             top: 0;
@@ -84,19 +84,19 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Component -->
-    <nav class="app-nav">
+    <!-- Topbar Component -->
+    <nav class="topbar">
         <!-- Header section with logo, project info, avatar and notifications -->
-        <div class="nav-header">
-            <div class="nav-container">
+        <div class="topbar__header">
+            <div class="topbar__container">
                 <!-- Left section with project and context -->
-                <div class="nav-section-primary">
+                <div class="topbar__section-primary">
                     <!-- Project selector -->
-                    <div class="nav-branding">
-                        <img src="../assets/logos/logo_navigation.svg" alt="Keboola Logo" class="nav-logo">
-                        <div class="nav-details">
-                            <p class="nav-subtitle">Marketing Team</p>
-                            <p class="nav-title">Keboola Analytics</p>
+                    <div class="topbar__branding">
+                        <img src="../assets/logos/logo_navigation.svg" alt="Keboola Logo" class="topbar__logo">
+                        <div class="topbar__details">
+                            <p class="topbar__subtitle">Marketing Team</p>
+                            <p class="topbar__title">Keboola Analytics</p>
                         </div>
                         <div class="icon-container icon-small">
                             <i class="fas fa-chevron-down icon-muted"></i>
@@ -104,8 +104,8 @@
                     </div>
                     
                     <!-- Context selector -->
-                    <div class="nav-context">
-                        <span class="nav-context-name">Production</span>
+                    <div class="topbar__context">
+                        <span class="topbar__context-name">Production</span>
                         <div class="icon-container icon-small">
                             <i class="fas fa-chevron-down icon-muted"></i>
                         </div>
@@ -113,7 +113,7 @@
                 </div>
                 
                 <!-- Right section with tools and user profile -->
-                <div class="nav-section-secondary">
+                <div class="topbar__section-secondary">
                     <!-- Search -->
                     <div class="text-input size-medium">
                         <div class="content" style="min-height: 40px;">
@@ -123,18 +123,18 @@
                     </div>
                     
                     <!-- Action Icons -->
-                    <div class="nav-actions">
-                        <div class="icon-container icon-large nav-action-item">
-                            <i class="fas fa-gift icon-muted nav-action-icon"></i>
-                            <div class="nav-indicator">5</div>
+                    <div class="topbar__actions">
+                        <div class="icon-container icon-large topbar__action-item">
+                            <i class="fas fa-gift icon-muted topbar__action-icon"></i>
+                            <div class="topbar__indicator">5</div>
                         </div>
-                        <div class="icon-container icon-large nav-action-item">
-                            <i class="fas fa-trash icon-muted nav-action-icon"></i>
+                        <div class="icon-container icon-large topbar__action-item">
+                            <i class="fas fa-trash icon-muted topbar__action-icon"></i>
                         </div>
                     </div>
                     
                     <!-- User profile -->
-                    <div class="nav-user">
+                    <div class="topbar__user">
                         <img src="../assets/avatars/placeholder.png" alt="User Avatar">
                     </div>
                 </div>

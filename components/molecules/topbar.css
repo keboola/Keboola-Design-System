@@ -1,21 +1,21 @@
-/* Navigation Component
+/* Topbar Component
  * Main container for application navigation
  */
 :root {
-    --nav-height: 68px; /* Single source of truth for navigation height */
+    --topbar-height: 68px; /* Single source of truth for topbar height */
     --content-top-spacing: 32px; /* Standard spacing from top of content area */
 }
 
 /* Prevent layout shift during page load */
 html {
-    scroll-padding-top: var(--nav-height);
+    scroll-padding-top: var(--topbar-height);
 }
 
 body {
     min-height: 100vh;
 }
 
-.app-nav {
+.topbar {
     display: flex;
     flex-direction: column;
     background-color: var(--neutral-white);
@@ -26,7 +26,7 @@ body {
     right: 0;
     z-index: 100;
     border-bottom: 1px solid var(--neutral-grey-150);
-    height: var(--nav-height);
+    height: var(--topbar-height);
     box-sizing: border-box;
     /* Prevent blinking during page load */
     backface-visibility: hidden;
@@ -34,8 +34,8 @@ body {
     will-change: transform;
 }
 
-/* Header section - main navigation container */
-.nav-header {
+/* Header section - main topbar container */
+.topbar__header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,7 +45,7 @@ body {
     box-sizing: border-box;
 }
 
-.nav-container {
+.topbar__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,39 +57,39 @@ body {
 }
 
 /* Left section with branding and context info */
-.nav-section-primary {
+.topbar__section-primary {
     display: flex;
     align-items: center;
     gap: var(--space-4);
 }
 
 /* Branding component */
-.nav-branding {
+.topbar__branding {
     display: flex;
     align-items: center;
     gap: var(--space-4);
     cursor: pointer;
 }
 
-.nav-logo {
+.topbar__logo {
     height: var(--logo-height, 42px);
     width: var(--logo-width, 24px);
 }
 
-.nav-details {
+.topbar__details {
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
 }
 
-.nav-subtitle {
+.topbar__subtitle {
     margin: 0;
     color: var(--neutral-grey-400);
     font-size: 14px;
     font-weight: 400;
 }
 
-.nav-title {
+.topbar__title {
     margin: 0;
     color: var(--neutral-grey-800);
     font-size: 16px;
@@ -97,7 +97,7 @@ body {
 }
 
 /* Context selector */
-.nav-context {
+.topbar__context {
     display: flex;
     align-items: center;
     gap: var(--space-2);
@@ -106,42 +106,42 @@ body {
     cursor: pointer;
 }
 
-.nav-context-name {
+.topbar__context-name {
     color: var(--neutral-grey-800);
     font-size: 16px;
     font-weight: 500;
 }
 
 /* Right section with tools and user profile */
-.nav-section-secondary {
+.topbar__section-secondary {
     display: flex;
     align-items: center;
     gap: var(--space-4);
 }
 
 /* Action icons container */
-.nav-actions {
+.topbar__actions {
     display: flex;
     align-items: center;
     gap: var(--space-2);
 }
 
 /* Icon wrapper - general */
-.nav-action-item {
+.topbar__action-item {
     position: relative;
 }
 
 /* Action icons - specific styles */
-.nav-action-icon {
+.topbar__action-icon {
     color: var(--neutral-grey-500);
 }
 
-.nav-action-icon:hover {
+.topbar__action-icon:hover {
     color: var(--primary-blue-500);
 }
 
 /* User profile */
-.nav-user {
+.topbar__user {
     width: 36px;
     height: 36px;
     border-radius: var(--radius-full);
@@ -154,11 +154,11 @@ body {
     flex-shrink: 0;
 }
 
-.nav-user:hover {
+.topbar__user:hover {
     background-color: var(--neutral-grey-200);
 }
 
-.nav-user img {
+.topbar__user img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -166,7 +166,7 @@ body {
 }
 
 /* Notification indicator */
-.nav-indicator {
+.topbar__indicator {
     position: absolute;
     top: -4px;
     right: -4px;
@@ -185,27 +185,27 @@ body {
 }
 
 /* Page container spacing - use more specific selectors to avoid conflicts */
-/* When navigation is present - add margin to clear the fixed navbar */
-.app-nav ~ .page-container {
-    margin-top: var(--nav-height);
+/* When topbar is present - add margin to clear the fixed topbar */
+.topbar ~ .page-container {
+    margin-top: var(--topbar-height);
 }
 
-/* Class for pages without navigation */
-.no-nav .page-container {
+/* Class for pages without topbar */
+.no-topbar .page-container {
     margin-top: 0; /* Let the page-container's own padding handle spacing */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     :root {
-        --nav-height: 60px; /* Smaller height on mobile */
+        --topbar-height: 60px; /* Smaller height on mobile */
     }
     
-    .nav-section-primary {
+    .topbar__section-primary {
         gap: var(--space-2);
     }
     
-    .nav-container {
+    .topbar__container {
         padding: 0 var(--space-4);
     }
 } 

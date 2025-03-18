@@ -1126,48 +1126,48 @@ This approach ensures your layouts adapt gracefully to different screen sizes wi
 
 ## Navigation Component
 
-The app-nav component creates a consistent application navigation bar with project selection, context switching, tools, and user profiles.
+The topbar component creates a consistent application navigation bar with project selection, context switching, tools, and user profiles.
 
 #### Required Structure
 
 ```
-app-nav
-└── nav-header
-    └── nav-container
-        ├── nav-section-primary
-        │   ├── nav-project
-        │   │   ├── nav-logo
-        │   │   ├── nav-details
-        │   │   │   ├── nav-subtitle
-        │   │   │   └── nav-title
+topbar
+└── topbar__header
+    └── topbar__container
+        ├── topbar__section-primary
+        │   ├── topbar__branding
+        │   │   ├── topbar__logo
+        │   │   ├── topbar__details
+        │   │   │   ├── topbar__subtitle
+        │   │   │   └── topbar__title
         │   │   └── icon-container
-        │   └── nav-context
-        │       ├── nav-context-name
+        │   └── topbar__context
+        │       ├── topbar__context-name
         │       └── icon-container
-        └── nav-section-secondary
+        └── topbar__section-secondary
             ├── [search component]
-            ├── nav-actions
+            ├── topbar__actions
             │   └── [action items]
-            └── nav-user
+            └── topbar__user
                 └── img
 ```
 
 #### HTML Implementation
 
 ```html
-<!-- Navigation Component -->
-<nav class="app-nav">
+<!-- Topbar Component -->
+<nav class="topbar">
     <!-- Header section with logo, project info, and user controls -->
-    <div class="nav-header">
-        <div class="nav-container">
+    <div class="topbar__header">
+        <div class="topbar__container">
             <!-- Left section with project and context -->
-            <div class="nav-section-primary">
+            <div class="topbar__section-primary">
                 <!-- Project selector -->
-                <div class="nav-project">
-                    <img src="path/to/logo.svg" alt="Logo" class="nav-logo">
-                    <div class="nav-details">
-                        <p class="nav-subtitle">Organization Name</p>
-                        <p class="nav-title">Project Name</p>
+                <div class="topbar__branding">
+                    <img src="path/to/logo.svg" alt="Logo" class="topbar__logo">
+                    <div class="topbar__details">
+                        <p class="topbar__subtitle">Organization Name</p>
+                        <p class="topbar__title">Project Name</p>
                     </div>
                     <div class="icon-container icon-small">
                         <i class="fas fa-chevron-down icon-muted"></i>
@@ -1175,8 +1175,8 @@ app-nav
                 </div>
                 
                 <!-- Context selector -->
-                <div class="nav-context">
-                    <span class="nav-context-name">Environment</span>
+                <div class="topbar__context">
+                    <span class="topbar__context-name">Environment</span>
                     <div class="icon-container icon-small">
                         <i class="fas fa-chevron-down icon-muted"></i>
                     </div>
@@ -1184,7 +1184,7 @@ app-nav
             </div>
             
             <!-- Right section with tools and user profile -->
-            <div class="nav-section-secondary">
+            <div class="topbar__section-secondary">
                 <!-- Search -->
                 <div class="text-input size-medium">
                     <div class="content" style="min-height: 40px;">
@@ -1194,18 +1194,18 @@ app-nav
                 </div>
                 
                 <!-- Action Icons -->
-                <div class="nav-actions">
-                    <div class="icon-container icon-large nav-action-item">
-                        <i class="fas fa-gift icon-muted nav-action-icon"></i>
-                        <div class="nav-indicator">5</div>
+                <div class="topbar__actions">
+                    <div class="icon-container icon-large topbar__action-item">
+                        <i class="fas fa-gift icon-muted topbar__action-icon"></i>
+                        <div class="topbar__indicator">5</div>
                     </div>
-                    <div class="icon-container icon-large nav-action-item">
-                        <i class="fas fa-trash icon-muted nav-action-icon"></i>
+                    <div class="icon-container icon-large topbar__action-item">
+                        <i class="fas fa-trash icon-muted topbar__action-icon"></i>
                     </div>
                 </div>
                 
                 <!-- User profile -->
-                <div class="nav-user">
+                <div class="topbar__user">
                     <img src="path/to/avatar.png" alt="User Avatar">
                 </div>
             </div>
@@ -1216,28 +1216,28 @@ app-nav
 
 #### CSS Variables
 
-The navigation component uses these key CSS variables for consistent styling:
+The topbar component uses these key CSS variables for consistent styling:
 
 ```css
---nav-height: 68px;          /* Controls the height of the navigation bar */
+--topbar-height: 68px;       /* Controls the height of the topbar */
 --content-top-spacing: 32px; /* Controls spacing from top of content area */
 ```
 
 #### Responsive Behavior
 
-The navigation component adapts to different screen sizes:
+The topbar component adapts to different screen sizes:
 
 ```css
 @media (max-width: 768px) {
     :root {
-        --nav-height: 60px; /* Smaller height on mobile */
+        --topbar-height: 60px; /* Smaller height on mobile */
     }
     
-    .nav-section-primary {
+    .topbar__section-primary {
         gap: var(--space-2);
     }
     
-    .nav-container {
+    .topbar__container {
         padding: 0 var(--space-4);
     }
 }
@@ -1245,21 +1245,21 @@ The navigation component adapts to different screen sizes:
 
 #### Important Implementation Notes
 
-1. **Page Container Spacing**: When using the navigation component, add this class to your page container:
+1. **Page Container Spacing**: When using the topbar component, add this class to your page container:
    ```html
    <div class="container page-container">
    ```
-   The `page-container` class automatically adds margin-top to clear the fixed navigation.
+   The `page-container` class automatically adds margin-top to clear the fixed topbar.
 
-2. **Pages Without Navigation**: Use the `no-nav` class on the body for pages without navigation:
+2. **Pages Without Topbar**: Use the `no-topbar` class on the body for pages without a topbar:
    ```html
-   <body class="no-nav">
+   <body class="no-topbar">
    ```
 
 3. **Preventing Layout Shift**: Add this to your critical CSS to prevent layout shifts on load:
    ```html
    <style>
-       .app-nav {
+       .topbar {
            height: 68px;
            position: fixed;
            top: 0;
@@ -1275,12 +1275,12 @@ The navigation component adapts to different screen sizes:
    </style>
    ```
 
-4. **Action Icons**: Use the `nav-action-icon` class for all icons in the navigation, regardless of their specific purpose, to ensure consistent styling:
+4. **Action Icons**: Use the `topbar__action-icon` class for all icons in the topbar, regardless of their specific purpose, to ensure consistent styling:
    ```html
-   <i class="fas fa-[icon-name] icon-muted nav-action-icon"></i>
+   <i class="fas fa-[icon-name] icon-muted topbar__action-icon"></i>
    ```
 
-5. **Notification Indicators**: Add notification badges with the `nav-indicator` class:
+5. **Notification Indicators**: Add notification badges with the `topbar__indicator` class:
    ```html
-   <div class="nav-indicator">5</div>
+   <div class="topbar__indicator">5</div>
    ```
