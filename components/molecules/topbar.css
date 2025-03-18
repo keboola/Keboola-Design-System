@@ -1,0 +1,211 @@
+/* Navigation Component
+ * Main container for application navigation
+ */
+:root {
+    --nav-height: 68px; /* Single source of truth for navigation height */
+    --content-top-spacing: 32px; /* Standard spacing from top of content area */
+}
+
+/* Prevent layout shift during page load */
+html {
+    scroll-padding-top: var(--nav-height);
+}
+
+body {
+    min-height: 100vh;
+}
+
+.app-nav {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--neutral-white);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--neutral-grey-150);
+    height: var(--nav-height);
+    box-sizing: border-box;
+    /* Prevent blinking during page load */
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Header section - main navigation container */
+.nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1280px;
+    padding: 0 var(--space-16);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Left section with branding and context info */
+.nav-section-primary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+/* Branding component */
+.nav-branding {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    cursor: pointer;
+}
+
+.nav-logo {
+    height: var(--logo-height, 42px);
+    width: var(--logo-width, 24px);
+}
+
+.nav-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.nav-subtitle {
+    margin: 0;
+    color: var(--neutral-grey-400);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.nav-title {
+    margin: 0;
+    color: var(--neutral-grey-800);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Context selector */
+.nav-context {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-small);
+    cursor: pointer;
+}
+
+.nav-context-name {
+    color: var(--neutral-grey-800);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Right section with tools and user profile */
+.nav-section-secondary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+/* Action icons container */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* Icon wrapper - general */
+.nav-action-item {
+    position: relative;
+}
+
+/* Action icons - specific styles */
+.nav-action-icon {
+    color: var(--neutral-grey-500);
+}
+
+.nav-action-icon:hover {
+    color: var(--primary-blue-500);
+}
+
+/* User profile */
+.nav-user {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background-color: var(--neutral-grey-150);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.nav-user:hover {
+    background-color: var(--neutral-grey-200);
+}
+
+.nav-user img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Notification indicator */
+.nav-indicator {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--error-red-500-base);
+    color: var(--neutral-white);
+    font-size: 11px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-1);
+    box-sizing: border-box;
+}
+
+/* Page container spacing - use more specific selectors to avoid conflicts */
+/* When navigation is present - add margin to clear the fixed navbar */
+.app-nav ~ .page-container {
+    margin-top: var(--nav-height);
+}
+
+/* Class for pages without navigation */
+.no-nav .page-container {
+    margin-top: 0; /* Let the page-container's own padding handle spacing */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :root {
+        --nav-height: 60px; /* Smaller height on mobile */
+    }
+    
+    .nav-section-primary {
+        gap: var(--space-2);
+    }
+    
+    .nav-container {
+        padding: 0 var(--space-4);
+    }
+} 

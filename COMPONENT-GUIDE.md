@@ -27,6 +27,12 @@ This guide provides detailed instructions on how to correctly implement componen
      - [Badges with Icons](#badges-with-icons)
    - [Banners](#banners)
    - [Icons](#icons)
+   - [Navigation Component](#navigation-component)
+     - [Required Structure](#required-structure-1)
+     - [HTML Implementation](#html-implementation)
+     - [CSS Variables](#css-variables)
+     - [Responsive Behavior](#responsive-behavior)
+     - [Important Implementation Notes](#important-implementation-notes)
 3. [Common Patterns](#common-patterns)
    - [Form Card Pattern](#form-card-pattern)
    - [Activity List Pattern](#activity-list-pattern)
@@ -1116,4 +1122,165 @@ While the design system still supports fixed column grids, responsive grids are 
 </div>
 ```
 
-This approach ensures your layouts adapt gracefully to different screen sizes with predictable breakpoints. 
+This approach ensures your layouts adapt gracefully to different screen sizes with predictable breakpoints.
+
+## Navigation Component
+
+The app-nav component creates a consistent application navigation bar with project selection, context switching, tools, and user profiles.
+
+#### Required Structure
+
+```
+app-nav
+└── nav-header
+    └── nav-container
+        ├── nav-section-primary
+        │   ├── nav-project
+        │   │   ├── nav-logo
+        │   │   ├── nav-details
+        │   │   │   ├── nav-subtitle
+        │   │   │   └── nav-title
+        │   │   └── icon-container
+        │   └── nav-context
+        │       ├── nav-context-name
+        │       └── icon-container
+        └── nav-section-secondary
+            ├── [search component]
+            ├── nav-actions
+            │   └── [action items]
+            └── nav-user
+                └── img
+```
+
+#### HTML Implementation
+
+```html
+<!-- Navigation Component -->
+<nav class="app-nav">
+    <!-- Header section with logo, project info, and user controls -->
+    <div class="nav-header">
+        <div class="nav-container">
+            <!-- Left section with project and context -->
+            <div class="nav-section-primary">
+                <!-- Project selector -->
+                <div class="nav-project">
+                    <img src="path/to/logo.svg" alt="Logo" class="nav-logo">
+                    <div class="nav-details">
+                        <p class="nav-subtitle">Organization Name</p>
+                        <p class="nav-title">Project Name</p>
+                    </div>
+                    <div class="icon-container icon-small">
+                        <i class="fas fa-chevron-down icon-muted"></i>
+                    </div>
+                </div>
+                
+                <!-- Context selector -->
+                <div class="nav-context">
+                    <span class="nav-context-name">Environment</span>
+                    <div class="icon-container icon-small">
+                        <i class="fas fa-chevron-down icon-muted"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right section with tools and user profile -->
+            <div class="nav-section-secondary">
+                <!-- Search -->
+                <div class="text-input size-medium">
+                    <div class="content" style="min-height: 40px;">
+                        <i class="fas fa-search" style="color: var(--neutral-grey-400);"></i>
+                        <input type="text" placeholder="Search" aria-label="Search">
+                    </div>
+                </div>
+                
+                <!-- Action Icons -->
+                <div class="nav-actions">
+                    <div class="icon-container icon-large nav-action-item">
+                        <i class="fas fa-gift icon-muted nav-action-icon"></i>
+                        <div class="nav-indicator">5</div>
+                    </div>
+                    <div class="icon-container icon-large nav-action-item">
+                        <i class="fas fa-trash icon-muted nav-action-icon"></i>
+                    </div>
+                </div>
+                
+                <!-- User profile -->
+                <div class="nav-user">
+                    <img src="path/to/avatar.png" alt="User Avatar">
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+```
+
+#### CSS Variables
+
+The navigation component uses these key CSS variables for consistent styling:
+
+```css
+--nav-height: 68px;          /* Controls the height of the navigation bar */
+--content-top-spacing: 32px; /* Controls spacing from top of content area */
+```
+
+#### Responsive Behavior
+
+The navigation component adapts to different screen sizes:
+
+```css
+@media (max-width: 768px) {
+    :root {
+        --nav-height: 60px; /* Smaller height on mobile */
+    }
+    
+    .nav-section-primary {
+        gap: var(--space-2);
+    }
+    
+    .nav-container {
+        padding: 0 var(--space-4);
+    }
+}
+```
+
+#### Important Implementation Notes
+
+1. **Page Container Spacing**: When using the navigation component, add this class to your page container:
+   ```html
+   <div class="container page-container">
+   ```
+   The `page-container` class automatically adds margin-top to clear the fixed navigation.
+
+2. **Pages Without Navigation**: Use the `no-nav` class on the body for pages without navigation:
+   ```html
+   <body class="no-nav">
+   ```
+
+3. **Preventing Layout Shift**: Add this to your critical CSS to prevent layout shifts on load:
+   ```html
+   <style>
+       .app-nav {
+           height: 68px;
+           position: fixed;
+           top: 0;
+           left: 0;
+           right: 0;
+           background-color: white;
+           z-index: 100;
+           border-bottom: 1px solid #EAEAEA;
+       }
+       .page-container {
+           margin-top: 68px;
+       }
+   </style>
+   ```
+
+4. **Action Icons**: Use the `nav-action-icon` class for all icons in the navigation, regardless of their specific purpose, to ensure consistent styling:
+   ```html
+   <i class="fas fa-[icon-name] icon-muted nav-action-icon"></i>
+   ```
+
+5. **Notification Indicators**: Add notification badges with the `nav-indicator` class:
+   ```html
+   <div class="nav-indicator">5</div>
+   ```

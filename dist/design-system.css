@@ -22,6 +22,7 @@
 @import '../components/molecules/overview-card.css';
 @import '../components/molecules/card.css';
 @import '../components/molecules/activity-row.css';
+@import '../components/molecules/topbar.css';
 
 /* Assets */
 @import '../assets/logo.css';
