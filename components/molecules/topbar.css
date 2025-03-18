@@ -137,7 +137,7 @@ body {
 }
 
 .topbar__action-icon:hover {
-    color: var(--primary-blue-500);
+    color: var(--secondary-blue-500-base);
 }
 
 /* User profile */
