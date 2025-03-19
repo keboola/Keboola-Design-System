@@ -8,17 +8,41 @@ This guide provides detailed instructions on how to correctly implement componen
    - [Installation](#installation)
    - [Basic Page Structure](#basic-page-structure)
    - [Design Tokens](#design-tokens)
+     - [Color System](#color-system)
+     - [Typography System](#typography-system)
+     - [Spacing System](#spacing-system)
 2. [Core Components](#core-components)
    - [Button Components](#button-components)
+     - [Required Structure](#required-structure)
+     - [Class Combinations](#class-combinations)
+     - [HTML Structure](#html-structure)
+       - [Text Button](#text-button)
+       - [Icon + Text Button](#icon--text-button)
+       - [Icon-Only Button](#icon-only-button)
+     - [Common Button Mistakes](#common-button-mistakes)
    - [Form Components](#form-components)
+     - [Text Input](#text-input)
+       - [Required Structure](#required-structure-1)
+     - [Select Input](#select-input)
+       - [Required Structure](#required-structure-2)
+     - [Checkbox](#checkbox)
+       - [Required Structure](#required-structure-3)
+     - [Radio Button](#radio-button)
+       - [Required Structure](#required-structure-4)
+     - [Form Validation](#form-validation)
    - [Layout Components](#layout-components)
+     - [Header](#header)
+     - [Grid System](#grid-system)
    - [Card Components](#card-components)
      - [Basic Card](#basic-card)
      - [Overview Card](#overview-card)
      - [Grey Overview Card](#grey-overview-card)
+       - [Common Usage Pattern: Grey Overview Cards in White Container](#common-usage-pattern-grey-overview-cards-in-white-container)
      - [Card Variants](#card-variants)
+     - [Card Layout Helper Classes](#card-layout-helper-classes)
    - [Activity Row](#activity-row)
    - [Tabs](#tabs)
+     - [Tab Component Requirements](#tab-component-requirements)
    - [Badges](#badges)
      - [Standard Variants](#standard-variants)
      - [Inline Badge Variant](#inline-badge-variant)
@@ -26,13 +50,12 @@ This guide provides detailed instructions on how to correctly implement componen
      - [Custom Color Badges](#custom-color-badges)
      - [Badges with Icons](#badges-with-icons)
    - [Banners](#banners)
+     - [Key Implementation Details](#key-implementation-details)
+     - [Banner Variants](#banner-variants)
    - [Icons](#icons)
-   - [Navigation Component](#navigation-component)
-     - [Required Structure](#required-structure-1)
-     - [HTML Implementation](#html-implementation)
-     - [CSS Variables](#css-variables)
-     - [Responsive Behavior](#responsive-behavior)
-     - [Important Implementation Notes](#important-implementation-notes)
+     - [Icon Sizes](#icon-sizes)
+     - [Icon Colors](#icon-colors)
+     - [Implementation Notes](#implementation-notes)
 3. [Common Patterns](#common-patterns)
    - [Form Card Pattern](#form-card-pattern)
    - [Activity List Pattern](#activity-list-pattern)
@@ -41,7 +64,7 @@ This guide provides detailed instructions on how to correctly implement componen
 5. [Banner Placement Guidelines](#banner-placement-guidelines)
    - [Page-Level Banners](#page-level-banners)
    - [Card-Level Banners](#card-level-banners)
-6. [Best Practices and Common Mistakes](#common-mistakes)
+6. [Best Practices and Common Mistakes](#best-practices-and-common-mistakes)
    - [General Component Mistakes](#general-component-mistakes)
    - [Specific Component Issues](#specific-component-issues)
    - [Typography Best Practices](#typography-best-practices)
@@ -51,10 +74,30 @@ This guide provides detailed instructions on how to correctly implement componen
    - [Responsive Grid Classes](#responsive-grid-classes)
    - [Breakpoints](#breakpoints)
    - [Balanced Layouts for Uneven Numbers](#balanced-layouts-for-uneven-numbers)
+     - [For 5 KPI Cards with `grid-5-cards` class](#for-5-kpi-cards-with-grid-5-cards-class)
+     - [For 3 KPI Cards with `grid-3-cards` class](#for-3-kpi-cards-with-grid-3-cards-class)
    - [Example Implementation](#example-implementation)
    - [Fixed vs Responsive Grid](#fixed-vs-responsive-grid)
-   - [How It Works](#how-it-works)
-   - [Recommended Minimum Widths](#recommended-minimum-widths)
+8. [Navigation Component](#navigation-component)
+   - [Required Structure](#required-structure-5)
+   - [HTML Implementation](#html-implementation)
+   - [CSS Variables](#css-variables)
+   - [Interactive Elements](#interactive-elements)
+   - [Responsive Behavior](#responsive-behavior)
+   - [Important Implementation Notes](#important-implementation-notes)
+9. [Icon Component](#icon-component)
+   - [Icon Sizes](#icon-sizes-1)
+   - [Implementation](#implementation)
+   - [Best Practices](#best-practices)
+10. [Topbar Component](#topbar-component)
+    - [Logo Implementation](#logo-implementation)
+    - [Avatar Implementation](#avatar-implementation)
+    - [Full Topbar Structure](#full-topbar-structure)
+    - [Typography Classes](#typography-classes)
+    - [Asset Requirements](#asset-requirements)
+11. [Support & Contributing](#support--contributing)
+    - [Support & Documentation](#support--documentation)
+    - [Contributing](#contributing)
 
 ## Getting Started
 
@@ -1226,12 +1269,18 @@ topbar
         <div class="topbar__container">
             <!-- Left section with project and context -->
             <div class="topbar__section-primary">
-                <!-- Project selector -->
+                <!-- Branding with correct logo -->
                 <div class="topbar__branding">
-                    <img src="path/to/logo.svg" alt="Logo" class="topbar__logo">
+                    <img 
+                        src="../assets/logos/logo_navigation.svg" 
+                        alt="Keboola Logo" 
+                        class="topbar__logo"
+                        width="24" 
+                        height="42"
+                    >
                     <div class="topbar__details">
-                        <p class="topbar__subtitle">Organization Name</p>
-                        <p class="topbar__title">Project Name</p>
+                        <p class="topbar__subtitle small-body-text">Organization Name</p>
+                        <p class="topbar__title body-text-medium">Project Name</p>
                     </div>
                     <div class="icon-container icon-small">
                         <i class="fas fa-chevron-down icon-muted"></i>
@@ -1240,14 +1289,14 @@ topbar
                 
                 <!-- Context selector -->
                 <div class="topbar__context">
-                    <span class="topbar__context-name">Environment</span>
+                    <span class="topbar__context-name body-text">Environment</span>
                     <div class="icon-container icon-small">
                         <i class="fas fa-chevron-down icon-muted"></i>
                     </div>
                 </div>
             </div>
             
-            <!-- Right section with tools and user profile -->
+            <!-- Right section -->
             <div class="topbar__section-secondary">
                 <!-- Search -->
                 <div class="text-input size-medium">
@@ -1260,17 +1309,14 @@ topbar
                 <!-- Action Icons -->
                 <div class="topbar__actions">
                     <div class="icon-container icon-large topbar__action-item">
-                        <i class="fas fa-gift icon-muted"></i>
-                        <div class="topbar__indicator">5</div>
-                    </div>
-                    <div class="icon-container icon-large topbar__action-item">
-                        <i class="fas fa-trash icon-muted"></i>
+                        <i class="fas fa-bell icon-muted"></i>
+                        <div class="topbar__indicator">3</div>
                     </div>
                 </div>
                 
-                <!-- User profile -->
+                <!-- Avatar with correct placeholder -->
                 <div class="topbar__avatar">
-                    <img src="path/to/avatar.png" alt="User Avatar">
+                    <img src="../assets/avatars/placeholder.png" alt="User Avatar">
                 </div>
             </div>
         </div>
@@ -1412,3 +1458,174 @@ The icon component provides a standardized way to display Font Awesome icons wit
    - `icon-error`: Red for error states
    - `icon-muted`: Default grey for most UI icons (recommended default)
 4. For interactive icons, add appropriate hover effects by wrapping in a button or applying hover styles
+
+### Topbar Component
+
+The topbar provides consistent navigation and context across all Keboola applications.
+
+#### Logo Implementation
+
+The topbar uses a specific navigation-optimized logo variant:
+
+```html
+<div class="topbar__branding">
+    <img 
+        src="../assets/logos/logo_navigation.svg" 
+        alt="Keboola Logo" 
+        class="topbar__logo"
+        width="24" 
+        height="42"
+    >
+    <!-- ... rest of branding content ... -->
+</div>
+```
+
+**Important Logo Guidelines:**
+- Always use `logo_navigation.svg` for the topbar (NOT `logo.svg`)
+- Maintain dimensions: width="24" height="42"
+- The navigation logo is taller than wide (1:1.75 ratio)
+- General `logo.svg` is square (1:1) and should NOT be used in the topbar
+
+#### Avatar Implementation
+
+The user avatar in the topbar follows these specifications:
+
+```html
+<div class="topbar__avatar">
+    <img 
+        src="../assets/avatars/placeholder.png" 
+        alt="User Avatar"
+    >
+</div>
+```
+
+**Important Avatar Guidelines:**
+- Default placeholder: `placeholder.png` in assets/avatars/
+- The avatar container handles the circular shape via CSS
+- No need to specify dimensions - handled by topbar__avatar class
+- Ensure avatar images are square for proper circular cropping
+
+#### Full Topbar Structure
+
+```html
+<nav class="topbar">
+    <div class="topbar__header">
+        <div class="topbar__container">
+            <!-- Left section -->
+            <div class="topbar__section-primary">
+                <!-- Branding with correct logo -->
+                <div class="topbar__branding">
+                    <img src="../assets/logos/logo_navigation.svg" alt="Keboola Logo" class="topbar__logo" width="24" height="42">
+                    <div class="topbar__details">
+                        <p class="topbar__subtitle small-body-text">Organization Name</p>
+                        <p class="topbar__title body-text-medium">Project Name</p>
+                    </div>
+                    <div class="icon-container icon-small">
+                        <i class="fas fa-chevron-down icon-muted"></i>
+                    </div>
+                </div>
+                
+                <!-- Context selector -->
+                <div class="topbar__context">
+                    <span class="topbar__context-name body-text">Environment</span>
+                    <div class="icon-container icon-small">
+                        <i class="fas fa-chevron-down icon-muted"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right section -->
+            <div class="topbar__section-secondary">
+                <!-- Search -->
+                <div class="text-input size-medium">
+                    <div class="content" style="min-height: 40px;">
+                        <i class="fas fa-search" style="color: var(--neutral-grey-400);"></i>
+                        <input type="text" placeholder="Search" aria-label="Search">
+                    </div>
+                </div>
+                
+                <!-- Action Icons -->
+                <div class="topbar__actions">
+                    <div class="icon-container icon-large topbar__action-item">
+                        <i class="fas fa-bell icon-muted"></i>
+                        <div class="topbar__indicator">3</div>
+                    </div>
+                </div>
+                
+                <!-- Avatar with correct placeholder -->
+                <div class="topbar__avatar">
+                    <img src="../assets/avatars/placeholder.png" alt="User Avatar">
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+```
+
+#### Typography Classes
+
+- Organization name: `small-body-text`
+- Project name: `body-text-medium`
+- Context name: `body-text`
+
+#### Asset Requirements
+
+Required assets must be available at:
+- `assets/logos/logo_navigation.svg` - Navigation-specific logo
+- `assets/avatars/placeholder.png` - Default avatar placeholder
+
+## Support & Contributing
+
+### Support & Documentation
+
+If you need help implementing any component from the Keboola Design System:
+
+1. Check the detailed documentation in both README.md and COMPONENT-GUIDE.md
+2. Review the example implementations in the /examples directory
+3. For further assistance, please contact the design system team
+
+### Contributing
+
+When contributing to the Keboola Design System:
+
+1. Follow the established patterns and conventions
+2. Test components across different browsers and screen sizes
+3. Ensure accessibility compliance with WCAG 2.1 standards
+4. Document any new components or modifications
+5. Update example pages as needed
+
+#### Asset Requirements
+
+Required assets must be available at:
+- `assets/logos/logo_navigation.svg` - Navigation-specific logo
+- `assets/avatars/placeholder.png` - Default avatar placeholder
+
+## Asset Requirements
+
+### Required Assets Structure
+
+```assets/
+├── logos/
+│   ├── logo.svg           # Square logo (1:1) for general use
+│   └── logo_navigation.svg # Tall logo (1:1.75) for navigation
+└── avatars/
+    └── placeholder.png    # Default avatar placeholder
+```
+
+### Logo Usage Guidelines
+
+- `logo.svg`: General purpose, square ratio (1:1)
+  - Use for: marketing, documentation, general branding
+  - Dimensions: Flexible, maintains square ratio
+
+- `logo_navigation.svg`: Navigation-specific, tall ratio (1:1.75)
+  - Use for: Topbar navigation only
+  - Fixed dimensions: 24x42px
+  - Do not use for general purposes
+
+### Avatar Guidelines
+
+- Default placeholder: `placeholder.png`
+- Used in: Topbar, user profiles
+- Container handles circular cropping
+- Always provide square images for consistent circular display

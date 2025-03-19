@@ -14,19 +14,38 @@ A comprehensive design system for building consistent web interfaces with Kebool
 2. [Project Structure](#project-structure)
 3. [Getting Started](#getting-started)
    - [Installation](#installation)
-   - [Basic Page Structure](#basic-page-structure)
    - [Example Pages](#example-pages)
+   - [Basic Page Structure](#basic-page-structure)
 4. [Design Tokens](#design-tokens)
    - [Color System](#color-system)
+     - [Available Color Tokens](#available-color-tokens)
+     - [Using Color Tokens](#using-color-tokens)
    - [Typography System](#typography-system)
+     - [Font Setup](#font-setup)
+     - [Text Hierarchy](#text-hierarchy)
+     - [Links](#links)
+     - [Text Colors](#text-colors)
+     - [Font Weights](#font-weights)
+     - [Typography Best Practices](#typography-best-practices)
    - [Spacing System](#spacing-system)
-5. [Layout & Structure](#layout-and-structure)
+     - [Spacing Variables](#spacing-variables)
+     - [Gap-Based Spacing Approach](#gap-based-spacing-approach)
+     - [Benefits of Gap-Based Spacing](#benefits-of-gap-based-spacing)
+     - [Migration from Margin-Based to Gap-Based Spacing](#migration-from-margin-based-to-gap-based-spacing)
+     - [Common Spacing Patterns](#common-spacing-patterns)
+5. [Layout & Structure](#layout--structure)
    - [Page Container](#page-container)
    - [Shadows](#shadows)
    - [Grid System](#grid-system)
-   - [Header & Footer Spacing](#header-and-footer-spacing)
+     - [Card Grid](#card-grid)
+     - [Section Grid](#section-grid)
+   - [Header & Footer Spacing](#header--footer-spacing)
+     - [Header Spacing](#header-spacing)
+     - [Footer Spacing](#footer-spacing)
    - [Section Spacing](#section-spacing)
    - [Layout Examples](#layout-examples)
+     - [Dashboard Layout Example](#dashboard-layout-example)
+     - [Form Layout Example](#form-layout-example)
 6. [Core Components](#core-components)
    - [Header](#header)
    - [Buttons](#buttons)
@@ -40,14 +59,34 @@ A comprehensive design system for building consistent web interfaces with Kebool
      - [Using Cards in Links](#using-cards-in-links)
    - [Tabs](#tabs)
    - [Form Elements](#form-elements)
+     - [Form Spacing](#form-spacing)
+     - [Form Structure](#form-structure)
+     - [Text Input](#text-input)
+     - [Textarea](#textarea)
+     - [Select](#select)
+     - [Checkbox](#checkbox)
+     - [Radio Buttons](#radio-buttons)
+     - [Form Grid Layout](#form-grid-layout)
+     - [Form Validation](#form-validation)
+     - [Form Best Practices](#form-best-practices)
    - [Activity Row](#activity-row)
    - [Badges](#badges)
+     - [Badge Variants](#badge-variants)
+     - [Badge Usage](#badge-usage)
    - [Banners](#banners)
+     - [Banner Styling](#banner-styling)
+     - [Persistent Banners](#persistent-banners-without-close-button)
+     - [Banner Structure](#banner-structure)
+     - [Typography Classes](#typography-classes)
+     - [Best Practices](#best-practices)
 7. [Icon System](#icon-system)
    - [Basic Icon Setup](#basic-icon-setup)
-   - [Icon Sizes & Colors](#icon-sizes-and-colors)
+   - [Icon Sizes and Colors](#icon-sizes-and-colors)
+     - [Icon Sizes](#icon-sizes)
+     - [Icon Colors](#icon-colors)
    - [Icon Best Practices](#icon-best-practices)
    - [Icon + Text Spacing](#icon--text-spacing)
+     - [Empty State Example](#empty-state-example)
 8. [Common Patterns](#common-patterns)
    - [Form Card Pattern](#form-card-pattern)
    - [Activity List Pattern](#activity-list-pattern)
@@ -61,6 +100,10 @@ A comprehensive design system for building consistent web interfaces with Kebool
 10. [Support & Contributing](#support-and-contributing)
     - [Support & Documentation](#support--documentation)
     - [Contributing](#contributing)
+11. [Asset Requirements](#asset-requirements)
+    - [Required Assets Structure](#required-assets-structure)
+    - [Logo Usage Guidelines](#logo-usage-guidelines)
+    - [Avatar Guidelines](#avatar-guidelines)
 
 ## Introduction
 
@@ -1623,7 +1666,6 @@ This consistent 12px spacing creates proper visual hierarchy and improves readab
 - ❌ Don't forget padding: var(--space-16) on page-container
 - ❌ Don't use raw pixel values for gaps
 - ❌ Don't add margins to sections when using gap-based spacing
-- ❌ Don't wrap tabs in card components
 
 ### Components
 - ✅ Use BEM naming convention
@@ -1678,4 +1720,35 @@ This consistent 12px spacing creates proper visual hierarchy and improves readab
 2. Test across different browsers
 3. Ensure accessibility compliance
 4. Document any new components
-5. Update example pages as needed 
+5. Update example pages as needed
+
+## Asset Requirements
+
+### Required Assets Structure
+
+```assets/
+├── logos/
+│   ├── logo.svg           # Square logo (1:1) for general use
+│   └── logo_navigation.svg # Tall logo (1:1.75) for navigation
+└── avatars/
+    └── placeholder.png    # Default avatar placeholder
+```
+
+### Logo Usage Guidelines
+
+- `logo.svg`: General purpose, square ratio (1:1)
+  - Use for: marketing, documentation, general branding
+  - Dimensions: Flexible, maintains square ratio
+
+- `logo_navigation.svg`: Navigation-specific, tall ratio (1:1.75)
+  - Use for: Topbar navigation only
+  - Fixed dimensions: 24x42px
+  - Do not use for general purposes
+
+### Avatar Guidelines
+
+- Default placeholder: `placeholder.png`
+- Used in: Topbar, user profiles
+- Container handles circular cropping
+- Always provide square images for consistent circular display
+
