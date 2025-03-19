@@ -94,8 +94,11 @@ This guide provides detailed instructions on how to correctly implement componen
     - [Avatar Implementation](#avatar-implementation)
     - [Full Topbar Structure](#full-topbar-structure)
     - [Typography Classes](#typography-classes)
-    - [Asset Requirements](#asset-requirements)
-11. [Support & Contributing](#support--contributing)
+11. [Asset Requirements](#asset-requirements)
+    - [Required Assets Structure](#required-assets-structure)
+    - [Logo Usage Guidelines](#logo-usage-guidelines)
+    - [Avatar Guidelines](#avatar-guidelines)
+12. [Support & Contributing](#support--contributing)
     - [Support & Documentation](#support--documentation)
     - [Contributing](#contributing)
 
@@ -1574,32 +1577,6 @@ Required assets must be available at:
 - `assets/logos/logo_navigation.svg` - Navigation-specific logo
 - `assets/avatars/placeholder.png` - Default avatar placeholder
 
-## Support & Contributing
-
-### Support & Documentation
-
-If you need help implementing any component from the Keboola Design System:
-
-1. Check the detailed documentation in both README.md and COMPONENT-GUIDE.md
-2. Review the example implementations in the /examples directory
-3. For further assistance, please contact the design system team
-
-### Contributing
-
-When contributing to the Keboola Design System:
-
-1. Follow the established patterns and conventions
-2. Test components across different browsers and screen sizes
-3. Ensure accessibility compliance with WCAG 2.1 standards
-4. Document any new components or modifications
-5. Update example pages as needed
-
-#### Asset Requirements
-
-Required assets must be available at:
-- `assets/logos/logo_navigation.svg` - Navigation-specific logo
-- `assets/avatars/placeholder.png` - Default avatar placeholder
-
 ## Asset Requirements
 
 ### Required Assets Structure
@@ -1629,3 +1606,23 @@ Required assets must be available at:
 - Used in: Topbar, user profiles
 - Container handles circular cropping
 - Always provide square images for consistent circular display
+
+## Support & Contributing
+
+### Support & Documentation
+
+If you need help implementing any component from the Keboola Design System:
+
+1. Check the detailed documentation in both README.md and COMPONENT-GUIDE.md
+2. Review the example implementations in the /examples directory
+3. For further assistance, please contact the design system team
+
+### Contributing
+
+When contributing to the Keboola Design System:
+
+1. Follow the established patterns and conventions
+2. Test components across different browsers and screen sizes
+3. Ensure accessibility compliance with WCAG 2.1 standards
+4. Document any new components or modifications
+5. Update example pages as needed
