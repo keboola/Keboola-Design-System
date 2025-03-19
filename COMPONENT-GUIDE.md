@@ -746,11 +746,13 @@ Example usage in context:
     <i class="fas fa-info-circle"></i>
   </div>
   <div class="content">
-    <div class="title">Information Message</div>
-    <div class="text">This is a standard information banner.</div>
+    <div class="title body-text-medium">Information Message</div>
+    <div class="text body-text">This is a standard information banner.</div>
   </div>
   <button class="button-close">
-    <i class="fas fa-times icon-small"></i>
+    <div class="icon-container icon-small">
+      <i class="fas fa-times"></i>
+    </div>
   </button>
 </div>
 
@@ -760,24 +762,56 @@ Example usage in context:
     <i class="fas fa-exclamation-triangle icon-warning"></i>
   </div>
   <div class="content">
-    <div class="title">Warning Alert</div>
-    <div class="text">This is a warning banner.</div>
+    <div class="title body-text-medium">Warning Alert</div>
+    <div class="text body-text">This is a warning banner.</div>
   </div>
   <button class="button-close">
-    <i class="fas fa-times icon-small"></i>
+    <div class="icon-container icon-small">
+      <i class="fas fa-times"></i>
+    </div>
   </button>
 </div>
 ```
 
+#### Key Implementation Details
+
+1. **Structure**: Banners follow a 3-part structure with icon, content, and close button
+2. **Typography**: 
+   - Always add the `body-text-medium` class to the `.title` element
+   - Always add the `body-text` class to the `.text` element
+   - The banner CSS only handles layout, not typography
+3. **Icons**:
+   - Use `icon-container` for consistent icon spacing and alignment
+   - Add appropriate semantic color classes for icons (e.g., `icon-warning`)
+4. **Close Button**:
+   - Wrap the icon in an `icon-container` with `icon-small` class
+   - Never apply color classes to close button icons as they have specific hover styles
+
+#### Banner Variants
+
+- **Default/Info**: `.banner` (blue)
+- **Warning**: `.banner.style-variant-warning` (orange)
+- **Error**: `.banner.style-variant-error` (red)
+- **Success**: `.banner.style-variant-success` (green)
+
+For more details on banner placement, see [Banner Placement Guidelines](#banner-placement-guidelines).
+
 ### Icons
 
+The icon component provides consistent styling for Font Awesome icons used throughout the system.
+
 ```html
-<!-- Basic Icon -->
+<!-- Small Icon (Default - 20x20px) -->
 <div class="icon-container icon-small">
   <i class="fas fa-user icon-muted"></i>
 </div>
 
-<!-- Large Icon -->
+<!-- Medium Icon (24x24px) -->
+<div class="icon-container icon-medium">
+  <i class="fas fa-user icon-muted"></i>
+</div>
+
+<!-- Large Icon (32x32px) -->
 <div class="icon-container icon-large">
   <i class="fas fa-user icon-muted"></i>
 </div>
@@ -792,7 +826,37 @@ Example usage in context:
 <div class="icon-container icon-small">
   <i class="fas fa-times-circle icon-error"></i>
 </div>
+<div class="icon-container icon-small">
+  <i class="fas fa-info-circle icon-primary"></i>
+</div>
 ```
+
+#### Icon Sizes
+
+The icon component supports three size variations:
+
+| Class | Size | Usage |
+|-------|------|-------|
+| `icon-small` | 20x20px container with 16x16px icon (default) | Standard UI elements, inline with text |
+| `icon-medium` | 24x24px container with 20x20px icon (intermediate size) | Medium emphasis, interactive elements |
+| `icon-large` | 32x32px container with 24x24px icon (for emphasis) | High emphasis, featured elements |
+
+#### Icon Colors
+
+| Class | Color | Usage |
+|-------|-------|-------|
+| `icon-muted` | Grey | Default, neutral actions |
+| `icon-primary` | Blue | Primary actions, links |
+| `icon-success` | Green | Success states, confirmations |
+| `icon-warning` | Orange | Warning states, caution |
+| `icon-error` | Red | Error states, destructive actions |
+
+#### Implementation Notes
+
+- Always use the `icon-container` wrapper with an appropriate size class
+- Use semantic color classes based on the icon's meaning, not aesthetics
+- For Font Awesome icons, always apply the color class to the `<i>` element
+- The container handles positioning and layout; the color class handles appearance
 
 ## Common Patterns
 
@@ -1147,8 +1211,8 @@ topbar
         └── topbar__section-secondary
             ├── [search component]
             ├── topbar__actions
-            │   └── [action items]
-            └── topbar__user
+            │   └── icon-container.topbar__action-item
+            └── topbar__avatar
                 └── img
 ```
 
@@ -1196,16 +1260,16 @@ topbar
                 <!-- Action Icons -->
                 <div class="topbar__actions">
                     <div class="icon-container icon-large topbar__action-item">
-                        <i class="fas fa-gift icon-muted topbar__action-icon"></i>
+                        <i class="fas fa-gift icon-muted"></i>
                         <div class="topbar__indicator">5</div>
                     </div>
                     <div class="icon-container icon-large topbar__action-item">
-                        <i class="fas fa-trash icon-muted topbar__action-icon"></i>
+                        <i class="fas fa-trash icon-muted"></i>
                     </div>
                 </div>
                 
                 <!-- User profile -->
-                <div class="topbar__user">
+                <div class="topbar__avatar">
                     <img src="path/to/avatar.png" alt="User Avatar">
                 </div>
             </div>
@@ -1222,6 +1286,30 @@ The topbar component uses these key CSS variables for consistent styling:
 --topbar-height: 68px;       /* Controls the height of the topbar */
 --content-top-spacing: 32px; /* Controls spacing from top of content area */
 ```
+
+#### Interactive Elements
+
+The topbar includes interactive elements with hover effects:
+
+1. **Action Icons**: When hovering over an action icon in the topbar, the icon changes color from gray to blue
+   ```css
+   /* The container has the action item class */
+   .topbar__action-item.icon-container:hover {
+       color: var(--secondary-blue-500-base);
+   }
+   
+   /* Make sure nested icons also change color on hover */
+   .topbar__action-item.icon-container:hover i {
+       color: var(--secondary-blue-500-base);
+   }
+   ```
+
+2. **Avatar**: The user avatar has a subtle background color change on hover
+   ```css
+   .topbar__avatar:hover {
+       background-color: var(--neutral-grey-200);
+   }
+   ```
 
 #### Responsive Behavior
 
@@ -1284,3 +1372,43 @@ The topbar component adapts to different screen sizes:
    ```html
    <div class="topbar__indicator">5</div>
    ```
+
+## Icon Component
+
+The icon component provides a standardized way to display Font Awesome icons with consistent sizing and styling throughout the application.
+
+### Icon Sizes
+
+- **icon-small**: 20x20px container with 16x16px icon (default)
+- **icon-medium**: 24x24px container with 20x20px icon (intermediate size)
+- **icon-large**: 32x32px container with 24x24px icon (for emphasis)
+
+### Implementation
+
+```html
+<!-- Small Icon (Default - 20x20px) -->
+<div class="icon-container icon-small">
+  <i class="fas fa-user icon-muted"></i>
+</div>
+
+<!-- Medium Icon (24x24px) -->
+<div class="icon-container icon-medium">
+  <i class="fas fa-user icon-muted"></i>
+</div>
+
+<!-- Large Icon (32x32px) -->
+<div class="icon-container icon-large">
+  <i class="fas fa-user icon-muted"></i>
+</div>
+```
+
+### Best Practices
+
+1. Always wrap icons in `icon-container` for consistent spacing and alignment
+2. Always specify the size class (`icon-small`, `icon-medium`, or `icon-large`)
+3. Use semantic color classes only when the icon represents a status:
+   - `icon-success`: Green for success states
+   - `icon-warning`: Orange for warning states
+   - `icon-error`: Red for error states
+   - `icon-muted`: Default grey for most UI icons (recommended default)
+4. For interactive icons, add appropriate hover effects by wrapping in a button or applying hover styles

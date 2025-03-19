@@ -11,22 +11,23 @@ A comprehensive design system for building consistent web interfaces with Kebool
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Getting Started](#getting-started)
+2. [Project Structure](#project-structure)
+3. [Getting Started](#getting-started)
    - [Installation](#installation)
    - [Basic Page Structure](#basic-page-structure)
    - [Example Pages](#example-pages)
-3. [Design Tokens](#design-tokens)
+4. [Design Tokens](#design-tokens)
    - [Color System](#color-system)
    - [Typography System](#typography-system)
    - [Spacing System](#spacing-system)
-4. [Layout & Structure](#layout-and-structure)
+5. [Layout & Structure](#layout-and-structure)
    - [Page Container](#page-container)
    - [Shadows](#shadows)
    - [Grid System](#grid-system)
    - [Header & Footer Spacing](#header-and-footer-spacing)
    - [Section Spacing](#section-spacing)
    - [Layout Examples](#layout-examples)
-5. [Core Components](#core-components)
+6. [Core Components](#core-components)
    - [Header](#header)
    - [Buttons](#buttons)
    - [Cards](#cards)
@@ -42,22 +43,21 @@ A comprehensive design system for building consistent web interfaces with Kebool
    - [Activity Row](#activity-row)
    - [Badges](#badges)
    - [Banners](#banners)
-6. [Icon System](#icon-system)
+7. [Icon System](#icon-system)
    - [Basic Icon Setup](#basic-icon-setup)
    - [Icon Sizes & Colors](#icon-sizes-and-colors)
    - [Icon Best Practices](#icon-best-practices)
    - [Icon + Text Spacing](#icon--text-spacing)
-7. [Common Patterns](#common-patterns)
+8. [Common Patterns](#common-patterns)
    - [Form Card Pattern](#form-card-pattern)
    - [Activity List Pattern](#activity-list-pattern)
-8. [Best Practices and Common Mistakes](#best-practices-and-common-mistakes)
+9. [Best Practices and Common Mistakes](#best-practices-and-common-mistakes)
    - [Typography](#typography)
    - [Layout](#layout)
    - [Components](#components)
    - [Header & Buttons](#header--buttons)
    - [Spacing](#spacing)
    - [Card Layouts](#card-layouts)
-9. [Project Structure](#project-structure)
 10. [Support & Contributing](#support-and-contributing)
     - [Support & Documentation](#support--documentation)
     - [Contributing](#contributing)
@@ -65,6 +65,47 @@ A comprehensive design system for building consistent web interfaces with Kebool
 ## Introduction
 
 The Keboola Design System provides a consistent set of components, patterns, and guidelines for building Keboola applications. It ensures visual consistency, improves development efficiency, and creates a cohesive user experience across all Keboola products.
+
+## Project Structure
+
+```
+project/
+├── dist/
+│   └── design-system.css (imports all components)
+├── tokens/
+│   ├── variables.css    (spacing, radius, shadows)
+│   ├── colors.css       (color palette, system colors)
+│   └── typography.css   (font definitions, text styles)
+├── components/
+│   ├── atoms/           (basic building blocks)
+│   │   ├── badge.css
+│   │   ├── button.css
+│   │   ├── icon.css     (icon sizing, containers, colors)
+│   │   └── ...
+│   ├── molecules/       (composite components)
+│   │   ├── banner.css
+│   │   ├── card.css
+│   │   ├── topbar.css   (navigation component)
+│   │   └── ...
+│   └── organisms/       (complex component groups)
+│       ├── dashboard.css
+│       └── ...
+├── styles/
+│   └── layout.css       (grid system, containers)
+└── assets/
+    ├── icons/
+    ├── logos/
+    └── avatars/
+```
+
+This organization follows atomic design principles:
+- **Tokens**: Design foundations like colors, typography, and spacing
+- **Atoms**: Smallest UI elements (buttons, icons, badges)
+- **Molecules**: Groups of atoms forming distinct sections (cards, banners)
+- **Organisms**: Complex components combining multiple molecules
+- **Assets**: Static resources used across components
+
+All CSS is modular and follows a consistent naming convention to prevent conflicts.
 
 ## Getting Started
 
@@ -1327,11 +1368,13 @@ Banners are used to display important messages, alerts, or notifications to user
         <i class="fas fa-info-circle"></i>
     </div>
     <div class="content">
-        <div class="title">Information Message</div>
-        <div class="text">This is a standard information banner that provides helpful context to users.</div>
+        <div class="title body-text-medium">Information Message</div>
+        <div class="text body-text">This is a standard information banner that provides helpful context to users.</div>
     </div>
     <button class="button-close">
-        <i class="fas fa-times icon-small"></i>
+        <div class="icon-container icon-small">
+            <i class="fas fa-times"></i>
+        </div>
     </button>
 </div>
 
@@ -1341,11 +1384,13 @@ Banners are used to display important messages, alerts, or notifications to user
         <i class="fas fa-exclamation-triangle icon-warning"></i>
     </div>
     <div class="content">
-        <div class="title">Warning Alert</div>
-        <div class="text">This is a warning banner that alerts users to potential issues.</div>
+        <div class="title body-text-medium">Warning Alert</div>
+        <div class="text body-text">This is a warning banner that alerts users to potential issues.</div>
     </div>
     <button class="button-close">
-        <i class="fas fa-times icon-small"></i>
+        <div class="icon-container icon-small">
+            <i class="fas fa-times"></i>
+        </div>
     </button>
 </div>
 
@@ -1355,11 +1400,13 @@ Banners are used to display important messages, alerts, or notifications to user
         <i class="fas fa-exclamation-circle icon-error"></i>
     </div>
     <div class="content">
-        <div class="title">Error Message</div>
-        <div class="text">This is an error banner that indicates a critical issue.</div>
+        <div class="title body-text-medium">Error Message</div>
+        <div class="text body-text">This is an error banner that indicates a critical issue.</div>
     </div>
     <button class="button-close">
-        <i class="fas fa-times icon-small"></i>
+        <div class="icon-container icon-small">
+            <i class="fas fa-times"></i>
+        </div>
     </button>
 </div>
 
@@ -1369,11 +1416,13 @@ Banners are used to display important messages, alerts, or notifications to user
         <i class="fas fa-check-circle icon-success"></i>
     </div>
     <div class="content">
-        <div class="title">Success Message</div>
-        <div class="text">This is a success banner that confirms a completed action.</div>
+        <div class="title body-text-medium">Success Message</div>
+        <div class="text body-text">This is a success banner that confirms a completed action.</div>
     </div>
     <button class="button-close">
-        <i class="fas fa-times icon-small"></i>
+        <div class="icon-container icon-small">
+            <i class="fas fa-times"></i>
+        </div>
     </button>
 </div>
 ```
@@ -1400,8 +1449,8 @@ For messages that should remain visible and cannot be dismissed, simply omit the
         <i class="fas fa-exclamation-triangle icon-warning"></i>
     </div>
     <div class="content">
-        <div class="title">Persistent Warning</div>
-        <div class="text">This is a warning banner without a close button for messages that should remain visible.</div>
+        <div class="title body-text-medium">Persistent Warning</div>
+        <div class="text body-text">This is a warning banner without a close button for messages that should remain visible.</div>
     </div>
 </div>
 ```
@@ -1409,9 +1458,15 @@ For messages that should remain visible and cannot be dismissed, simply omit the
 #### Banner Structure
 
 Each banner consists of:
-1. An icon that indicates the type of message
-2. Content with a title and descriptive text
-3. An optional close button (omitted in persistent banners)
+1. An icon that indicates the type of message (in an `icon-container`)
+2. Content with a title (`body-text-medium` class) and descriptive text (`body-text` class)
+3. An optional close button with properly structured icon container
+
+#### Typography Classes
+
+- **Banner Title**: Always add the `body-text-medium` class to the `.title` element
+- **Banner Text**: Always add the `body-text` class to the `.text` element
+- These classes provide the correct typography styling as the CSS handles only layout properties
 
 #### Best Practices
 
@@ -1423,6 +1478,8 @@ Each banner consists of:
   - **Success (green)**: Confirmation of completed actions
 - Keep messages clear and concise
 - Use persistent banners only for information that must remain visible
+- Always include the proper typography classes for title and text
+- Wrap close button icons in an icon-container
 
 For a complete showcase of all banner variants, see the [banner-examples.html](examples/banner-examples.html) example page.
 
@@ -1446,6 +1503,7 @@ For a complete showcase of all banner variants, see the [banner-examples.html](e
 
 #### Icon Sizes
 - `icon-small`: 20x20px container with 16x16px icon (default)
+- `icon-medium`: 24x24px container with 20x20px icon
 - `icon-large`: 32x32px container with 24x24px icon
 
 #### Icon Colors
@@ -1470,7 +1528,7 @@ For a complete showcase of all banner variants, see the [banner-examples.html](e
 ### Icon Best Practices
 
 1. Always wrap icons in `icon-container`
-2. Always specify the size (`icon-small` or `icon-large`)
+2. Always specify the size (`icon-small`, `icon-large`, or `icon-medium`)
 3. Use `icon-muted` class for default grey icons
 4. Use semantic colors only for status indicators
 5. Keep icons aligned with text using the container
@@ -1603,24 +1661,6 @@ This consistent 12px spacing creates proper visual hierarchy and improves readab
 - ❌ Don't use `aligned-footers` with cards that don't have footers
 - ❌ Don't mix cards with and without footers in the same grid container
 - ❌ Don't add helper classes to all grid containers by default
-
-## Project Structure
-
-```
-project/
-├── dist/
-│   └── design-system.css (imports all components)
-├── tokens/
-│   ├── variables.css
-│   ├── colors.css
-│   └── typography.css
-├── styles/
-│   └── layout.css
-├── components/
-│   ├── atoms/
-│   ├── molecules/
-└── assets/
-```
 
 ## Support and Contributing
 

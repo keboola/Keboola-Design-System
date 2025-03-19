@@ -38,15 +38,6 @@
   flex: 1;
 }
 
-.banner .info {
-  flex-shrink: 0;
-  width: var(--space-5);
-  height: var(--space-5);
-  position: relative;
-  overflow: visible;
-  margin-top: 1px;
-}
-
 .banner .button {
   border-radius: var(--radius-full);
   padding: 6px;
@@ -59,14 +50,6 @@
   position: relative;
 }
 
-.banner .arrow-up-chevron-up {
-  flex-shrink: 0;
-  width: var(--space-5);
-  height: var(--space-5);
-  position: relative;
-  overflow: visible;
-}
-
 /* Remove typography properties from paragraph, use body-text class instead */
 .banner .paragraph {
   padding: var(--space-1) 0 0 0;
@@ -77,13 +60,6 @@
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  position: relative;
-}
-
-.banner .icon {
-  flex-shrink: 0;
-  width: var(--space-5);
-  height: var(--space-5);
   position: relative;
 }
 
@@ -114,6 +90,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: auto;
+  height: auto;
 }
 
 .banner .button-close:hover {
@@ -123,22 +101,30 @@
 /* Override variant colors for dismiss button icon */
 .banner .button-close .icon-container {
   color: inherit;
+  width: 20px;
+  height: 20px;
+}
+
+/* Icon inside close button */
+.banner .button-close .icon-container i {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Ensure consistency with button-close icon container */
+.banner .button-close .icon-container {
+  margin: 0;
 }
 
 /* Variants */
 .banner.style-variant-warning {
   background: var(--warning-orange-100);
   border: 1px solid var(--warning-orange-200);
-}
-
-.banner.style-variant-warning .warning-v-2,
-.banner.style-variant-error .warning-v-2,
-.banner.style-variant-success .checkmark-tick {
-  flex-shrink: 0;
-  width: var(--space-5);
-  height: var(--space-5);
-  position: relative;
-  overflow: visible;
 }
 
 .banner.style-variant-error {

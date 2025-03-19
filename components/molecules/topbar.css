@@ -132,15 +132,22 @@ body {
 }
 
 /* Action icons - specific styles */
-.topbar__action-icon {
+.topbar__action-item.icon-container {
     color: var(--neutral-grey-500);
+    cursor: pointer;
 }
 
-.topbar__action-icon:hover {
+.topbar__action-item.icon-container:hover {
+    color: var(--secondary-blue-500-base);
+}
+
+/* When hovering over container, change the nested icon color regardless of its class */
+.topbar__action-item.icon-container:hover i {
     color: var(--secondary-blue-500-base);
 }
 
 /* User profile */
+.topbar__avatar,
 .topbar__user {
     width: 36px;
     height: 36px;
@@ -154,10 +161,12 @@ body {
     flex-shrink: 0;
 }
 
+.topbar__avatar:hover,
 .topbar__user:hover {
     background-color: var(--neutral-grey-200);
 }
 
+.topbar__avatar img,
 .topbar__user img {
     width: 100%;
     height: 100%;
